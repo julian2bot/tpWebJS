@@ -1,8 +1,7 @@
-// Fonction pour charger la vue correspondante
 function loadView() {
-    let view = window.location.hash.substring(1); // Ex: "#listing" → "listing"
+    let view = window.location.hash.substring(1); 
 
-    let container = document.getElementById("app"); // L'endroit où afficher les vues
+    let container = document.getElementById("app"); 
 
     switch (view) {
         case "listing":
@@ -25,8 +24,6 @@ function loadView() {
     }
 }
 
-// Détecter le changement de vue
 window.addEventListener("hashchange", loadView);
 
-// Charger la vue au démarrage
 window.addEventListener("load", loadView);
