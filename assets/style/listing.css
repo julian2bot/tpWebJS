@@ -66,10 +66,12 @@ svg {
     position: absolute;
     left: 50%;
     transform: translateX(-50%) scale(var(--tailleScalePerso));
-    transform-origin: top center;
-    height:auto;
+    transform-origin: center;
+    /* transform-origin: top center; */
+    height:100%;
+    /* height:auto; */
     width: auto;
-    scale: .5;
+    scale: .45;
 }
 .persoPreview img{
     position: absolute;
