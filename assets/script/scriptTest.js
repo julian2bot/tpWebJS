@@ -67,9 +67,12 @@ function getListeCasque(){
 }
 function getListeBas(){
     let bas = [
-        new Bas("haut1", "haut.png", 10, 0, -2),
-        new Bas("haut2", "haut2.png", -3, 7, -2),
-        new Bas("haut3", "haut3.png", 5, -6, 8),
+        new Bas("bas1", "bas.png", -3, 7, -2),
+        new Bas("bas2", "bas2.png", -9, 3, 10),
+        new Bas("bas3", "bas3.png", 7, 2, -5),
+        new Bas("bas4", "bas4.png",  4, -8, -1),
+        new Bas("bas5", "bas5.png", 10, -7, 0),
+
     ]
     return bas;
 }
@@ -132,18 +135,36 @@ function updateDisplay() {
     let imgCentreHaut = document.getElementById("haut");
     let imgDroiteHaut = document.querySelector("#droitePreview .haut");
 
-    let total = listeHauts.length;
+    let totalHaut = listeHauts.length;
     
-    let indexGauche = (indexCentreHaut - 1 + total) % total;
-    let indexDroite = (indexCentreHaut + 1) % total;
+    let indexGaucheHaut = (indexCentreHaut - 1 + totalHaut) % totalHaut;
+    let indexDroiteHaut = (indexCentreHaut + 1) % totalHaut;
+
+    
+    imgGaucheHaut.src = listeHauts[indexGaucheHaut].src;
+    imgCentreHaut.src = listeHauts[indexCentreHaut].src;
+    imgDroiteHaut.src = listeHauts[indexDroiteHaut].src;
+    
+    
+    
+    let imgGaucheBas = document.querySelector("#gauchePreview .bas");
+    let imgCentreBas = document.getElementById("bas");
+    let imgDroiteBas = document.querySelector("#droitePreview .bas");
+
+    let totalBas = listeBas.length;
+    
+    let indexGaucheBas = (indexCentreBas - 1 + totalBas) % totalBas;
+    let indexDroiteBas = (indexCentreBas + 1) % totalBas;
+
+
+    imgGaucheBas.src = listeBas[indexGaucheBas].src;
+    imgCentreBas.src = listeBas[indexCentreBas].src;
+    imgDroiteBas.src = listeBas[indexDroiteBas].src;
 
 
     calculCaracteristique();
-
-    imgGaucheHaut.src = listeHauts[indexGauche].src;
-    imgCentreHaut.src = listeHauts[indexCentreHaut].src;
-    imgDroiteHaut.src = listeHauts[indexDroite].src;
 }
+
 
 function updatePreviewHautDroite(){
     indexCentreHaut = (indexCentreHaut + 1) % listeHauts.length;
@@ -158,6 +179,19 @@ function updatePreviewHautGauche(){
     updateDisplay();
 }
 
+function updatePreviewBasDroite(){
+    indexCentreBas = (indexCentreBas + 1) % listeBas.length;
+    updateDisplay();
+}
+
+function updatePreviewBasGauche(){
+    indexCentreBas = (indexCentreBas - 1) % listeBas.length
+    if(indexCentreBas < 0){
+        indexCentreBas = listeBas.length - 1
+    }
+    updateDisplay();
+}
+
 function init(){
 
     updateDisplay();
@@ -165,12 +199,18 @@ function init(){
     document.querySelector("#droite").addEventListener("click", (event) => {
         if (event.target.closest(".haut")) {
             updatePreviewHautDroite();
+        }else if(event.target.closest(".bas")){
+            updatePreviewBasDroite();
+            
         }
     });
     
     document.querySelector("#gauche").addEventListener("click", (event) => {
         if (event.target.closest(".haut")) {
             updatePreviewHautGauche();
+        }else if(event.target.closest(".bas")){
+            updatePreviewBasGauche();
+            
         }
     });
     
