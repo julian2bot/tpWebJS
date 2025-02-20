@@ -1,7 +1,241 @@
+:root{
+    --tailleScalePerso:2;
+ 
+    --hauteurCasque:32px;
+    --hauteurHaut:64px;
+    --hauteurBas:48px;
+    --hauteurBasbas:16px;
+
+
+    --topCasque:0px;
+    --topHaut:calc(var(--hauteurCasque) + var(--topCasque) );
+    --topBas:calc(var(--hauteurHaut) + var(--topHaut) );
+    --topBasbas:calc(var(--hauteurBas) + var(--topBas) );
+}
+
 h1{
     text-align: center;
 }
 nav{
     display: flex;
     justify-content: space-around;
+}
+
+
+/* card */
+
+
+.card {
+    width: 180px;
+    height: 250px;
+    background: white;
+    border: 3px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    filter: url(#squiggly-filter);
+    /* animation: wobble 0.8s infinite alternate ease-in-out; */
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card .image {
+    width: 100px;
+    height: 80px;
+    background: lightgray;
+    border: 2px solid black;
+}
+
+.card p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+svg {
+    display: none;
+}
+
+
+
+/* detail */
+
+aside {
+    width: 250px;
+    flex-shrink: 0; 
+}
+
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.iconCaract{
+    height: 2em;
+}
+
+.stat > p{
+    font-size: 1.5rem;
+    /* filter: url(#squiggly-filter); */
+
+}
+
+
+.stat {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.slider {
+    position: relative;
+    width: 15rem;
+    height: 2rem;
+    /* background-color: antiquewhite; */
+    overflow: hidden; 
+    filter: url(#squiggly-filter);
+    border: 3px solid;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 2rem;
+    background-color: black;
+}
+.slider::after {
+    --progress:100%;
+    position: absolute;
+    content: "";
+    width: var(--progress, 10%); 
+    height: 100%;
+    background-color: black;
+    transform: skewX(-20deg); 
+    left: 0px;
+    top: 0;
+    transition: width 0.5s ease-in-out; 
+}
+
+.slider > p {
+    position: absolute;
+    margin: 0;
+    font-size: 1.6rem;
+    width: 10ch;
+    color: red;
+    font-family: monospace;
+    opacity: 0; 
+    text-wrap: nowrap;
+    overflow: hidden;
+    z-index: 44;
+    animation: typing 2s steps(10) infinite;
+}
+
+.stat:has(:hover) p {
+    opacity: 1;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 10ch; }
+}
+
+
+    /* edit perso */
+#editPerso {
+    background-color: red;
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    position: relative; 
+    top: 0;
+    left: 0;
+}
+
+
+#perso {
+    position: absolute;
+    top: 0;  /* Maintient l'image en haut */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%) scale(var(--tailleScalePerso));  /* Centre l'image horizontalement, mais garde top à 0 */
+    transform-origin: top center;
+    height: auto;
+    width: auto;
+}
+
+
+#casque{
+    position: absolute;
+    top:var(--topCasque);
+    left:0;
+}
+#haut{
+    position: absolute;
+    top:var(--topHaut);
+    left:0;
+}
+#bas{
+    position: absolute;
+    top:var(--topBas);
+    left:0;
+}
+#basbas{
+    position: absolute;
+    top:var(--topBasbas);
+    left:0;
+}
+
+#gauchePreview{
+    position: absolute;
+    left: -80px;
+}
+#gauchePreview > *, #droitePreview > *{
+    scale:.7;
+}
+
+#gauche{
+    position: absolute;
+    left: -40px;
+}
+
+#droitePreview{
+    position: absolute;
+    top:0;
+    left: 80px;
+}
+
+#droite{
+    position: absolute;
+    top:0;
+    left: 40px;
+}
+
+
+
+.casque{
+    position: absolute;
+    top:var(--topCasque);
+    left:0;
+}
+.haut{
+    position: absolute;
+    top:var(--topHaut);
+    left:0;
+}
+.bas{
+    position: absolute;
+    top:var(--topBas);
+    left:0;
+}
+.basbas{
+    position: absolute;
+    top:var(--topBasbas);
+    left:0;
 }
