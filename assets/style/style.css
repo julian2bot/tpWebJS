@@ -11,6 +11,11 @@
     --topHaut:calc(var(--hauteurCasque) + var(--topCasque) );
     --topBas:calc(var(--hauteurHaut) + var(--topHaut) );
     --topBasbas:calc(var(--hauteurBas) + var(--topBas) );
+
+    --progress-force:50%;
+    --progress-endurance:50%;
+    --progress-souplaise:50%;
+
 }
 
 h1{
@@ -113,10 +118,9 @@ ul{
     background-color: black;
 }
 .slider::after {
-    --progress:100%;
     position: absolute;
     content: "";
-    width: var(--progress, 10%); 
+    /* width: var(--progress, 10%);  */
     height: 100%;
     background-color: black;
     transform: skewX(-20deg); 
@@ -125,32 +129,46 @@ ul{
     transition: width 0.5s ease-in-out; 
 }
 
+
+#F::after {
+    width: var(--progress-force, 10%); 
+}
+
+#E::after {
+    width: var(--progress-endurance, 10%); 
+}
+
+#S::after {
+    width: var(--progress-souplaise, 10%); 
+}
+
+
 .slider > p {
     position: absolute;
     margin: 0;
     font-size: 1.6rem;
-    width: 10ch;
+    width: 0ch;
     color: red;
     font-family: monospace;
     opacity: 0; 
     text-wrap: nowrap;
     overflow: hidden;
     z-index: 44;
-    animation: typing 2s steps(10) infinite;
+    animation: typing 1s steps(10) infinite;
 }
 
 .stat:has(:hover) p {
     opacity: 1;
 }
 @keyframes typing {
-    from { width: 0; }
+    from { width: 0ch; }
     to { width: 10ch; }
 }
 
 
     /* edit perso */
 #editPerso {
-    background-color: red;
+    /* background-color: red; */
     height: 100vh;
     flex: 1;
     display: flex;
@@ -158,7 +176,6 @@ ul{
     top: 0;
     left: 0;
 }
-
 
 #perso {
     position: absolute;
@@ -197,7 +214,10 @@ ul{
     left: -80px;
 }
 #gauchePreview > *, #droitePreview > *{
-    scale:.7;
+    scale:.6;
+    filter: blur(0.2px) opacity(0.9) brightness(0.5) drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4)); 
+    /* box-shadow: ;  */
+
 }
 
 #gauche{
@@ -238,4 +258,8 @@ ul{
     position: absolute;
     top:var(--topBasbas);
     left:0;
+}
+
+#gauche > *:hover, #droite > *:hover{
+    scale: 1.1;
 }

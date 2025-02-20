@@ -12,8 +12,12 @@ function loadView() {
         case "detail":
             fetch("view/detail.html")
                 .then(response => response.text())
-                .then(html => container.innerHTML = html);
+                .then(html => {
+                    container.innerHTML = html;
+                    executeScripts(container);
+                });
             break;
+            
         case "favoris":
             fetch("view/favoris.html")
                 .then(response => response.text())
@@ -23,6 +27,26 @@ function loadView() {
             container.innerHTML = "<h2>Bienvenue sur l'application</h2>";
     }
 }
+
+
+
+// todo :  c'est sensé executé le script car il est appelé dans detail.html qui est chargé eu fur et a mesure mais a changé ?
+function executeScripts(container) {
+    let scripts = container.querySelectorAll("script");
+    scripts.forEach(script => {
+        if (script.src) {
+            let newScript = document.createElement("script");
+            newScript.src = script.src;
+            newScript.defer = true;
+            document.body.appendChild(newScript);
+            console.log("📜 Script ajouté :", newScript.src);
+        } else {
+            eval(script.innerText); // Pour les scripts inline
+            console.log("📜 Script inline exécuté !");
+        }
+    });
+}
+
 
 window.addEventListener("hashchange", loadView);
 
