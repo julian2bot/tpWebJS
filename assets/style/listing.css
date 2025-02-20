@@ -32,6 +32,11 @@
     height: 100%;
     background: lightgray;
     border: 2px solid black;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    
 }
 
 .card p {
@@ -52,4 +57,35 @@ svg {
 
 .iconCaract{
     height: 1.4rem;
+}
+
+
+.persoPreview{
+
+    top: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(var(--tailleScalePerso));
+    transform-origin: top center;
+    height:auto;
+    width: auto;
+    scale: .5;
+}
+.persoPreview img{
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+
+.imgPersoCasque{
+    top: 0;
+}
+.imgPersoHaut{
+    top: 32px;
+}
+.imgPersoBas{
+    top: 96px;
+}
+.imgPersoBasBas{
+    top: 144px;
 }

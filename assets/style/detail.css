@@ -2,6 +2,7 @@
 
 /* detail */
 
+    /* caracteristique */
 aside {
     width: 250px;
     flex-shrink: 0; 
@@ -110,9 +111,9 @@ ul{
 
 #perso {
     position: absolute;
-    top: 0;  /* Maintient l'image en haut */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%) scale(var(--tailleScalePerso));  /* Centre l'image horizontalement, mais garde top à 0 */
+    top: 0;  
+    left: 50%; 
+    transform: translateX(-50%) scale(var(--tailleScalePerso));  
     transform-origin: top center;
     height: auto;
     width: auto;
@@ -147,7 +148,6 @@ ul{
 #gauchePreview > *, #droitePreview > *{
     scale:.6;
     filter: blur(0.2px) opacity(0.9) brightness(0.5) drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4)); 
-    /* box-shadow: ;  */
 
 }
 

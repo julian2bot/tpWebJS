@@ -1,5 +1,15 @@
 
 export class Equipement{
+
+   /**
+    * Equipement avec un type, un nom, une image et des points de caracteristique (-10 10)  
+    * @param {string} type 
+    * @param {string} name 
+    * @param {string} src 
+    * @param {int} force 
+    * @param {int} endurance 
+    * @param {int} souplaise 
+    */
     constructor(type, name, src,force, endurance, souplaise){
         this.type = type;
         this.name = name;
@@ -39,6 +49,7 @@ export class BasBas extends Equipement{
 
 
 
+// get tout les hauts
 export function getListeHaut(){
     let haut1 = [
         new Haut("haut1", "haut.png", 10, 0, -2),
@@ -55,14 +66,17 @@ export function getListeHaut(){
 }
 
 
+// get tout les casques
 export function getListeCasque(){
     let casques = [
-        new Casque("haut1", "haut.png", 10, 0, -2),
+        new Casque("haut1", "casque.png", 10, 0, -2),
         new Casque("haut2", "haut2.png", -3, 7, -2),
         new Casque("haut3", "haut3.png", 5, -6, 8),
     ]
     return casques;
 }
+
+// get tout les bas
 export function getListeBas(){
     let bas = [
         new Bas("bas1", "bas.png", -3, 7, -2),
@@ -74,17 +88,27 @@ export function getListeBas(){
     ]
     return bas;
 }
+
+// get tout les basbas (chaussures)
 export function getListeBasBas(){
     let basBas = [
-        new BasBas("haut1", "haut.png", 10, 0, -2),
+        new BasBas("haut1", "basbas.png", 10, 0, -2),
         new BasBas("haut2", "haut2.png", -3, 7, -2),
         new BasBas("haut3", "haut3.png", 5, -6, 8),
     ]
     return basBas;
 }
 
-
 export class Perso{
+    /**
+     * un personnage avec son equipements et un nom
+     * 
+     * @param {string} name 
+     * @param {int} indexCasque 
+     * @param {int} indexHaut 
+     * @param {int} indexBas 
+     * @param {int} indexBasbas 
+     */
     constructor(name, indexCasque, indexHaut, indexBas, indexBasbas){
         this.name = name;
         this.indexCasque = indexCasque;
@@ -94,7 +118,7 @@ export class Perso{
         this.valCaract = {}
     }
 
-
+    // creer une carte avec les informations du perso
     creerCartePerso() {
         let divCarte = document.createElement("div");
         divCarte.classList.add("card");
@@ -104,7 +128,37 @@ export class Perso{
     
         let divImage = document.createElement("div");
         divImage.classList.add("image");
-    
+
+        let divPerso = document.createElement("div");
+        divPerso.classList.add("persoPreview");
+
+        let imgDuPerso = document.createElement("img");
+        imgDuPerso.src = "../assets/img/perso.png";
+        
+        
+        let imgPersoCasque = document.createElement("img");
+        imgPersoCasque.classList.add("imgPersoCasque");
+        let imgPersoHaut = document.createElement("img");
+        imgPersoHaut.classList.add("imgPersoHaut");
+        let imgPersoBas = document.createElement("img");
+        imgPersoBas.classList.add("imgPersoBas");
+        let imgPersoBasBas = document.createElement("img");
+        imgPersoBasBas.classList.add("imgPersoBasBas");
+
+        imgPersoCasque.src = listeCasques[this.indexCasque].src;
+        imgPersoHaut.src = listeHauts[this.indexHaut].src;  
+        imgPersoBas.src = listeBas[this.indexBas].src;    
+        imgPersoBasBas.src = listeBasBas[this.indexBasbas].src;
+        
+
+        divPerso.appendChild(imgDuPerso);
+        
+        divPerso.appendChild(imgPersoCasque);
+        divPerso.appendChild(imgPersoHaut);
+        divPerso.appendChild(imgPersoBas);
+        divPerso.appendChild(imgPersoBasBas);
+        divImage.appendChild(divPerso);
+
         let divStats = document.createElement("div");
         divStats.classList.add("stats");
     
@@ -140,10 +194,12 @@ export class Perso{
         return divCarte;
     }
     
+    // ajouter une carte sur la page
     ajouterCard(){
         document.getElementById("app").appendChild(this.creerCartePerso());
     }
 
+    // calcul du % de chaque caracteristique
     calculCaracteristique(){
         let casque = listeCasques[this.indexCasque];
         let haut = listeHauts[this.indexHaut];  
@@ -164,6 +220,7 @@ export class Perso{
 
 
 
+// get tout les persos
 export function getListePerso(){
     let Persos = [
         new Perso("perso1", 0, 0,1,0),

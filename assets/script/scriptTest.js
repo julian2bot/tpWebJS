@@ -6,6 +6,7 @@ import {indicesCentre, listeCasques, listeHauts, listeBas, listeBasBas} from "./
 
 // let monPerso = new Perso("name")
 
+// calcul des caracteristiques du personnage quand il y a un changement
 function calculCaracteristique(){
     let casque = listeCasques[indicesCentre.indexCentreCasque];
     let haut = listeHauts[indicesCentre.indexCentreHaut];  
@@ -21,21 +22,25 @@ function calculCaracteristique(){
     majSouplaise(souplaise);
 }
 
+// change la valeur de la var force dans le css
 function majForce(force){
     let r = document.querySelector(':root');
     r.style.setProperty('--progress-force', `${force}%`);
 }
 
+// change la valeur de la var endurance dans le css
 function majEndurance(endurance){
     let r = document.querySelector(':root');
     r.style.setProperty('--progress-endurance', `${endurance}%`);
 }
 
+// change la valeur de la var souplaise dans le css
 function majSouplaise(souplaise){
     let r = document.querySelector(':root');
     r.style.setProperty('--progress-souplaise', `${souplaise}%`);
 }
 
+// affiche le personnage
 function updateDisplay() {
     let imgGaucheHaut = document.querySelector("#gauchePreview .haut");
     let imgCentreHaut = document.getElementById("haut");
@@ -71,12 +76,13 @@ function updateDisplay() {
     calculCaracteristique();
 }
 
-
+// update au moment du clique sur le bouton
 function updatePreviewHautDroite(){
     indicesCentre.indexCentreHaut = (indicesCentre.indexCentreHaut + 1) % listeHauts.length;
     updateDisplay();
 }
 
+// update au moment du clique sur le bouton
 function updatePreviewHautGauche(){
     indicesCentre.indexCentreHaut = (indicesCentre.indexCentreHaut - 1) % listeHauts.length
     if(indicesCentre.indexCentreHaut < 0){
@@ -85,11 +91,13 @@ function updatePreviewHautGauche(){
     updateDisplay();
 }
 
+// update au moment du clique sur le bouton
 function updatePreviewBasDroite(){
     indicesCentre.indexCentreBas = (indicesCentre.indexCentreBas + 1) % listeBas.length;
     updateDisplay();
 }
 
+// update au moment du clique sur le bouton
 function updatePreviewBasGauche(){
     indicesCentre.indexCentreBas = (indicesCentre.indexCentreBas - 1) % listeBas.length
     if(indicesCentre.indexCentreBas < 0){
@@ -98,6 +106,7 @@ function updatePreviewBasGauche(){
     updateDisplay();
 }
 
+// initialise les boutons et l'affichage
 function init(){
 
     updateDisplay();
@@ -123,6 +132,8 @@ function init(){
 
 }
 
+
+// init l'affichage
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {
         init();
