@@ -1,3 +1,23 @@
+:root{
+    --tailleScalePerso:2;
+ 
+    --hauteurCasque:32px;
+    --hauteurHaut:64px;
+    --hauteurBas:48px;
+    --hauteurBasbas:16px;
+
+
+    --topCasque:0px;
+    --topHaut:calc(var(--hauteurCasque) + var(--topCasque) );
+    --topBas:calc(var(--hauteurHaut) + var(--topHaut) );
+    --topBasbas:calc(var(--hauteurBas) + var(--topBas) );
+
+    --progress-force:50%;
+    --progress-endurance:50%;
+    --progress-souplaise:50%;
+
+}
+
 h1{
     text-align: center;
 }

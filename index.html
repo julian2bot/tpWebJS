@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TP Compléments Web</title>
     <link rel="stylesheet" href="assets/style/style.css">
+
+    <link rel="stylesheet" href="assets/style/detail.css">
+    <link rel="stylesheet" href="assets/style/favoris.css">
+    <link rel="stylesheet" href="assets/style/listing.css">
     <script src="assets/script/app.js"></script>
+    
 </head>
 <body>
     <header>
@@ -16,10 +21,17 @@
             <a href="#favoris">Favoris</a>
         </nav>
     </header>
-
+    <svg>
+        <filter id="squiggly-filter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.042" numOctaves="5" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+    </svg>
+    
+    
     <main id="app">
         <p>index.html</p>
     </main>
-
+    
 </body>
 </html>

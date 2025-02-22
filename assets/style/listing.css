@@ -1,0 +1,93 @@
+
+/* card */
+
+
+.card {
+    width: 180px;
+    height: 250px;
+    background: white;
+    border: 3px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-around;
+    position: relative;
+    filter: url(#squiggly-filter);
+    /* animation: wobble 0.8s infinite alternate ease-in-out; */
+}
+.card > div{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+.card .image {
+    width: 100%;
+    height: 100%;
+    background: lightgray;
+    border: 2px solid black;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    
+}
+
+.card p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+svg {
+    display: none;
+}
+
+.stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.iconCaract{
+    height: 1.4rem;
+}
+
+
+.persoPreview{
+
+    top: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scale(var(--tailleScalePerso));
+    transform-origin: center;
+    /* transform-origin: top center; */
+    height:100%;
+    /* height:auto; */
+    width: auto;
+    scale: .45;
+}
+.persoPreview img{
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+}
+
+.imgPersoCasque{
+    top: 0;
+}
+.imgPersoHaut{
+    top: 32px;
+}
+.imgPersoBas{
+    top: 96px;
+}
+.imgPersoBasBas{
+    top: 144px;
+}

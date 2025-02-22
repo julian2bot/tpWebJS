@@ -1,0 +1,196 @@
+
+
+/* detail */
+
+    /* caracteristique */
+aside {
+    width: 250px;
+    flex-shrink: 0; 
+}
+
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.iconCaract{
+    height: 2em;
+}
+
+.stat > p{
+    font-size: 1.5rem;
+    /* filter: url(#squiggly-filter); */
+
+}
+
+
+.stat {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.slider {
+    position: relative;
+    width: 15rem;
+    height: 2rem;
+    /* background-color: antiquewhite; */
+    overflow: hidden; 
+    filter: url(#squiggly-filter);
+    border: 3px solid;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    width: 7px;
+    height: 2rem;
+    background-color: black;
+}
+.slider::after {
+    position: absolute;
+    content: "";
+    /* width: var(--progress, 10%);  */
+    height: 100%;
+    background-color: black;
+    transform: skewX(-20deg); 
+    left: 0px;
+    top: 0;
+    transition: width 0.5s ease-in-out; 
+}
+
+
+#F::after {
+    width: var(--progress-force, 10%); 
+}
+
+#E::after {
+    width: var(--progress-endurance, 10%); 
+}
+
+#S::after {
+    width: var(--progress-souplaise, 10%); 
+}
+
+
+.slider > p {
+    position: absolute;
+    margin: 0;
+    font-size: 1.6rem;
+    width: 0ch;
+    color: red;
+    font-family: monospace;
+    opacity: 0; 
+    text-wrap: nowrap;
+    overflow: hidden;
+    z-index: 44;
+    animation: typing 1s steps(10) infinite;
+}
+
+.stat:has(:hover) p {
+    opacity: 1;
+}
+@keyframes typing {
+    from { width: 0ch; }
+    to { width: 10ch; }
+}
+
+
+    /* edit perso */
+#editPerso {
+    /* background-color: red; */
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    position: relative; 
+    top: 0;
+    left: 0;
+}
+
+#perso {
+    position: absolute;
+    top: 0;  
+    left: 50%; 
+    transform: translateX(-50%) scale(var(--tailleScalePerso));  
+    transform-origin: top center;
+    height: auto;
+    width: auto;
+}
+
+
+#casque{
+    position: absolute;
+    top:var(--topCasque);
+    left:0;
+}
+#haut{
+    position: absolute;
+    top:var(--topHaut);
+    left:0;
+}
+#bas{
+    position: absolute;
+    top:var(--topBas);
+    left:0;
+}
+#basbas{
+    position: absolute;
+    top:var(--topBasbas);
+    left:0;
+}
+
+#gauchePreview{
+    position: absolute;
+    left: -80px;
+}
+#gauchePreview > *, #droitePreview > *{
+    scale:.6;
+    filter: blur(0.2px) opacity(0.9) brightness(0.5) drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4)); 
+
+}
+
+#gauche{
+    position: absolute;
+    left: -40px;
+}
+
+#droitePreview{
+    position: absolute;
+    top:0;
+    left: 80px;
+}
+
+#droite{
+    position: absolute;
+    top:0;
+    left: 40px;
+}
+
+
+
+.casque{
+    position: absolute;
+    top:var(--topCasque);
+    left:0;
+}
+.haut{
+    position: absolute;
+    top:var(--topHaut);
+    left:0;
+}
+.bas{
+    position: absolute;
+    top:var(--topBas);
+    left:0;
+}
+.basbas{
+    position: absolute;
+    top:var(--topBasbas);
+    left:0;
+}
+
+#gauche > *:hover, #droite > *:hover{
+    scale: 1.1;
+}
