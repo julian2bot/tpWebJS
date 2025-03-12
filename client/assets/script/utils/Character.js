@@ -1,4 +1,4 @@
-export class Character{
+export default class Character{
     /**
      * un personnage avec son equipements et un nom
      * 

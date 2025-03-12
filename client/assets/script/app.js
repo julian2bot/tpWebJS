@@ -1,5 +1,6 @@
 // load les views dans la page index en fonction du hash (#) dans l'url
 import Detail from "./view/Detail.js";
+import Listing from "./view/Listing.js";
 
 async function loadView() {
     let view = window.location.hash.substring(1); 
@@ -8,18 +9,10 @@ async function loadView() {
 
     switch (view) {
         case "listing":
-            fetch("view/listing.html")
-                .then(response => response.text())
-                .then(html => {
-                    container.innerHTML = html;
-                    executeScripts(container);
-                });
-            
+            container.innerHTML = await Listing.render();
             break;
         case "detail":
-            console.log("detail");
-            let content = await Detail.render();  
-            container.innerHTML = content;
+            container.innerHTML = await Detail.render();
             await Detail.init();
             break;
             
