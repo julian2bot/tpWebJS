@@ -1,105 +1,4 @@
-
-export class Equipement{
-
-   /**
-    * Equipement avec un type, un nom, une image et des points de caracteristique (-10 10)  
-    * @param {string} type 
-    * @param {string} name 
-    * @param {string} src 
-    * @param {int} force 
-    * @param {int} endurance 
-    * @param {int} souplaise 
-    */
-    constructor(type, name, src,force, endurance, souplaise){
-        this.type = type;
-        this.name = name;
-        this.src = "../assets/img/" + src;
-        this.force = force ?? 0;
-        this.endurance = endurance ?? 0;
-        this.souplaise = souplaise ?? 0;
-    }
-}
-
-export class Casque extends Equipement{
-    constructor(name, src, force, endurance, souplaise){
-        super("Casque",name, src, force, endurance, souplaise)
-    }   
-}
-
-
-export class Haut extends Equipement{
-    constructor(name, src, force, endurance, souplaise){
-        super("Haut", name, src, force, endurance, souplaise)
-    }   
-}
-
-
-export class Bas extends Equipement{
-    constructor(name, src, force, endurance, souplaise){
-        super("Bas",name, src, force, endurance, souplaise)
-    }   
-}
-
-
-export class BasBas extends Equipement{
-    constructor(name, src, force, endurance, souplaise){
-        super("Basbas",name, src, force, endurance, souplaise)
-    }   
-}
-
-
-
-// get tout les hauts
-export function getListeHaut(){
-    let haut1 = [
-        new Haut("haut1", "haut.png", 10, 0, -2),
-        new Haut("haut2", "haut2.png", -3, 7, -2),
-        new Haut("haut3", "haut3.png", 5, -6, 8),
-        new Haut("haut4", "haut4.png", -9, 3, 10),
-        new Haut("haut5", "haut5.png", 4, -8, -1),
-        new Haut("haut6", "haut6.png", 7, 2, -5),
-        new Haut("haut7", "haut7.png", -6, -3, 9),
-        new Haut("haut8", "haut8.png", 10, -7, 0)
-    ]
-    
-    return haut1;
-}
-
-
-// get tout les casques
-export function getListeCasque(){
-    let casques = [
-        new Casque("haut1", "casque.png", 10, 0, -2),
-        new Casque("haut2", "haut2.png", -3, 7, -2),
-        new Casque("haut3", "haut3.png", 5, -6, 8),
-    ]
-    return casques;
-}
-
-// get tout les bas
-export function getListeBas(){
-    let bas = [
-        new Bas("bas1", "bas.png", -3, 7, -2),
-        new Bas("bas2", "bas2.png", -9, 3, 10),
-        new Bas("bas3", "bas3.png", 7, 2, -5),
-        new Bas("bas4", "bas4.png",  4, -8, -1),
-        new Bas("bas5", "bas5.png", 10, -7, 0),
-
-    ]
-    return bas;
-}
-
-// get tout les basbas (chaussures)
-export function getListeBasBas(){
-    let basBas = [
-        new BasBas("haut1", "basbas.png", 10, 0, -2),
-        new BasBas("haut2", "haut2.png", -3, 7, -2),
-        new BasBas("haut3", "haut3.png", 5, -6, 8),
-    ]
-    return basBas;
-}
-
-export class Perso{
+export class Character{
     /**
      * un personnage avec son equipements et un nom
      * 
@@ -119,7 +18,7 @@ export class Perso{
     }
 
     // creer une carte avec les informations du perso
-    creerCartePerso() {
+    createCard() {
         let divCarte = document.createElement("div");
         divCarte.classList.add("card");
     
@@ -162,7 +61,7 @@ export class Perso{
         let divStats = document.createElement("div");
         divStats.classList.add("stats");
     
-        this.calculCaracteristique();
+        this.characteristicsCalculus();
     
         const statsList = [
             { src: "../assets/img/force.png", alt: "force", value: this.valCaract.forceValue },
@@ -195,12 +94,12 @@ export class Perso{
     }
     
     // ajouter une carte sur la page
-    ajouterCard(){
-        document.getElementById("app").appendChild(this.creerCartePerso());
+    addCard(){
+        document.getElementById("app").appendChild(this.createCard());
     }
 
     // calcul du % de chaque caracteristique
-    calculCaracteristique(){
+    characteristicsCalculus(){
         let casque = listeCasques[this.indexCasque];
         let haut = listeHauts[this.indexHaut];  
         let bas = listeBas[this.indexBas];    
@@ -217,39 +116,3 @@ export class Perso{
         };
     }
 }
-
-
-
-// get tout les persos
-export function getListePerso(){
-    let Persos = [
-        new Perso("perso1", 0, 0,1,0),
-        new Perso("perso2", 0, 1,1,0),
-        new Perso("perso3", 0, 0,0,0),
-        new Perso("perso3", 0, 3,3,0),
-        new Perso("perso3", 0, 2,2,0),
-        new Perso("perso3", 0, 1,0,0)
-    ]
-    return Persos;
-}
-
-
-
-
-// export let indexCentreCasque = 0;
-// export let indexCentreHaut = 0;
-// export let indexCentreBas = 0;
-// export let indexCentreBasBas = 0;
-
-export let listeCasques = getListeCasque();
-export let listeHauts = getListeHaut();
-export let listeBas = getListeBas();
-export let listeBasBas = getListeBasBas();
-
-
-export const indicesCentre = {
-    indexCentreCasque: 0,
-    indexCentreHaut: 0,
-    indexCentreBas: 0,
-    indexCentreBasBas: 0
-};
