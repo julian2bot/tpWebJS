@@ -63,15 +63,15 @@ ul{
 
 
 #F::after {
-    width: var(--progress-force, 10%); 
+    width: var(--progress-strength, 10%); 
 }
 
 #E::after {
-    width: var(--progress-endurance, 10%); 
+    width: var(--progress-stamina, 10%); 
 }
 
 #S::after {
-    width: var(--progress-souplaise, 10%); 
+    width: var(--progress-agility, 10%); 
 }
 
 
