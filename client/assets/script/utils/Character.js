@@ -9,10 +9,12 @@ export default class Character{
         };
     
     static async updateEquipments(){
-        Character.equipments.heads = await EquipmentProvider.getHeads();
-        Character.equipments.torso = await EquipmentProvider.getTorso();
-        Character.equipments.pants = await EquipmentProvider.getPants();
-        Character.equipments.shoes = await EquipmentProvider.getShoes();
+        let equipments = await EquipmentProvider.getEquipement();
+        console.log(equipments);
+        Character.equipments.heads = equipments.head;
+        Character.equipments.torso = equipments.torso;
+        Character.equipments.pants = equipments.pants;
+        Character.equipments.shoes = equipments.shoes;
     }
 
     /**
@@ -60,10 +62,10 @@ export default class Character{
         let imgPersoBasBas = document.createElement("img");
         imgPersoBasBas.classList.add("imgPersoBasBas");
 
-        imgPersoCasque.src = Character.equipments.heads[this.indexCasque].src;
-        imgPersoHaut.src = Character.equipments.torso[this.indexHaut].src;  
-        imgPersoBas.src = Character.equipments.pants[this.indexBas].src;    
-        imgPersoBasBas.src = Character.equipments.shoes[this.indexBasbas].src;
+        imgPersoCasque.src = Character.equipments.heads[this.indexCasque].img;
+        imgPersoHaut.src = Character.equipments.torso[this.indexHaut].img;  
+        imgPersoBas.src = Character.equipments.pants[this.indexBas].img;    
+        imgPersoBasBas.src = Character.equipments.shoes[this.indexBasbas].img;
         
 
         divPerso.appendChild(imgDuPerso);

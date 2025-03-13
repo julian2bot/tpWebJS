@@ -1,13 +1,15 @@
 import { Torso, Head, Pants, Shoes } from "./Equipments.js";
+import { ENDPOINT   } from "../config.js";
 
 export default class EquipmentProvider{
-    static async getHeads() {
-        return [
-            new Head("haut1", "casque.png", 10, 0, -2),
-            new Head("haut2", "casque2.png", -3, 7, -2),
-            new Head("haut3", "casque3.png", 5, -6, 8),
-        ];
-    }
+    
+    // static async getHeads() {
+    //     return [
+    //         new Head("haut1", "casque.png", 10, 0, -2),
+    //         new Head("haut2", "casque2.png", -3, 7, -2),
+    //         new Head("haut3", "casque3.png", 5, -6, 8),
+    //     ];
+    // }
 
     static async getTorso() {
         return [
@@ -40,4 +42,17 @@ export default class EquipmentProvider{
             new Shoes("haut3", "haut3.png", 5, -6, 8),
         ];
     }
+
+
+    static getEquipement = async () => {
+        console.log(`${ENDPOINT}equipement`);
+        try {
+            const response = await fetch(`${ENDPOINT}equipement`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
 }

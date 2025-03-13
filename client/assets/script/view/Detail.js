@@ -17,10 +17,13 @@ export default class Detail extends BaseView{
     };
 
     static async updateEquipments(){
-        Detail.equipments.heads = await EquipmentProvider.getHeads();
-        Detail.equipments.torso = await EquipmentProvider.getTorso();
-        Detail.equipments.pants = await EquipmentProvider.getPants();
-        Detail.equipments.shoes = await EquipmentProvider.getShoes();
+        let equipments = await EquipmentProvider.getEquipement();
+        console.log(equipments);
+        Detail.equipments.heads = equipments.head;
+        Detail.equipments.torso = equipments.torso;
+        Detail.equipments.pants = equipments.pants;
+        Detail.equipments.shoes = equipments.shoes;
+        console.log(Detail.equipments)
     }
 
     static async render(){
