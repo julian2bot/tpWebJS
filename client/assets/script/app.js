@@ -2,10 +2,12 @@
 import Detail from "./view/Detail.js";
 import Listing from "./view/Listing.js";
 import Favoris from "./view/Favoris.js";
+import Login from "./view/Login.js";
 import Utils from "./utils/Utils.js";
 
 const routes = {
-    "/" : Listing,
+    "/" : Login,
+    "/login" : Login,
     "/listing" : Listing,
     "/detail" : Detail,
     "/favoris" : Favoris
@@ -30,3 +32,4 @@ const rooter = async () => {
 }
 
 window.addEventListener("hashchange",rooter);
+window.addEventListener("load",rooter);
