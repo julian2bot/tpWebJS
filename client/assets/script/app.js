@@ -10,6 +10,7 @@ async function loadView() {
     switch (view) {
         case "listing":
             container.innerHTML = await Listing.render();
+            await Listing.init();
             break;
         case "detail":
             container.innerHTML = await Detail.render();

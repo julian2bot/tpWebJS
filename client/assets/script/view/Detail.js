@@ -1,6 +1,7 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
+import BaseView from './BaseView.js';
 
-export default class Detail{
+export default class Detail extends BaseView{
     static centerIndex = {
         indexHead: 0,
         indexTorso: 0,
@@ -26,9 +27,9 @@ export default class Detail{
         return `
             <aside>
                 <ul>
-                    <div class="stat"><img src="../assets/img/force.png" class="iconCaract" alt="force"> <div class="slider" id="F"><p>Force</p></div></div>
-                    <div class="stat"><img src="../assets/img/endurance.png" class="iconCaract" alt="endurance"> <div class="slider" id="E"><p>Endurance</p></div></div>
-                    <div class="stat"><img src="../assets/img/souplesse.png" class="iconCaract" alt="souplesse"> <div class="slider" id="S"><p>Souplaise</p></div></div>
+                    <div class="stat"><img src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Force</p></div></div>
+                    <div class="stat"><img src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Endurance</p></div></div>
+                    <div class="stat"><img src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Souplaise</p></div></div>
                 </ul>
             </aside>
             <section id="editPerso">
@@ -87,16 +88,16 @@ export default class Detail{
         Detail.updateAgility(agility);
     }
     
-    // change la valeur de la var force dans le css
+    // change la valeur de la var strength dans le css
     static updateStrength(strength){
         let r = document.querySelector(':root');
-        r.style.setProperty('--progress-force', `${strength}%`);
+        r.style.setProperty('--progress-strength', `${strength}%`);
     }
     
-    // change la valeur de la var endurance dans le css
+    // change la valeur de la var stamina dans le css
     static updateStamina(stamina){
         let r = document.querySelector(':root');
-        r.style.setProperty('--progress-endurance', `${stamina}%`);
+        r.style.setProperty('--progress-stamina', `${stamina}%`);
     }
     
     // change la valeur de la var souplaise dans le css

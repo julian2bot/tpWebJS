@@ -1,4 +1,20 @@
+import EquipmentProvider from '../utils/EquipmentProvider.js';
+
 export default class Character{
+    static equipments = {
+            heads : [],
+            torso : [],
+            pants : [],
+            shoes : []
+        };
+    
+    static async updateEquipments(){
+        Character.equipments.heads = await EquipmentProvider.getHeads();
+        Character.equipments.torso = await EquipmentProvider.getTorso();
+        Character.equipments.pants = await EquipmentProvider.getPants();
+        Character.equipments.shoes = await EquipmentProvider.getShoes();
+    }
+
     /**
      * un personnage avec son equipements et un nom
      * 
@@ -44,10 +60,10 @@ export default class Character{
         let imgPersoBasBas = document.createElement("img");
         imgPersoBasBas.classList.add("imgPersoBasBas");
 
-        imgPersoCasque.src = listeCasques[this.indexCasque].src;
-        imgPersoHaut.src = listeHauts[this.indexHaut].src;  
-        imgPersoBas.src = listeBas[this.indexBas].src;    
-        imgPersoBasBas.src = listeBasBas[this.indexBasbas].src;
+        imgPersoCasque.src = Character.equipments.heads[this.indexCasque].src;
+        imgPersoHaut.src = Character.equipments.torso[this.indexHaut].src;  
+        imgPersoBas.src = Character.equipments.pants[this.indexBas].src;    
+        imgPersoBasBas.src = Character.equipments.shoes[this.indexBasbas].src;
         
 
         divPerso.appendChild(imgDuPerso);
@@ -64,9 +80,9 @@ export default class Character{
         this.characteristicsCalculus();
     
         const statsList = [
-            { src: "../assets/img/force.png", alt: "force", value: this.valCaract.forceValue },
-            { src: "../assets/img/endurance.png", alt: "endurance", value: this.valCaract.enduranceValue },
-            { src: "../assets/img/souplesse.png", alt: "souplesse", value: this.valCaract.souplaiseValue }
+            { src: "../assets/img/strength.png", alt: "strength", value: this.valCaract.forceValue },
+            { src: "../assets/img/stamina.png", alt: "stamina", value: this.valCaract.enduranceValue },
+            { src: "../assets/img/agility.png", alt: "agility", value: this.valCaract.souplaiseValue }
         ];
     
         statsList.forEach(stat => {
@@ -100,19 +116,19 @@ export default class Character{
 
     // calcul du % de chaque caracteristique
     characteristicsCalculus(){
-        let casque = listeCasques[this.indexCasque];
-        let haut = listeHauts[this.indexHaut];  
-        let bas = listeBas[this.indexBas];    
-        let basBas = listeBasBas[this.indexBasbas]; 
+        let casque = Character.equipments.heads[this.indexCasque];
+        let haut = Character.equipments.torso[this.indexHaut];  
+        let bas = Character.equipments.pants[this.indexBas];    
+        let basBas = Character.equipments.shoes[this.indexBasbas]; 
        
-        let force = 50 + casque.force + haut.force + bas.force + basBas.force;
-        let endurance = 50 + casque.endurance + haut.endurance + bas.endurance + basBas.endurance;
-        let souplaise = 50 + casque.souplaise + haut.souplaise + bas.souplaise + basBas.souplaise;
+        let strength = 50 + casque.strength + haut.strength + bas.strength + basBas.strength;
+        let stamina = 50 + casque.stamina + haut.stamina + bas.stamina + basBas.stamina;
+        let agility = 50 + casque.agility + haut.agility + bas.agility + basBas.agility;
         
         this.valCaract = {
-            forceValue: force,
-            enduranceValue: endurance,
-            souplaiseValue: souplaise,
+            forceValue: strength,
+            enduranceValue: stamina,
+            souplaiseValue: agility,
         };
     }
 }
