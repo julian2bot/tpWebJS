@@ -1,14 +1,14 @@
-import Character from "./Character.js";
-
+import { ENDPOINT } from "../config.js";
 export default class CharacterProvider {
-    static async getCharacters(){
-        return [
-            new Character("perso1", 0, 0,1,0),
-            new Character("perso2", 0, 1,1,0),
-            new Character("perso3", 0, 0,0,0),
-            new Character("perso3", 0, 3,3,0),
-            new Character("perso3", 0, 2,2,0),
-            new Character("perso3", 0, 1,0,0)
-        ];
-    }
+    // Get all
+    static getCharacters = async () => {
+        try {
+            const response = await fetch(`${ENDPOINT}characters`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
 }

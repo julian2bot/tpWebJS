@@ -1,5 +1,6 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
 import BaseView from './BaseView.js';
+import { ENDPOINT } from '../config.js';
 
 export default class Detail extends BaseView{
     static centerIndex = {
@@ -30,9 +31,9 @@ export default class Detail extends BaseView{
         return `
             <aside>
                 <ul>
-                    <div class="stat"><img src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Force</p></div></div>
-                    <div class="stat"><img src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Endurance</p></div></div>
-                    <div class="stat"><img src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Souplaise</p></div></div>
+                    <div class="stat"><img src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
+                    <div class="stat"><img src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
+                    <div class="stat"><img src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
                 </ul>
             </aside>
             <section id="editPerso">
@@ -89,6 +90,7 @@ export default class Detail extends BaseView{
         Detail.updateStrength(strength);
         Detail.updateStamina(stamina);
         Detail.updateAgility(agility);
+        console.log(strength, stamina, agility);
     }
     
     // change la valeur de la var strength dans le css
@@ -121,9 +123,9 @@ export default class Detail extends BaseView{
         let indexDroiteHaut = (Detail.centerIndex.indexTorso + 1) % totalHaut;
     
         
-        imgGaucheHaut.src = Detail.equipments.torso[indexGaucheHaut].src;
-        imgCentreHaut.src = Detail.equipments.torso[Detail.centerIndex.indexTorso].src;
-        imgDroiteHaut.src = Detail.equipments.torso[indexDroiteHaut].src;
+        imgGaucheHaut.src = ENDPOINT+Detail.equipments.torso[indexGaucheHaut].img;
+        imgCentreHaut.src = ENDPOINT+Detail.equipments.torso[Detail.centerIndex.indexTorso].img;
+        imgDroiteHaut.src = ENDPOINT+Detail.equipments.torso[indexDroiteHaut].img;
         
         
         
@@ -137,9 +139,9 @@ export default class Detail extends BaseView{
         let indexDroiteBas = (Detail.centerIndex.indexPants + 1) % totalBas;
     
     
-        imgGaucheBas.src = Detail.equipments.pants[indexGaucheBas].src;
-        imgCentreBas.src = Detail.equipments.pants[Detail.centerIndex.indexPants].src;
-        imgDroiteBas.src = Detail.equipments.pants[indexDroiteBas].src;
+        imgGaucheBas.src = ENDPOINT+Detail.equipments.pants[indexGaucheBas].img;
+        imgCentreBas.src = ENDPOINT+Detail.equipments.pants[Detail.centerIndex.indexPants].img;
+        imgDroiteBas.src = ENDPOINT+Detail.equipments.pants[indexDroiteBas].img;
     
     
         Detail.characteristicsCalculus();
