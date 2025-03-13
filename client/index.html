@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/style/detail.css">
     <link rel="stylesheet" href="assets/style/favoris.css">
     <link rel="stylesheet" href="assets/style/listing.css">
+    <link rel="stylesheet" href="assets/style/login.css">
     <script type="module" src="assets/script/app.js"></script>
     
 </head>
@@ -19,6 +20,7 @@
             <a href="#/listing">Voir la liste</a>
             <a href="#/detail">Détail</a>
             <a href="#/favoris">Favoris</a>
+            <a id="login-link" href="#/login">Login / Sign in</a>
         </nav>
     </header>
     <svg>
@@ -34,4 +36,12 @@
     </main>
     
 </body>
+<script type="module">
+    import Login from './assets/script/view/Login.js';
+    
+    let link = document.getElementById("login-link");
+    if(Login.isConnected()){
+        link.textContent = "Sign out";
+    }
+</script>
 </html>

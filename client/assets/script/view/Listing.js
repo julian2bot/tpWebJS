@@ -8,10 +8,10 @@ export default class Listing extends BaseView{
         let view = `<style>main{ margin-top:3rem; display: flex; justify-content: space-around; gap:10px; flex-wrap: wrap;}</style>`
         characters.forEach(character=>{
             let equipement = {
-                head : { "id": 1, "name": "head1", "img": "casque.png", "strength": 10, "endurance": 0, "agility": -2 },
-                torso :  { "id": 1, "name": "torso1", "img": "haut.png", "strength": 10, "endurance": 0, "agility": -2 },
-                pants : { "id": 1, "name": "pants1", "img": "bas.png", "strength": -3, "endurance": 7, "agility": -2 },
-                shoes : { "id": 1, "name": "shoes1", "img": "basbas.png", "strength": 10, "endurance": 0, "agility": -2 }
+                head : { "id": 1, "name": "head1", "img": "casque.png", "strength": 10, "stamina": 0, "agility": -2 },
+                torso :  { "id": 1, "name": "torso1", "img": "haut.png", "strength": 10, "stamina": 0, "agility": -2 },
+                pants : { "id": 1, "name": "pants1", "img": "bas.png", "strength": -3, "stamina": 7, "agility": -2 },
+                shoes : { "id": 1, "name": "shoes1", "img": "basbas.png", "strength": 10, "stamina": 0, "agility": -2 }
             };
             view += `<div class="card">
             <h3>Nom du Personnage</h3>
