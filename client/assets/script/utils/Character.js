@@ -19,17 +19,17 @@ export default class Character{
      * un personnage avec son equipements et un nom
      * 
      * @param {string} name 
-     * @param {int} indexCasque 
-     * @param {int} indexHaut 
-     * @param {int} indexBas 
-     * @param {int} indexBasbas 
+     * @param {int} indexHead 
+     * @param {int} indexTorso 
+     * @param {int} indexPants 
+     * @param {int} indexShoes 
      */
-    constructor(name, indexCasque, indexHaut, indexBas, indexBasbas){
+    constructor(name, indexHead, indexTorso, indexPants, indexShoes){
         this.name = name;
-        this.indexCasque = indexCasque;
-        this.indexHaut = indexHaut;
-        this.indexBas = indexBas;
-        this.indexBasbas = indexBasbas;
+        this.indexHead = indexHead;
+        this.indexTorso = indexTorso;
+        this.indexPants = indexPants;
+        this.indexShoes = indexShoes;
         this.valCaract = {}
     }
 
@@ -60,10 +60,10 @@ export default class Character{
         let imgPersoBasBas = document.createElement("img");
         imgPersoBasBas.classList.add("imgPersoBasBas");
 
-        imgPersoCasque.src = Character.equipments.heads[this.indexCasque].src;
-        imgPersoHaut.src = Character.equipments.torso[this.indexHaut].src;  
-        imgPersoBas.src = Character.equipments.pants[this.indexBas].src;    
-        imgPersoBasBas.src = Character.equipments.shoes[this.indexBasbas].src;
+        imgPersoCasque.src = Character.equipments.heads[this.indexHead].src;
+        imgPersoHaut.src = Character.equipments.torso[this.indexTorso].src;  
+        imgPersoBas.src = Character.equipments.pants[this.indexPants].src;    
+        imgPersoBasBas.src = Character.equipments.shoes[this.indexShoes].src;
         
 
         divPerso.appendChild(imgDuPerso);
@@ -116,10 +116,10 @@ export default class Character{
 
     // calcul du % de chaque caracteristique
     characteristicsCalculus(){
-        let casque = Character.equipments.heads[this.indexCasque];
-        let haut = Character.equipments.torso[this.indexHaut];  
-        let bas = Character.equipments.pants[this.indexBas];    
-        let basBas = Character.equipments.shoes[this.indexBasbas]; 
+        let casque = Character.equipments.heads[this.indexHead];
+        let haut = Character.equipments.torso[this.indexTorso];  
+        let bas = Character.equipments.pants[this.indexPants];    
+        let basBas = Character.equipments.shoes[this.indexShoes]; 
        
         let strength = 50 + casque.strength + haut.strength + bas.strength + basBas.strength;
         let stamina = 50 + casque.stamina + haut.stamina + bas.stamina + basBas.stamina;

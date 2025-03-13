@@ -30,3 +30,4 @@ const rooter = async () => {
 }
 
 window.addEventListener("hashchange",rooter);
+window.addEventListener("load",rooter);
