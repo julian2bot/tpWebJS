@@ -2,7 +2,7 @@ import EquipmentProvider from '../utils/EquipmentProvider.js';
 import CharacterProvider from "../utils/CharacterProvider.js";
 import BaseView from './BaseView.js';
 import {ENDPOINT} from '../config.js'
-
+import MesFavoris from '../utils/MesFavoris.js';
 export default class Listing extends BaseView{
     static equipement = {
         heads : null,
@@ -26,12 +26,15 @@ export default class Listing extends BaseView{
         console.log(characters)
         let view = `<style>main{ margin-top:3rem; display: flex; justify-content: space-around; gap:10px; flex-wrap: wrap;}</style>`
         // characters.forEach(character=>{
-        
+        window.MesFavoris = MesFavoris;
+
         for (let character of characters) {
 
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
-
+            console.log(character.id)
             view += `<div class="card">
+            <button onclick="MesFavoris.updateFavorites(${character.id})">Like</button>
+            
             <h3>Nom du Personnage</h3>
             <div class="image">
                 <div class="persoPreview">
