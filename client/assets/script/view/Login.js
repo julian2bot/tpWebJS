@@ -21,6 +21,8 @@ export default class Login extends BaseView{
             Login.disconnect();
             let link = document.getElementById("login-link");
             link.textContent = "Login / Sign in";
+            let textUserCo = document.getElementById("nameUser");
+            textUserCo.textContent = "";
         }
         let co = document.getElementById("connect");
         if(co != undefined){
@@ -39,8 +41,12 @@ export default class Login extends BaseView{
         if(username != undefined && username.value != ""){
             localStorage.setItem("username",username.value);
             let link = document.getElementById("login-link");
+            let textUserCo = document.getElementById("nameUser");
             if(Login.isConnected()){
                 link.textContent = "Sign out";
+                textUserCo.textContent ="User : "+Login.getUsername();
+            }else{
+                textUserCo.textContent =""
             }
         }
     }

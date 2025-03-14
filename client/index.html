@@ -22,6 +22,7 @@
             <a href="#/favoris">Favoris</a>
             <a id="login-link" href="#/login">Login / Sign in</a>
         </nav>
+        <div id="nameUser">Deco</div>
     </header>
     <svg>
         <filter id="squiggly-filter">
@@ -40,8 +41,12 @@
     import Login from './assets/script/view/Login.js';
     
     let link = document.getElementById("login-link");
+    let textUserCo = document.getElementById("nameUser");
     if(Login.isConnected()){
         link.textContent = "Sign out";
+        textUserCo.textContent ="User : "+Login.getUsername();
+    }else{
+        textUserCo.textContent =""
     }
 </script>
 </html>

@@ -1,36 +1,44 @@
+import { ENDPOINT } from "../config.js";
 export default class EquipmentProvider{
-    static async getHeads() {
-        return [
-            { "id": 1, "name": "head1", "img": "casque.png", "strength": 10, "stamina": 0, "agility": -2 }
-        ];
-    }
+    
+    // Get ALL
+    static getEquipement = async () => {
+        console.log(`${ENDPOINT}equipement`);
+        try {
+            const response = await fetch(`${ENDPOINT}equipement`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
 
-    static async getTorso() {
-        return [
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut2.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut3.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut4.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut5.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut6.png", "strength": 10, "stamina": 0, "agility": -2 },
-            { "id": 1, "name": "torso1", "img": "../assets/img/haut7.png", "strength": 10, "stamina": 0, "agility": -2 }
-        ];
-    }
 
-    static async getPants() {
-        return [
-            { "id": 1, "name": "pants1", "img": "../assets/img/bas.png", "strength": -3, "stamina": -7, "agility": -2 },
-            { "id": 1, "name": "pants1", "img": "../assets/img/bas2.png", "strength": 20, "stamina": 12, "agility": -2 },
-            { "id": 1, "name": "pants1", "img": "../assets/img/bas3.png", "strength": 8, "stamina": 20, "agility": -2 },
-            { "id": 1, "name": "pants1", "img": "../assets/img/bas4.png", "strength": 12, "stamina": 10, "agility": -2 },
-            { "id": 1, "name": "pants1", "img": "../assets/img/bas5.png", "strength": 3, "stamina": -10, "agility": -2 }
+    // Get by id
+    static getHeadsById = async (id) => {
+        const equipement = await EquipmentProvider.getEquipement();
+    
+        console.log( equipement.head.find(head => head.id === id));
+        return equipement.head.find(head => head.id === id);
+    };        
 
-        ];
-    }
-
-    static async getShoes() {
-        return [
-            { "id": 1, "name": "shoes1", "img": "../assets/img/basbas.png", "strength": 10, "stamina": 0, "agility": -2 }
-        ];
-    }
+    
+    static getTorsoById = async (id) => {
+        const equipement = await EquipmentProvider.getEquipement();
+    
+        return equipement.torso.find(head => head.id === id);
+    };      
+    
+    static getPantsById = async (id) => {
+        const equipement = await EquipmentProvider.getEquipement();
+    
+        return equipement.pants.find(head => head.id === id);
+    };      
+    
+    static getShoesById = async (id) => {
+        const equipement = await EquipmentProvider.getEquipement();
+    
+        return equipement.shoes.find(head => head.id === id);
+    };      
 }
