@@ -1,4 +1,5 @@
 import BaseView from './BaseView.js';
+import UserManagment from '../utils/UserManagement.js';
 
 export default class Login extends BaseView{
     static async render(){
@@ -17,8 +18,8 @@ export default class Login extends BaseView{
     }
 
     static async init(){
-        if(Login.isConnected()){
-            Login.disconnect();
+        if(UserManagment.isConnected()){
+            UserManagment.disconnect();
             let link = document.getElementById("login-link");
             link.textContent = "Login / Sign in";
             let textUserCo = document.getElementById("nameUser");
@@ -32,31 +33,23 @@ export default class Login extends BaseView{
         }
     }
 
-    static disconnect(){
-        localStorage.removeItem("username");
-    }
+    
 
     static connect(){
         let username = document.getElementById("username");
         if(username != undefined && username.value != ""){
-            localStorage.setItem("username",username.value);
+            UserManagment.setUsername(username.value);
+
             let link = document.getElementById("login-link");
             let textUserCo = document.getElementById("nameUser");
-            if(Login.isConnected()){
+            if(UserManagment.isConnected()){
                 link.textContent = "Sign out";
-                textUserCo.textContent ="User : "+Login.getUsername();
+                textUserCo.textContent ="User : "+UserManagment.getUsername();
             }else{
                 textUserCo.textContent =""
             }
         }
     }
 
-    static isConnected(){
-        console.log(localStorage.getItem("username") !== null)
-        return localStorage.getItem("username") !== null;
-    }
-
-    static getUsername(){
-        return localStorage.getItem("username");
-    }
+    
 }

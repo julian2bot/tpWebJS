@@ -1,7 +1,5 @@
 
 /* card */
-
-
 .card {
     width: 180px;
     height: 250px;
@@ -90,4 +88,10 @@ svg {
 }
 .imgPersoBasBas{
     top: 144px;
+}
+
+.creator{
+    position: absolute;
+    bottom: 0;
+    right: 5px;
 }

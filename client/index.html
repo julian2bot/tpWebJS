@@ -33,20 +33,20 @@
     
     
     <main id="app">
-        <p>index.html</p>
+        <p>Rien a voir ici</p>
     </main>
     
 </body>
 <script type="module">
-    import Login from './assets/script/view/Login.js';
+    import UserManagement from './assets/script/utils/UserManagement.js';
     
     let link = document.getElementById("login-link");
     let textUserCo = document.getElementById("nameUser");
-    if(Login.isConnected()){
+    if(UserManagement.isConnected()){
         link.textContent = "Sign out";
-        textUserCo.textContent ="User : "+Login.getUsername();
+        textUserCo.textContent ="User : "+UserManagement.getUsername();
     }else{
-        textUserCo.textContent =""
+        textUserCo.textContent ="";
     }
 </script>
 </html>

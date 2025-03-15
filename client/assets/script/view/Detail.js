@@ -1,6 +1,6 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
 import BaseView from './BaseView.js';
-import Login from './Login.js';
+import UserManagment from '../utils/UserManagement.js';
 import { ENDPOINT } from '../config.js';
 
 export default class Detail extends BaseView{
@@ -225,7 +225,7 @@ export default class Detail extends BaseView{
                         torso:Detail.equipments.torso[Detail.centerIndex.torso].id,
                         pants:Detail.equipments.pants[Detail.centerIndex.pants].id,
                         shoes:Detail.equipments.shoes[Detail.centerIndex.shoes].id,
-                        creator:Login.getUsername(),
+                        creator:UserManagment.getUsername(),
                     })
             })
                 .then(res => {

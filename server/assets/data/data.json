@@ -1,47 +1,292 @@
 {
-    "equipement": {
-      "head": [
-        { "id": 1, "name": "head1", "img": "img/equipement/head/casque.png", "strength": 10, "stamina": 0, "agility": -2 },
-        { "id": 2, "name": "head2", "img": "img/equipement/head/haut2.png", "strength": -3, "stamina": 7, "agility": -2 },
-        { "id": 3, "name": "head3", "img": "img/equipement/head/haut3.png", "strength": 5, "stamina": -6, "agility": 8 }
-      ],
-      "torso": [
-        { "id": 1, "name": "torso1", "img": "img/equipement/torso/haut.png", "strength": 10, "stamina": 0, "agility": -2 },
-        { "id": 2, "name": "torso2", "img": "img/equipement/torso/haut2.png", "strength": -3, "stamina": 7, "agility": -2 },
-        { "id": 3, "name": "torso3", "img": "img/equipement/torso/haut3.png", "strength": 5, "stamina": -6, "agility": 8 },
-        { "id": 4, "name": "torso4", "img": "img/equipement/torso/haut4.png", "strength": -9, "stamina": 3, "agility": 10 },
-        { "id": 5, "name": "torso5", "img": "img/equipement/torso/haut5.png", "strength": 4, "stamina": -8, "agility": -1 },
-        { "id": 6, "name": "torso6", "img": "img/equipement/torso/haut6.png", "strength": 7, "stamina": 2, "agility": -5 },
-        { "id": 7, "name": "torso7", "img": "img/equipement/torso/haut7.png", "strength": -6, "stamina": -3, "agility": 9 },
-        { "id": 8, "name": "torso8", "img": "img/equipement/torso/haut8.png", "strength": 10, "stamina": -7, "agility": 0 }
-      ],
-      "pants": [
-        { "id": 1, "name": "pants1", "img": "img/equipement/pants/bas.png", "strength": -3, "stamina": 7, "agility": -2 },
-        { "id": 2, "name": "pants2", "img": "img/equipement/pants/bas2.png", "strength": -9, "stamina": 3, "agility": 10 },
-        { "id": 3, "name": "pants3", "img": "img/equipement/pants/bas3.png", "strength": 7, "stamina": 2, "agility": -5 },
-        { "id": 4, "name": "pants4", "img": "img/equipement/pants/bas4.png", "strength": 4, "stamina": -8, "agility": -1 },
-        { "id": 5, "name": "pants5", "img": "img/equipement/pants/bas5.png", "strength": 10, "stamina": -7, "agility": 0 }
-      ],
-      "shoes": [
-        { "id": 1, "name": "shoes1", "img": "img/equipement/shoes/basbas.png", "strength": 10, "stamina": 0, "agility": -2 },
-        { "id": 2, "name": "shoes2", "img": "img/equipement/shoes/haut2.png", "strength": -3, "stamina": 7, "agility": -2 },
-        { "id": 3, "name": "shoes3", "img": "img/equipement/shoes/haut3.png", "strength": 5, "stamina": -6, "agility": 8 }
-      ]
-    },
-    "characters": [ 
-      { "id": 1, "name": "perso1", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 2, "name": "perso2", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 3, "name": "perso3", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 4, "name": "perso4", "head": 1, "torso": 3, "pants": 3, "shoes": 1 },
-      { "id": 5, "name": "perso5", "head": 1, "torso": 2, "pants": 2, "shoes": 1 },
-      { "id": 6, "name": "perso6", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 7, "name": "perso1", "head": 1, "torso": 5, "pants": 4, "shoes": 1 },
-      { "id": 8, "name": "perso2", "head": 1, "torso": 3, "pants": 2, "shoes": 1 },
-      { "id": 9, "name": "perso3", "head": 1, "torso": 6, "pants": 1, "shoes": 1 },
-      { "id": 10, "name": "perso4", "head": 1, "torso": 4, "pants": 5, "shoes": 1 },
-      { "id": 11, "name": "perso5", "head": 1, "torso": 7, "pants": 3, "shoes": 1 },
-      { "id": 12, "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
-      { "id": 12, "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
+  "equipement": {
+    "head": [
+      {
+        "id": 1,
+        "name": "head1",
+        "img": "img/equipement/head/casque.png",
+        "strength": 10,
+        "stamina": 0,
+        "agility": -2
+      },
+      {
+        "id": 2,
+        "name": "head2",
+        "img": "img/equipement/head/haut2.png",
+        "strength": -3,
+        "stamina": 7,
+        "agility": -2
+      },
+      {
+        "id": 3,
+        "name": "head3",
+        "img": "img/equipement/head/haut3.png",
+        "strength": 5,
+        "stamina": -6,
+        "agility": 8
+      }
+    ],
+    "torso": [
+      {
+        "id": 1,
+        "name": "torso1",
+        "img": "img/equipement/torso/haut.png",
+        "strength": 10,
+        "stamina": 0,
+        "agility": -2
+      },
+      {
+        "id": 2,
+        "name": "torso2",
+        "img": "img/equipement/torso/haut2.png",
+        "strength": -3,
+        "stamina": 7,
+        "agility": -2
+      },
+      {
+        "id": 3,
+        "name": "torso3",
+        "img": "img/equipement/torso/haut3.png",
+        "strength": 5,
+        "stamina": -6,
+        "agility": 8
+      },
+      {
+        "id": 4,
+        "name": "torso4",
+        "img": "img/equipement/torso/haut4.png",
+        "strength": -9,
+        "stamina": 3,
+        "agility": 10
+      },
+      {
+        "id": 5,
+        "name": "torso5",
+        "img": "img/equipement/torso/haut5.png",
+        "strength": 4,
+        "stamina": -8,
+        "agility": -1
+      },
+      {
+        "id": 6,
+        "name": "torso6",
+        "img": "img/equipement/torso/haut6.png",
+        "strength": 7,
+        "stamina": 2,
+        "agility": -5
+      },
+      {
+        "id": 7,
+        "name": "torso7",
+        "img": "img/equipement/torso/haut7.png",
+        "strength": -6,
+        "stamina": -3,
+        "agility": 9
+      },
+      {
+        "id": 8,
+        "name": "torso8",
+        "img": "img/equipement/torso/haut8.png",
+        "strength": 10,
+        "stamina": -7,
+        "agility": 0
+      }
+    ],
+    "pants": [
+      {
+        "id": 1,
+        "name": "pants1",
+        "img": "img/equipement/pants/bas.png",
+        "strength": -3,
+        "stamina": 7,
+        "agility": -2
+      },
+      {
+        "id": 2,
+        "name": "pants2",
+        "img": "img/equipement/pants/bas2.png",
+        "strength": -9,
+        "stamina": 3,
+        "agility": 10
+      },
+      {
+        "id": 3,
+        "name": "pants3",
+        "img": "img/equipement/pants/bas3.png",
+        "strength": 7,
+        "stamina": 2,
+        "agility": -5
+      },
+      {
+        "id": 4,
+        "name": "pants4",
+        "img": "img/equipement/pants/bas4.png",
+        "strength": 4,
+        "stamina": -8,
+        "agility": -1
+      },
+      {
+        "id": 5,
+        "name": "pants5",
+        "img": "img/equipement/pants/bas5.png",
+        "strength": 10,
+        "stamina": -7,
+        "agility": 0
+      }
+    ],
+    "shoes": [
+      {
+        "id": 1,
+        "name": "shoes1",
+        "img": "img/equipement/shoes/basbas.png",
+        "strength": 10,
+        "stamina": 0,
+        "agility": -2
+      },
+      {
+        "id": 2,
+        "name": "shoes2",
+        "img": "img/equipement/shoes/haut2.png",
+        "strength": -3,
+        "stamina": 7,
+        "agility": -2
+      },
+      {
+        "id": 3,
+        "name": "shoes3",
+        "img": "img/equipement/shoes/haut3.png",
+        "strength": 5,
+        "stamina": -6,
+        "agility": 8
+      }
     ]
-  }
-  
+  },
+  "characters": [
+    {
+      "id": "1",
+      "name": "perso1",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "2",
+      "name": "perso2",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "3",
+      "name": "perso3",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "4",
+      "name": "perso4",
+      "head": 1,
+      "torso": 3,
+      "pants": 3,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "5",
+      "name": "perso5",
+      "head": 1,
+      "torso": 2,
+      "pants": 2,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "6",
+      "name": "perso6",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "7",
+      "name": "perso1",
+      "head": 1,
+      "torso": 5,
+      "pants": 4,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "8",
+      "name": "perso2",
+      "head": 1,
+      "torso": 3,
+      "pants": 2,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "9",
+      "name": "perso3",
+      "head": 1,
+      "torso": 6,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "10",
+      "name": "perso4",
+      "head": 1,
+      "torso": 4,
+      "pants": 5,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "11",
+      "name": "perso5",
+      "head": 1,
+      "torso": 7,
+      "pants": 3,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "12",
+      "name": "perso6",
+      "head": 1,
+      "torso": 8,
+      "pants": 2,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "12",
+      "name": "perso6",
+      "head": 1,
+      "torso": 8,
+      "pants": 2,
+      "shoes": 1,
+      "creator": "base"
+    },
+    {
+      "id": "7c05",
+      "name": "dee",
+      "head": 1,
+      "torso": 7,
+      "pants": 5,
+      "shoes": 1,
+      "creator": "chris"
+    }
+  ]
+}
