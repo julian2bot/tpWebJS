@@ -18,14 +18,14 @@ const rooter = async () => {
 
     let request = Utils.parseRequestURL();
 
-    console.log(request);
+    // console.log(request);
 
     let parsedURL = (request.ressource ? "/"+request.ressource : "/") + (request.id ? "/:id" : "") + (request.verb ? request.verb : "");
 
-    console.log(parsedURL);
+    // console.log(parsedURL);
     let page = routes[parsedURL] ? routes[parsedURL] : Listing;
 
-    console.log(page)
+    // console.log(page)
 
     content.innerHTML = await page.render();
     await page.init();

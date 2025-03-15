@@ -19,59 +19,59 @@ export default class Detail extends BaseView{
 
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
-        console.log(equipments);
+        // console.log(equipments);
         Detail.equipments.heads = equipments.head;
         Detail.equipments.torso = equipments.torso;
         Detail.equipments.pants = equipments.pants;
         Detail.equipments.shoes = equipments.shoes;
-        console.log(Detail.equipments)
+        // console.log(Detail.equipments)
     }
 
     static async render(){
         return `
             <aside>
                 <ul>
-                    <div class="stat"><img src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
-                    <div class="stat"><img src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
-                    <div class="stat"><img src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
                 </ul>
             </aside>
             <section id="editPerso">
                 <div  id="perso">
                     <div id="gauchePreview">
-                        <img class="casque" src="../assets/img/casque.png" alt="">
-                        <img class="haut" src="../assets/img/haut.png" alt="">
-                        <img class="bas" src="../assets/img/bas.png" alt="">
-                        <img class="basbas" src="../assets/img/basbas.png" alt="">
+                        <img loading="lazy" class="casque" src="" alt="">
+                        <img loading="lazy" class="haut" src="" alt="">
+                        <img loading="lazy" class="bas" src="" alt="">
+                        <img loading="lazy" class="basbas" src="" alt="">
                     </div>        
                     
                     <div id="gauche">
-                        <img class="casque" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="haut" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="bas" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="basbas" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="casque" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="haut" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="bas" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="basbas" src="../assets/img/arrowReverse.png" alt="">
                     </div>        
                     
-                    <img src="../assets/img/perso.png" alt="">
+                    <img loading="lazy" src="../assets/img/perso.png" alt="">
                     
-                    <img id="casque" src="../assets/img/casque.png" alt="">
-                    <img id="haut" src="../assets/img/haut.png" alt="">
-                    <img id="bas" src="../assets/img/bas.png" alt="">
-                    <img id="basbas" src="../assets/img/basbas.png" alt="">
+                    <img loading="lazy" id="casque" src="" alt="">
+                    <img loading="lazy" id="haut" src="" alt="">
+                    <img loading="lazy" id="bas" src="" alt="">
+                    <img loading="lazy" id="basbas" src="" alt="">
 
 
                     <div id="droite">
-                        <img class="casque" src="../assets/img/arrow.png" alt="">
-                        <img class="haut" src="../assets/img/arrow.png" alt="">
-                        <img class="bas" src="../assets/img/arrow.png" alt="">
-                        <img class="basbas" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="casque" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="haut" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="bas" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="basbas" src="../assets/img/arrow.png" alt="">
                     </div>  
 
                     <div id="droitePreview">
-                        <img class="casque" src="../assets/img/casque.png" alt="">
-                        <img class="haut" src="../assets/img/haut.png" alt="">
-                        <img class="bas" src="../assets/img/bas.png" alt="">
-                        <img class="basbas" src="../assets/img/basbas.png" alt="">
+                        <img loading="lazy" class="casque" src="" alt="">
+                        <img loading="lazy" class="haut" src="" alt="">
+                        <img loading="lazy" class="bas" src="" alt="">
+                        <img loading="lazy" class="basbas" src="" alt="">
                     </div>        
                 </div>
             </section>`
@@ -90,7 +90,7 @@ export default class Detail extends BaseView{
         Detail.updateStrength(strength);
         Detail.updateStamina(stamina);
         Detail.updateAgility(agility);
-        console.log(strength, stamina, agility);
+        // console.log(strength, stamina, agility);
     }
     
     // change la valeur de la var strength dans le css

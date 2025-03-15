@@ -52,7 +52,7 @@ export default class Login extends BaseView{
     }
 
     static isConnected(){
-        console.log(localStorage.getItem("username") !== null)
+        // console.log(localStorage.getItem("username") !== null)
         return localStorage.getItem("username") !== null;
     }
 
