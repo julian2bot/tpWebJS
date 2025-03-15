@@ -32,7 +32,7 @@ export default class Listing extends BaseView{
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
 
             view += `<div class="card">
-            <h3>Nom du Personnage</h3>
+            <h3>${character.name}</h3>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
