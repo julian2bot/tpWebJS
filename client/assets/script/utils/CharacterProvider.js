@@ -1,4 +1,5 @@
 import { ENDPOINT } from "../config.js";
+import Listing from "../view/Listing.js";
 import MesFavoris from "./MesFavoris.js";
 export default class CharacterProvider {
     // Get all
@@ -14,6 +15,11 @@ export default class CharacterProvider {
     };
 
 
+    static getSearchCharacters = async ()=>{
+        let name = document.getElementById("searchCharacters").value;
+        
+        document.getElementById("app").innerHTML = await Listing.render(true,name);
+    };
 
     // static getCharactersFav = async () =>{
     //     try {
@@ -53,6 +59,27 @@ export default class CharacterProvider {
             return [];
         }
     };
+    
+
+    
+    static getSearchCharactersbyName = async (name) => {
+        try {
+            if (!name) return []; 
+    
+            const characters = await CharacterProvider.getCharacters();
+            
+    
+            const CharactersSearch = characters.filter(char => 
+                char.name.toLowerCase().includes(name.toLowerCase())
+            );
+    
+            return CharactersSearch;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    };
+    
     
     
 }
