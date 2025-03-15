@@ -19,12 +19,12 @@ export default class Detail extends BaseView{
 
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
-        console.log(equipments);
+        // console.log(equipments);
         Detail.equipments.heads = equipments.head;
         Detail.equipments.torso = equipments.torso;
         Detail.equipments.pants = equipments.pants;
         Detail.equipments.shoes = equipments.shoes;
-        console.log(Detail.equipments)
+        // console.log(Detail.equipments)
     }
 
     static async render(){
@@ -39,10 +39,10 @@ export default class Detail extends BaseView{
             <section id="editPerso">
                 <div  id="perso">
                     <div id="gauchePreview">
-                        <img class="casque" src="../assets/img/casque.png" alt="">
-                        <img class="haut" src="../assets/img/haut.png" alt="">
-                        <img class="bas" src="../assets/img/bas.png" alt="">
-                        <img class="basbas" src="../assets/img/basbas.png" alt="">
+                        <img class="casque" src="" alt="">
+                        <img class="haut" src="" alt="">
+                        <img class="bas" src="" alt="">
+                        <img class="basbas" src="" alt="">
                     </div>        
                     
                     <div id="gauche">
@@ -54,10 +54,10 @@ export default class Detail extends BaseView{
                     
                     <img src="../assets/img/perso.png" alt="">
                     
-                    <img id="casque" src="../assets/img/casque.png" alt="">
-                    <img id="haut" src="../assets/img/haut.png" alt="">
-                    <img id="bas" src="../assets/img/bas.png" alt="">
-                    <img id="basbas" src="../assets/img/basbas.png" alt="">
+                    <img id="casque" src="" alt="">
+                    <img id="haut" src="" alt="">
+                    <img id="bas" src="" alt="">
+                    <img id="basbas" src="" alt="">
 
 
                     <div id="droite">
@@ -68,10 +68,10 @@ export default class Detail extends BaseView{
                     </div>  
 
                     <div id="droitePreview">
-                        <img class="casque" src="../assets/img/casque.png" alt="">
-                        <img class="haut" src="../assets/img/haut.png" alt="">
-                        <img class="bas" src="../assets/img/bas.png" alt="">
-                        <img class="basbas" src="../assets/img/basbas.png" alt="">
+                        <img class="casque" src="" alt="">
+                        <img class="haut" src="" alt="">
+                        <img class="bas" src="" alt="">
+                        <img class="basbas" src="" alt="">
                     </div>        
                 </div>
             </section>`
@@ -90,7 +90,7 @@ export default class Detail extends BaseView{
         Detail.updateStrength(strength);
         Detail.updateStamina(stamina);
         Detail.updateAgility(agility);
-        console.log(strength, stamina, agility);
+        // console.log(strength, stamina, agility);
     }
     
     // change la valeur de la var strength dans le css

@@ -29,19 +29,19 @@
       ]
     },
     "characters": [ 
-      { "id": 1, "name": "perso1", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 2, "name": "perso2", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 3, "name": "perso3", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 4, "name": "perso4", "head": 1, "torso": 3, "pants": 3, "shoes": 1 },
-      { "id": 5, "name": "perso5", "head": 1, "torso": 2, "pants": 2, "shoes": 1 },
-      { "id": 6, "name": "perso6", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
-      { "id": 7, "name": "perso1", "head": 1, "torso": 5, "pants": 4, "shoes": 1 },
-      { "id": 8, "name": "perso2", "head": 1, "torso": 3, "pants": 2, "shoes": 1 },
-      { "id": 9, "name": "perso3", "head": 1, "torso": 6, "pants": 1, "shoes": 1 },
-      { "id": 10, "name": "perso4", "head": 1, "torso": 4, "pants": 5, "shoes": 1 },
-      { "id": 11, "name": "perso5", "head": 1, "torso": 7, "pants": 3, "shoes": 1 },
-      { "id": 12, "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
-      { "id": 12, "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
+      { "id": "e1", "name": "perso1", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
+      { "id": "e2", "name": "perso2", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
+      { "id": "e3", "name": "perso3", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
+      { "id": "e4", "name": "perso4", "head": 1, "torso": 3, "pants": 3, "shoes": 1 },
+      { "id": "e5", "name": "perso5", "head": 1, "torso": 2, "pants": 2, "shoes": 1 },
+      { "id": "e6", "name": "perso6", "head": 1, "torso": 1, "pants": 1, "shoes": 1 },
+      { "id": "e7", "name": "perso1", "head": 1, "torso": 5, "pants": 4, "shoes": 1 },
+      { "id": "e8", "name": "perso2", "head": 1, "torso": 3, "pants": 2, "shoes": 1 },
+      { "id": "e9", "name": "perso3", "head": 1, "torso": 6, "pants": 1, "shoes": 1 },
+      { "id": "e10", "name": "perso4", "head": 1, "torso": 4, "pants": 5, "shoes": 1 },
+      { "id": "e11", "name": "perso5", "head": 1, "torso": 7, "pants": 3, "shoes": 1 },
+      { "id": "e12", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
+      { "id": "e13", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
     ]
   }
   

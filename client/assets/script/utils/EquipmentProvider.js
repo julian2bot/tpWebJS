@@ -3,7 +3,7 @@ export default class EquipmentProvider{
     
     // Get ALL
     static getEquipement = async () => {
-        console.log(`${ENDPOINT}equipement`);
+        // console.log(`${ENDPOINT}equipement`);
         try {
             const response = await fetch(`${ENDPOINT}equipement`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
@@ -19,7 +19,7 @@ export default class EquipmentProvider{
     static getHeadsById = async (id) => {
         const equipement = await EquipmentProvider.getEquipement();
     
-        console.log( equipement.head.find(head => head.id === id));
+        // console.log( equipement.head.find(head => head.id === id));
         return equipement.head.find(head => head.id === id);
     };        
 

@@ -23,7 +23,7 @@ export default class Listing extends BaseView{
 
     static async render(){
         let characters = await CharacterProvider.getCharacters();
-        console.log(characters)
+        // console.log(characters)
         let view = `<style>main{ margin-top:3rem; display: flex; justify-content: space-around; gap:10px; flex-wrap: wrap;}</style>`
         // characters.forEach(character=>{
         window.MesFavoris = MesFavoris;
@@ -31,11 +31,11 @@ export default class Listing extends BaseView{
         for (let character of characters) {
 
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
-            console.log(character.id)
+            // console.log(character)
             view += `<div class="card">
-            <button onclick="MesFavoris.updateFavorites(${character.id})">Like</button>
+            <button id="${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
             
-            <h3>Nom du Personnage</h3>
+            <h3>${character.name}</h3>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
