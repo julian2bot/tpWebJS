@@ -41,7 +41,10 @@
       { "id": "e10", "name": "perso4", "head": 1, "torso": 4, "pants": 5, "shoes": 1 },
       { "id": "e11", "name": "perso5", "head": 1, "torso": 7, "pants": 3, "shoes": 1 },
       { "id": "e12", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
-      { "id": "e13", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
+      { "id": "e13", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
+      { "id": "e14", "name": "mich", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
+      { "id": "e15", "name": "michmich", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
+      { "id": "e16", "name": "michel", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
     ]
   }
   
