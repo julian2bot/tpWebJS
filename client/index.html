@@ -18,7 +18,7 @@
         <h1>TP WEB</h1>
         <nav>
             <a href="#/listing">Voir la liste</a>
-            <a href="#/detail">Détail</a>
+            <a id="creation-link" href="#/detail">Création</a>
             <a href="#/favoris">Favoris</a>
             <a id="login-link" href="#/login">Login / Sign in</a>
         </nav>
@@ -41,12 +41,15 @@
     import UserManagement from './assets/script/utils/UserManagement.js';
     
     let link = document.getElementById("login-link");
+    let link_create = document.getElementById("creation-link");
     let textUserCo = document.getElementById("nameUser");
     if(UserManagement.isConnected()){
         link.textContent = "Sign out";
         textUserCo.textContent ="User : "+UserManagement.getUsername();
+        link_create.style.display = "initial";
     }else{
         textUserCo.textContent ="";
+        link_create.style.display = "none";
     }
 </script>
 </html>

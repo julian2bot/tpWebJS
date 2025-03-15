@@ -29,6 +29,9 @@ export default class Detail extends BaseView{
     }
 
     static async render(){
+        if(! UserManagment.isConnected()){
+            return "Veuillez vous connecter";
+        }
         return `
             <style>main{ margin-top:3rem; display: flex; justify-content: space-around;}</style>
             <aside>
