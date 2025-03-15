@@ -26,7 +26,7 @@ export default class Listing extends BaseView{
 
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
 
-            view += `<div class="card">
+            view += `<div class="card" id=${character.id}>
             <h3>${character.name}</h3>
             <h4 class="creator">By : ${character.creator}</h4>
             <div class="image">
@@ -65,7 +65,7 @@ export default class Listing extends BaseView{
 
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
 
-            view += `<div class="card cardSelf">
+            view += `<div class="card cardSelf" id=${character.id}>
             <h3>${character.name}</h3>
             <div class="image">
                 <div class="persoPreview">
@@ -113,6 +113,59 @@ export default class Listing extends BaseView{
         return view;
     }
 
+    static renderPopUp(card) {
+        console.log(card);
+        let fondNoir = document.createElement("div");
+        fondNoir.classList.add("fondnoir");
+        
+
+        let popUp = document.createElement("div");
+        let upperPart = document.createElement("div");
+        upperPart.innerHTML = card.innerHTML;
+        popUp.appendChild(upperPart);
+        popUp.classList.add("pop-up-listing");
+
+        let boutons = document.createElement("div");
+        let boutonQuit = document.createElement("button");
+        boutonQuit.textContent="Quit";
+        boutons.appendChild(boutonQuit);
+        boutons.classList.add("boutonsPopUp");
+
+        if(UserManagement.isConnected()){
+            let boutonModif = document.createElement("button");
+
+            if(card.getElementsByClassName("creator")[0].textContent.split(" : ")[1] == UserManagement.getUsername()){
+                boutonModif.textContent="Modifier";
+            }
+            else{
+                boutonModif.textContent="Copier (Oh le plagiat)";
+            }
+            
+            boutons.appendChild(boutonModif);
+        }
+
+
+        popUp.appendChild(boutons);
+
+        document.getElementById("app").appendChild(fondNoir);
+        document.getElementById("app").appendChild(popUp);
+
+        boutonQuit.onclick = ()=>{
+            document.getElementById("app").removeChild(fondNoir);
+            document.getElementById("app").removeChild(popUp);
+        }
+    }
+
+    static addListenerCard(){
+        let cards = document.getElementsByClassName("card");
+        for (const card of cards) {
+            card.addEventListener("click",(event)=>{
+                Listing.renderPopUp(card);
+            });
+        }
+
+    }
+
     static async init(){
         let select = document.getElementById("selectListing");
         if(select != undefined){
@@ -127,7 +180,9 @@ export default class Listing extends BaseView{
                         content.innerHTML = await Listing.renderCharacters();
                         break;
                 }
+                Listing.addListenerCard();
             })
         }
+        Listing.addListenerCard();
     }
 }
