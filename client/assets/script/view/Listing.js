@@ -38,24 +38,24 @@ export default class Listing extends BaseView{
             <h3>${character.name}</h3>
             <div class="image">
                 <div class="persoPreview">
-                    <img src="../assets/img/perso.png">
-                    <img class="imgPersoCasque" src="${ENDPOINT + Listing.equipement.heads.img}">
-                    <img class="imgPersoHaut" src="${ENDPOINT + Listing.equipement.torso.img}">
-                    <img class="imgPersoBas" src="${ENDPOINT + Listing.equipement.pants.img}">
-                    <img class="imgPersoBasBas" src="${ENDPOINT + Listing.equipement.shoes.img}">
+                    <img loading="lazy" src="../assets/img/perso.png">
+                    <img loading="lazy" class="imgPersoCasque" src="${ENDPOINT + Listing.equipement.heads.img}">
+                    <img loading="lazy" class="imgPersoHaut" src="${ENDPOINT + Listing.equipement.torso.img}">
+                    <img loading="lazy" class="imgPersoBas" src="${ENDPOINT + Listing.equipement.pants.img}">
+                    <img loading="lazy" class="imgPersoBasBas" src="${ENDPOINT + Listing.equipement.shoes.img}">
                 </div>
             </div>
             <div class="stats">
                 <div class="stat">
-                    <img src="../assets/img/strength.png" class="iconCaract" alt="strength">
+                    <img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength">
                     <span>${50 + Listing.equipement.heads.strength + Listing.equipement.torso.strength + Listing.equipement.pants.strength + Listing.equipement.shoes.strength}%</span>
                 </div>
                 <div class="stat">
-                    <img src="../assets/img/stamina.png" class="iconCaract" alt="stamina">
+                    <img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina">
                     <span>${50 + Listing.equipement.heads.stamina + Listing.equipement.torso.stamina + Listing.equipement.pants.stamina + Listing.equipement.shoes.stamina}%</span>
                 </div>
                 <div class="stat">
-                    <img src="../assets/img/agility.png" class="iconCaract" alt="agility">
+                    <img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility">
                     <span>${50 + Listing.equipement.heads.agility + Listing.equipement.torso.agility + Listing.equipement.pants.agility + Listing.equipement.shoes.agility}%</span>
                 </div>
             </div>

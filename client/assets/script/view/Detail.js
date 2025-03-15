@@ -31,47 +31,47 @@ export default class Detail extends BaseView{
         return `
             <aside>
                 <ul>
-                    <div class="stat"><img src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
-                    <div class="stat"><img src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
-                    <div class="stat"><img src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
                 </ul>
             </aside>
             <section id="editPerso">
                 <div  id="perso">
                     <div id="gauchePreview">
-                        <img class="casque" src="" alt="">
-                        <img class="haut" src="" alt="">
-                        <img class="bas" src="" alt="">
-                        <img class="basbas" src="" alt="">
+                        <img loading="lazy" class="casque" src="" alt="">
+                        <img loading="lazy" class="haut" src="" alt="">
+                        <img loading="lazy" class="bas" src="" alt="">
+                        <img loading="lazy" class="basbas" src="" alt="">
                     </div>        
                     
                     <div id="gauche">
-                        <img class="casque" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="haut" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="bas" src="../assets/img/arrowReverse.png" alt="">
-                        <img class="basbas" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="casque" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="haut" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="bas" src="../assets/img/arrowReverse.png" alt="">
+                        <img loading="lazy" class="basbas" src="../assets/img/arrowReverse.png" alt="">
                     </div>        
                     
-                    <img src="../assets/img/perso.png" alt="">
+                    <img loading="lazy" src="../assets/img/perso.png" alt="">
                     
-                    <img id="casque" src="" alt="">
-                    <img id="haut" src="" alt="">
-                    <img id="bas" src="" alt="">
-                    <img id="basbas" src="" alt="">
+                    <img loading="lazy" id="casque" src="" alt="">
+                    <img loading="lazy" id="haut" src="" alt="">
+                    <img loading="lazy" id="bas" src="" alt="">
+                    <img loading="lazy" id="basbas" src="" alt="">
 
 
                     <div id="droite">
-                        <img class="casque" src="../assets/img/arrow.png" alt="">
-                        <img class="haut" src="../assets/img/arrow.png" alt="">
-                        <img class="bas" src="../assets/img/arrow.png" alt="">
-                        <img class="basbas" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="casque" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="haut" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="bas" src="../assets/img/arrow.png" alt="">
+                        <img loading="lazy" class="basbas" src="../assets/img/arrow.png" alt="">
                     </div>  
 
                     <div id="droitePreview">
-                        <img class="casque" src="" alt="">
-                        <img class="haut" src="" alt="">
-                        <img class="bas" src="" alt="">
-                        <img class="basbas" src="" alt="">
+                        <img loading="lazy" class="casque" src="" alt="">
+                        <img loading="lazy" class="haut" src="" alt="">
+                        <img loading="lazy" class="bas" src="" alt="">
+                        <img loading="lazy" class="basbas" src="" alt="">
                     </div>        
                 </div>
             </section>`
