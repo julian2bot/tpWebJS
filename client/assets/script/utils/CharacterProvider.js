@@ -17,8 +17,8 @@ export default class CharacterProvider {
 
     static getSearchCharacters = async ()=>{
         let name = document.getElementById("searchCharacters").value;
-        
-        document.getElementById("app").innerHTML = await Listing.render(true,name);
+        window.location.href = `#/listing/${name}`
+        // document.getElementById("app").innerHTML = await Listing.render(true,name);
     };
 
     // static getCharactersFav = async () =>{

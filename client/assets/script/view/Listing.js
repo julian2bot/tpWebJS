@@ -3,6 +3,7 @@ import CharacterProvider from "../utils/CharacterProvider.js";
 import BaseView from './BaseView.js';
 import {ENDPOINT} from '../config.js'
 import MesFavoris from '../utils/MesFavoris.js';
+import Utils from '../utils/Utils.js';
 export default class Listing extends BaseView{
     static equipement = {
         heads : null,
@@ -21,14 +22,16 @@ export default class Listing extends BaseView{
     }
 
 
-    static async render(search = false, name = ""){
+    static async render(){
         let characters= [];
+        
+        let url = Utils.parseRequestURL()
 
-         if(!search){
+        if(!url.id){
             characters = await CharacterProvider.getCharacters();
         }
         else{
-            characters = await CharacterProvider.getSearchCharactersbyName(name);
+            characters = await CharacterProvider.getSearchCharactersbyName(url.id);
         }
 
         window.CharacterProvider = CharacterProvider;
@@ -45,7 +48,7 @@ export default class Listing extends BaseView{
                 <button onclick="CharacterProvider.getSearchCharacters()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L14.9497 14.9497M14.9497 14.9497C16.2165 13.683 17 11.933 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C11.933 17 13.683 16.2165 14.9497 14.9497Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </button>
-                <button onclick="window.location.reload()">
+                <button onclick="window.location.href ='#/listing'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87 10.5046L10.8204 12.4504L9.76045 13.511L6 9.75456L9.76045 5.99805L10.8204 7.05871L8.87 9.00456H18V18H11.9532V16.5H16.5V10.5046H8.87Z" fill="#1F2328"/>
                     </svg>        
