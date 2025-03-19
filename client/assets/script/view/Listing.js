@@ -67,6 +67,7 @@ export default class Listing extends BaseView{
 
             view += `<div class="card cardSelf" id=${character.id}>
             <h3>${character.name}</h3>
+            <h4 class="creator" style='display:none;'>By : ${character.creator}</h4>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
@@ -140,9 +141,16 @@ export default class Listing extends BaseView{
             else{
                 boutonModif.textContent="Copier (Oh le plagiat)";
             }
+
+            boutonModif.onclick = ()=>{
+                window.location.href = `/#/detail/${card.id}`;
+            }
             
             boutons.appendChild(boutonModif);
         }
+
+
+        
 
 
         popUp.appendChild(boutons);

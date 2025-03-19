@@ -1,9 +1,13 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
+import CharacterProvider from '../utils/CharacterProvider.js';
 import BaseView from './BaseView.js';
 import UserManagment from '../utils/UserManagement.js';
+import Utils from '../utils/Utils.js';
 import { ENDPOINT } from '../config.js';
 
 export default class Detail extends BaseView{
+    static updating = false;
+
     static centerIndex = {
         head: 0,
         torso: 0,
@@ -12,7 +16,7 @@ export default class Detail extends BaseView{
     };
 
     static equipments = {
-        heads : [],
+        head : [],
         torso : [],
         pants : [],
         shoes : []
@@ -21,7 +25,7 @@ export default class Detail extends BaseView{
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
         console.log(equipments);
-        Detail.equipments.heads = equipments.head;
+        Detail.equipments.head = equipments.head;
         Detail.equipments.torso = equipments.torso;
         Detail.equipments.pants = equipments.pants;
         Detail.equipments.shoes = equipments.shoes;
@@ -90,7 +94,7 @@ export default class Detail extends BaseView{
     }
 
     static characteristicsCalculus(){
-        let head = Detail.equipments.heads[Detail.centerIndex.head];
+        let head = Detail.equipments.head[Detail.centerIndex.head];
         let torso = Detail.equipments.torso[Detail.centerIndex.torso];  
         let pants = Detail.equipments.pants[Detail.centerIndex.pants];    
         let shoes = Detail.equipments.shoes[Detail.centerIndex.shoes]; 
@@ -189,9 +193,50 @@ export default class Detail extends BaseView{
         Detail.updateDisplay();
     }
     
-    // initialise les boutons et l'affichage
     static async init(){
+        if(! UserManagment.isConnected()){
+            return ;
+        }
+        let request = Utils.parseRequestURL();
+
+        let character = await CharacterProvider.getCharactersByID(request.id);
         await Detail.updateEquipments();
+
+        // Définition du perso pris comme base
+        if(character){
+            let index = 0;
+            for (const element in Detail.centerIndex) {
+                index = 0;
+                for(const element2 of Detail.equipments[element]){
+                    if(element2.id == character[element]){
+                        Detail.centerIndex[element] = index;
+                        console.log(element, index)
+                        break;  
+                    }
+                    index++;
+                }
+            }
+
+            // Modifier ou créer
+            if(character.creator == UserManagment.getUsername()){
+                document.getElementById("inputName").value = character.name;
+                document.getElementById("createCharacterButton").value = 'Modifier';
+                Detail.updating = true;
+            }
+            else{
+                Detail.updating = false;
+            }
+        }
+        else{
+            Detail.updating = false;
+
+            Detail.centerIndex = {
+                head: 0,
+                torso: 0,
+                pants: 0,
+                shoes: 0 
+            };
+        }
 
         Detail.updateDisplay();
     
@@ -215,26 +260,30 @@ export default class Detail extends BaseView{
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
             event.preventDefault();
 
-            fetch(`${ENDPOINT}characters`, {
+            let url = Detail.updating ? `${ENDPOINT}characters/${character.id}` : `${ENDPOINT}characters`;
+            let method = Detail.updating ? "PUT" : "POST";
+
+            fetch(url, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                method: "POST",
+                method: method,
                 body: JSON.stringify(
                     {
                         name:document.getElementById("inputName").value,
-                        head: Detail.equipments.heads[Detail.centerIndex.head].id,
+                        head: Detail.equipments.head[Detail.centerIndex.head].id,
                         torso:Detail.equipments.torso[Detail.centerIndex.torso].id,
                         pants:Detail.equipments.pants[Detail.centerIndex.pants].id,
                         shoes:Detail.equipments.shoes[Detail.centerIndex.shoes].id,
                         creator:UserManagment.getUsername(),
                     })
             })
-                .then(res => {
-                    console.log('Save Success : ', res);
-                })
-                .catch(res => { console.log(res) });
+            .then(res => {
+                console.log('Save Success : ', res);
+            })
+            .catch(res => { console.log(res) });
         })
     }
+
 }

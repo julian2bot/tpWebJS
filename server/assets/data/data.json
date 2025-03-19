@@ -190,103 +190,22 @@
       "creator": "base"
     },
     {
-      "id": "4",
-      "name": "perso4",
+      "name": "Julian2",
       "head": 1,
-      "torso": 3,
+      "torso": 8,
       "pants": 3,
       "shoes": 1,
-      "creator": "base"
+      "creator": "chris",
+      "id": "6ccd"
     },
     {
-      "id": "5",
-      "name": "perso5",
-      "head": 1,
-      "torso": 2,
-      "pants": 2,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "6",
-      "name": "perso6",
+      "name": "UIEFbiegfnebjhgjirhg",
       "head": 1,
       "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "7",
-      "name": "perso1",
-      "head": 1,
-      "torso": 5,
-      "pants": 4,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "8",
-      "name": "perso2",
-      "head": 1,
-      "torso": 3,
-      "pants": 2,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "9",
-      "name": "perso3",
-      "head": 1,
-      "torso": 6,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "10",
-      "name": "perso4",
-      "head": 1,
-      "torso": 4,
       "pants": 5,
       "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "11",
-      "name": "perso5",
-      "head": 1,
-      "torso": 7,
-      "pants": 3,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "12",
-      "name": "perso6",
-      "head": 1,
-      "torso": 8,
-      "pants": 2,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "12",
-      "name": "perso6",
-      "head": 1,
-      "torso": 8,
-      "pants": 2,
-      "shoes": 1,
-      "creator": "base"
-    },
-    {
-      "id": "7c05",
-      "name": "dee",
-      "head": 1,
-      "torso": 7,
-      "pants": 5,
-      "shoes": 1,
-      "creator": "chris"
+      "creator": "chris",
+      "id": "4b3f"
     }
   ]
 }
