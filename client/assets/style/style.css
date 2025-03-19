@@ -17,11 +17,15 @@
     --progress-souplaise:50%;
 
 }
+header{
+    filter: url(#squiggly-filter);
 
+}
 h1{
     text-align: center;
 }
 nav{
+
     display: flex;
     justify-content: space-around;
 }
