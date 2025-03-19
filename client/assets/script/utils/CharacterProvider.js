@@ -28,7 +28,7 @@ export default class CharacterProvider {
     static getCharactersByID = async (id) => {
         try {
             const response = await fetch(`${ENDPOINT}characters/${id}`);
-            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            if (!response.ok) throw new Error("Erreur lors de la récupération du perso");
             return await response.json();
         } catch (error) {
             console.error(error);

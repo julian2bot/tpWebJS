@@ -23,6 +23,7 @@ export default class Listing extends BaseView{
     static async renderCharacters(){
         let view = "";
         let url = Utils.parseRequestURL()
+        let characters = [];
       
         window.CharacterProvider = CharacterProvider;
         window.MesFavoris = MesFavoris;
@@ -38,6 +39,7 @@ export default class Listing extends BaseView{
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
 
             view += `<div class="card" id=${character.id}>
+            <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
             <h3>${character.name}</h3>
             <h4 class="creator">By : ${character.creator}</h4>
             <div class="image">
@@ -114,7 +116,7 @@ export default class Listing extends BaseView{
 
 
     static async render(){
-        let view = `<style>main{ margin-top:6rem; display: flex; justify-content: space-around; gap:10px; flex-wrap: wrap;}</style>
+        let view = `<style>main{ margin-top:6rem}</style>
 
             
             <div class="seachBar">
@@ -199,7 +201,9 @@ export default class Listing extends BaseView{
         let cards = document.getElementsByClassName("card");
         for (const card of cards) {
             card.addEventListener("click",(event)=>{
-                Listing.renderPopUp(card);
+                if(! event.target.id.startsWith('heart-')){
+                    Listing.renderPopUp(card);
+                }
             });
         }
 

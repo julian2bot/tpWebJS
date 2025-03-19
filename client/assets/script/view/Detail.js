@@ -25,7 +25,7 @@ export default class Detail extends BaseView{
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
 
-        Detail.equipments.heads = equipments.head;
+        Detail.equipments.head = equipments.head;
         Detail.equipments.torso = equipments.torso;
         Detail.equipments.pants = equipments.pants;
         Detail.equipments.shoes = equipments.shoes;
@@ -197,45 +197,53 @@ export default class Detail extends BaseView{
             return ;
         }
         let request = Utils.parseRequestURL();
-
-        let character = await CharacterProvider.getCharactersByID(request.id);
         await Detail.updateEquipments();
 
-        // Définition du perso pris comme base
-        if(character){
-            let index = 0;
-            for (const element in Detail.centerIndex) {
-                index = 0;
-                for(const element2 of Detail.equipments[element]){
-                    if(element2.id == character[element]){
-                        Detail.centerIndex[element] = index;
-                        console.log(element, index)
-                        break;  
-                    }
-                    index++;
-                }
-            }
+        let character = null;
 
-            // Modifier ou créer
-            if(character.creator == UserManagment.getUsername()){
-                document.getElementById("inputName").value = character.name;
-                document.getElementById("createCharacterButton").value = 'Modifier';
-                Detail.updating = true;
+        try {
+            if(request.id!=null){
+            character = await CharacterProvider.getCharactersByID(request.id);
+            console.log(character);
+            // Définition du perso pris comme base
+            if(character){
+                let index = 0;
+                for (const element in Detail.centerIndex) {
+                    index = 0;
+                    for(const element2 of Detail.equipments[element]){
+                        if(element2.id == character[element]){
+                            Detail.centerIndex[element] = index;
+                            console.log(element, index)
+                            break;  
+                        }
+                        index++;
+                    }
+                }
+
+                // Modifier ou créer
+                if(character.creator == UserManagment.getUsername()){
+                    document.getElementById("inputName").value = character.name;
+                    document.getElementById("createCharacterButton").value = 'Modifier';
+                    Detail.updating = true;
+                }
+                else{
+                    Detail.updating = false;
+                }
             }
             else{
                 Detail.updating = false;
-            }
-        }
-        else{
-            Detail.updating = false;
 
-            Detail.centerIndex = {
-                head: 0,
-                torso: 0,
-                pants: 0,
-                shoes: 0 
-            };
-        }
+                Detail.centerIndex = {
+                    head: 0,
+                    torso: 0,
+                    pants: 0,
+                    shoes: 0 
+                };
+            }
+            }
+
+            
+        } catch (error) {}
 
         Detail.updateDisplay();
     

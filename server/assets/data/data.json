@@ -206,6 +206,15 @@
       "shoes": 1,
       "creator": "chris",
       "id": "4b3f"
+    },
+    {
+      "name": "nedede",
+      "head": 1,
+      "torso": 7,
+      "pants": 2,
+      "shoes": 1,
+      "creator": "chris",
+      "id": "f862"
     }
   ]
 }

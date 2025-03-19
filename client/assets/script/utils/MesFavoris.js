@@ -2,7 +2,7 @@
 export default class MesFavoris{
     static updateFavorites(id, dansFav = false) {
         let favs = JSON.parse(localStorage.getItem("fav")) || [];
-        let elemCard = document.getElementById(id);
+        let elemCard = document.getElementById(`heart-${id}`);
 
         if (favs.includes(id)) {
             favs = favs.filter(num => num !== id);
