@@ -20,7 +20,7 @@ export default class Listing extends BaseView{
         Listing.equipement.shoes = await EquipmentProvider.getShoesById(shoes);
     }
 
-    static async renderCharacters(){
+    static async renderCharacters(mine=false){
         let view = "";
         let url = Utils.parseRequestURL()
         let characters = [];
@@ -29,7 +29,13 @@ export default class Listing extends BaseView{
         window.MesFavoris = MesFavoris;
         
         if(!url.id){
-            characters = await CharacterProvider.getCharacters();
+            if(mine){
+                characters = await CharacterProvider.getCharactersByPseudo(UserManagement.getUsername());
+            }
+            else{
+                characters = await CharacterProvider.getCharacters();
+            }
+
         }
         else{
             characters = await CharacterProvider.getSearchCharactersbyName(url.id);
@@ -41,7 +47,7 @@ export default class Listing extends BaseView{
             view += `<div class="card" id=${character.id}>
             <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
             <h3>${character.name}</h3>
-            <h4 class="creator">By : ${character.creator}</h4>
+            <h4 class="creator" ${mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
@@ -70,50 +76,6 @@ export default class Listing extends BaseView{
         }
         return view;
     }
-
-    static async renderMyCharacters(){
-        let characters = await CharacterProvider.getCharactersByPseudo(UserManagement.getUsername());
-
-        let view = `
-            `;
-
-        for (let character of characters) {
-
-            await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
-
-            view += `<div class="card cardSelf" id=${character.id}>
-            <button id="${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
-            <h3>${character.name}</h3>
-            <h4 class="creator" style='display:none;'>By : ${character.creator}</h4>
-            <div class="image">
-                <div class="persoPreview">
-                    <img loading="lazy" src="../assets/img/perso.png">
-                    <img loading="lazy" class="imgPersoCasque" src="${ENDPOINT + Listing.equipement.heads.img}">
-                    <img loading="lazy" class="imgPersoHaut" src="${ENDPOINT + Listing.equipement.torso.img}">
-                    <img loading="lazy" class="imgPersoBas" src="${ENDPOINT + Listing.equipement.pants.img}">
-                    <img loading="lazy" class="imgPersoBasBas" src="${ENDPOINT + Listing.equipement.shoes.img}">
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength">
-                    <span>${50 + Listing.equipement.heads.strength + Listing.equipement.torso.strength + Listing.equipement.pants.strength + Listing.equipement.shoes.strength}%</span>
-                </div>
-                <div class="stat">
-                    <img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina">
-                    <span>${50 + Listing.equipement.heads.stamina + Listing.equipement.torso.stamina + Listing.equipement.pants.stamina + Listing.equipement.shoes.stamina}%</span>
-                </div>
-                <div class="stat">
-                    <img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility">
-                    <span>${50 + Listing.equipement.heads.agility + Listing.equipement.torso.agility + Listing.equipement.pants.agility + Listing.equipement.shoes.agility}%</span>
-                </div>
-            </div>
-        </div>
-        `;
-        }
-        return view;
-    }
-
 
     static async render(){
         let view = `<style>main{ margin-top:6rem}</style>
@@ -216,7 +178,7 @@ export default class Listing extends BaseView{
             select.addEventListener("change", async (event)=>{
                 switch(select.value){
                     case 'mine':
-                        content.innerHTML = await Listing.renderMyCharacters();
+                        content.innerHTML = await Listing.renderCharacters(true);
                         break;
                     
                     default: // all
