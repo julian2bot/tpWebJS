@@ -10,6 +10,7 @@ const routes = {
     "/login" : Login,
     "/listing" : Listing,
     "/detail" : Detail,
+    "/detail/:id" : Detail,
     "/favoris" : Favoris
 };
 

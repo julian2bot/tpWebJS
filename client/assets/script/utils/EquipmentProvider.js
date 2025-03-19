@@ -40,5 +40,5 @@ export default class EquipmentProvider{
         const equipement = await EquipmentProvider.getEquipement();
     
         return equipement.shoes.find(head => head.id === id);
-    };      
+    };
 }

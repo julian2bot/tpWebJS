@@ -1,17 +1,22 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
+import CharacterProvider from '../utils/CharacterProvider.js';
 import BaseView from './BaseView.js';
+import UserManagment from '../utils/UserManagement.js';
+import Utils from '../utils/Utils.js';
 import { ENDPOINT } from '../config.js';
 
 export default class Detail extends BaseView{
+    static updating = false;
+
     static centerIndex = {
-        indexHead: 0,
-        indexTorso: 0,
-        indexPants: 0,
-        indexShoes: 0
+        head: 0,
+        torso: 0,
+        pants: 0,
+        shoes: 0 
     };
 
     static equipments = {
-        heads : [],
+        head : [],
         torso : [],
         pants : [],
         shoes : []
@@ -19,8 +24,8 @@ export default class Detail extends BaseView{
 
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
-        // console.log(equipments);
-        Detail.equipments.heads = equipments.head;
+
+        Detail.equipments.head = equipments.head;
         Detail.equipments.torso = equipments.torso;
         Detail.equipments.pants = equipments.pants;
         Detail.equipments.shoes = equipments.shoes;
@@ -28,7 +33,11 @@ export default class Detail extends BaseView{
     }
 
     static async render(){
+        if(! UserManagment.isConnected()){
+            return "Veuillez vous connecter";
+        }
         return `
+            <style>main{ margin-top:3rem; display: flex; justify-content: space-around;}</style>
             <aside>
                 <ul>
                     <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
@@ -59,7 +68,6 @@ export default class Detail extends BaseView{
                     <img loading="lazy" id="bas" src="" alt="">
                     <img loading="lazy" id="basbas" src="" alt="">
 
-
                     <div id="droite">
                         <img loading="lazy" class="casque" src="../assets/img/arrow.png" alt="">
                         <img loading="lazy" class="haut" src="../assets/img/arrow.png" alt="">
@@ -74,14 +82,21 @@ export default class Detail extends BaseView{
                         <img loading="lazy" class="basbas" src="" alt="">
                     </div>        
                 </div>
-            </section>`
+            </section>
+            <aside>
+                <form id='createCharacter' action="">
+                    <label for="name">Nom Perso</label>
+                    <input id='inputName' type="text" name="name" placeholder="Michel">
+                    <input id='createCharacterButton' type="submit" value="Créer">
+                </form>
+            </aside>`
     }
 
     static characteristicsCalculus(){
-        let head = Detail.equipments.heads[Detail.centerIndex.indexHead];
-        let torso = Detail.equipments.torso[Detail.centerIndex.indexTorso];  
-        let pants = Detail.equipments.pants[Detail.centerIndex.indexPants];    
-        let shoes = Detail.equipments.shoes[Detail.centerIndex.indexShoes]; 
+        let head = Detail.equipments.head[Detail.centerIndex.head];
+        let torso = Detail.equipments.torso[Detail.centerIndex.torso];  
+        let pants = Detail.equipments.pants[Detail.centerIndex.pants];    
+        let shoes = Detail.equipments.shoes[Detail.centerIndex.shoes]; 
        
         let strength = 50 + head.strength + torso.strength + pants.strength + shoes.strength;
         let stamina = 50 + head.stamina + torso.stamina + pants.stamina + shoes.stamina;
@@ -119,12 +134,12 @@ export default class Detail extends BaseView{
     
         let totalHaut = Detail.equipments.torso.length;
         
-        let indexGaucheHaut = (Detail.centerIndex.indexTorso - 1 + totalHaut) % totalHaut;
-        let indexDroiteHaut = (Detail.centerIndex.indexTorso + 1) % totalHaut;
+        let indexGaucheHaut = (Detail.centerIndex.torso - 1 + totalHaut) % totalHaut;
+        let indexDroiteHaut = (Detail.centerIndex.torso + 1) % totalHaut;
     
         
         imgGaucheHaut.src = ENDPOINT+Detail.equipments.torso[indexGaucheHaut].img;
-        imgCentreHaut.src = ENDPOINT+Detail.equipments.torso[Detail.centerIndex.indexTorso].img;
+        imgCentreHaut.src = ENDPOINT+Detail.equipments.torso[Detail.centerIndex.torso].img;
         imgDroiteHaut.src = ENDPOINT+Detail.equipments.torso[indexDroiteHaut].img;
         
         
@@ -135,12 +150,12 @@ export default class Detail extends BaseView{
     
         let totalBas = Detail.equipments.pants.length;
         
-        let indexGaucheBas = (Detail.centerIndex.indexPants - 1 + totalBas) % totalBas;
-        let indexDroiteBas = (Detail.centerIndex.indexPants + 1) % totalBas;
+        let indexGaucheBas = (Detail.centerIndex.pants - 1 + totalBas) % totalBas;
+        let indexDroiteBas = (Detail.centerIndex.pants + 1) % totalBas;
     
     
         imgGaucheBas.src = ENDPOINT+Detail.equipments.pants[indexGaucheBas].img;
-        imgCentreBas.src = ENDPOINT+Detail.equipments.pants[Detail.centerIndex.indexPants].img;
+        imgCentreBas.src = ENDPOINT+Detail.equipments.pants[Detail.centerIndex.pants].img;
         imgDroiteBas.src = ENDPOINT+Detail.equipments.pants[indexDroiteBas].img;
     
     
@@ -149,37 +164,86 @@ export default class Detail extends BaseView{
     
     // update au moment du clique sur le bouton
     static updatePreviewHautDroite(){
-        Detail.centerIndex.indexTorso = (Detail.centerIndex.indexTorso + 1) % Detail.equipments.torso.length;
+        Detail.centerIndex.torso = (Detail.centerIndex.torso + 1) % Detail.equipments.torso.length;
         Detail.updateDisplay();
     }
     
     // update au moment du clique sur le bouton
     static updatePreviewHautGauche(){
-        Detail.centerIndex.indexTorso = (Detail.centerIndex.indexTorso - 1) % Detail.equipments.torso.length
-        if(Detail.centerIndex.indexTorso < 0){
-            Detail.centerIndex.indexTorso = Detail.equipments.torso.length - 1
+        Detail.centerIndex.torso = (Detail.centerIndex.torso - 1) % Detail.equipments.torso.length
+        if(Detail.centerIndex.torso < 0){
+            Detail.centerIndex.torso = Detail.equipments.torso.length - 1
         }
         Detail.updateDisplay();
     }
     
     // update au moment du clique sur le bouton
     static updatePreviewBasDroite(){
-        Detail.centerIndex.indexPants = (Detail.centerIndex.indexPants + 1) % Detail.equipments.pants.length;
+        Detail.centerIndex.pants = (Detail.centerIndex.pants + 1) % Detail.equipments.pants.length;
         Detail.updateDisplay();
     }
     
     // update au moment du clique sur le bouton
     static updatePreviewBasGauche(){
-        Detail.centerIndex.indexPants = (Detail.centerIndex.indexPants - 1) % Detail.equipments.pants.length
-        if(Detail.centerIndex.indexPants < 0){
-            Detail.centerIndex.indexPants = Detail.equipments.pants.length - 1
+        Detail.centerIndex.pants = (Detail.centerIndex.pants - 1) % Detail.equipments.pants.length
+        if(Detail.centerIndex.pants < 0){
+            Detail.centerIndex.pants = Detail.equipments.pants.length - 1
         }
         Detail.updateDisplay();
     }
     
-    // initialise les boutons et l'affichage
     static async init(){
+        if(! UserManagment.isConnected()){
+            return ;
+        }
+        let request = Utils.parseRequestURL();
         await Detail.updateEquipments();
+
+        let character = null;
+
+        try {
+            if(request.id!=null){
+            character = await CharacterProvider.getCharactersByID(request.id);
+            console.log(character);
+            // Définition du perso pris comme base
+            if(character){
+                let index = 0;
+                for (const element in Detail.centerIndex) {
+                    index = 0;
+                    for(const element2 of Detail.equipments[element]){
+                        if(element2.id == character[element]){
+                            Detail.centerIndex[element] = index;
+                            console.log(element, index)
+                            break;  
+                        }
+                        index++;
+                    }
+                }
+
+                // Modifier ou créer
+                if(character.creator == UserManagment.getUsername()){
+                    document.getElementById("inputName").value = character.name;
+                    document.getElementById("createCharacterButton").value = 'Modifier';
+                    Detail.updating = true;
+                }
+                else{
+                    Detail.updating = false;
+                }
+            }
+            else{
+                Detail.updating = false;
+
+                Detail.centerIndex = {
+                    head: 0,
+                    torso: 0,
+                    pants: 0,
+                    shoes: 0 
+                };
+            }
+            }
+
+            
+        } catch (error) {}
 
         Detail.updateDisplay();
     
@@ -199,5 +263,34 @@ export default class Detail extends BaseView{
                 
             }
         });
+
+        document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
+            event.preventDefault();
+
+            let url = Detail.updating ? `${ENDPOINT}characters/${character.id}` : `${ENDPOINT}characters`;
+            let method = Detail.updating ? "PUT" : "POST";
+
+            fetch(url, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: method,
+                body: JSON.stringify(
+                    {
+                        name:document.getElementById("inputName").value,
+                        head: Detail.equipments.head[Detail.centerIndex.head].id,
+                        torso:Detail.equipments.torso[Detail.centerIndex.torso].id,
+                        pants:Detail.equipments.pants[Detail.centerIndex.pants].id,
+                        shoes:Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                        creator:UserManagment.getUsername(),
+                    })
+            })
+            .then(res => {
+                console.log('Save Success : ', res);
+            })
+            .catch(res => { console.log(res) });
+        })
     }
+
 }

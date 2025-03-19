@@ -14,6 +14,27 @@ export default class CharacterProvider {
         }
     };
 
+    static getCharactersByPseudo = async (pseudo) => {
+        try {
+            const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
+
+    static getCharactersByID = async (id) => {
+        try {
+            const response = await fetch(`${ENDPOINT}characters/${id}`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération du perso");
+            return await response.json();
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
 
     static getSearchCharacters = async ()=>{
         let name = document.getElementById("searchCharacters").value;
