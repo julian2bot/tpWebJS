@@ -43,10 +43,6 @@
     text-align: center;
 }
 
-svg {
-    display: none;
-}
-
 .stats{
     display: flex;
     flex-direction: column;
@@ -139,4 +135,38 @@ svg {
     opacity: 70%;
     width: 150vw;
     height: 150vh;
+}
+
+#searchCharacters{
+    height: 1.5rem;
+    border: none;
+    border-bottom: 2px solid;
+}
+
+.seachBar {
+    filter: url(#squiggly-filter);
+    position:absolute;
+    right:0; 
+    top:9rem;
+}
+.seachBar *{
+    border: none;
+    background: transparent;
+}
+
+.seachBar button{
+    translate: -100% 25%;
+    transition: 200ms;
+}
+.seachBar button:hover{
+    scale: 1.1;
+    color: rgb(117, 117, 117);
+}
+
+#searchCharacters:focus {
+    outline: none;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.085);
+    border-bottom: 3px solid grey;
+    border-radius: 10px 10px 0px 0px;
 }
