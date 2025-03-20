@@ -1,5 +1,6 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
 import CharacterProvider from '../utils/CharacterProvider.js';
+import CharacterManagement from '../utils/CharacterManagement.js';
 import BaseView from './BaseView.js';
 import UserManagment from '../utils/UserManagement.js';
 import Utils from '../utils/Utils.js';
@@ -358,30 +359,16 @@ export default class Detail extends BaseView{
 
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
             event.preventDefault();
-
-            let url = Detail.updating ? `${ENDPOINT}characters/${character.id}` : `${ENDPOINT}characters`;
-            let method = Detail.updating ? "PUT" : "POST";
-
-            fetch(url, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                method: method,
-                body: JSON.stringify(
-                    {
-                        name:document.getElementById("inputName").value,
-                        head: Detail.equipments.head[Detail.centerIndex.head].id,
-                        torso:Detail.equipments.torso[Detail.centerIndex.torso].id,
-                        pants:Detail.equipments.pants[Detail.centerIndex.pants].id,
-                        shoes:Detail.equipments.shoes[Detail.centerIndex.shoes].id,
-                        creator:UserManagment.getUsername(),
-                    })
-            })
-            .then(res => {
-                console.log('Save Success : ', res);
-            })
-            .catch(res => { console.log(res) });
+            console.log(Detail.centerIndex)
+            CharacterManagement.createOrUpdateCharacter(
+                document.getElementById("inputName").value,
+                Detail.equipments.head[Detail.centerIndex.head].id,
+                Detail.equipments.torso[Detail.centerIndex.torso].id,
+                Detail.equipments.pants[Detail.centerIndex.pants].id,
+                Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                UserManagment.getUsername(),
+                character ? character.id : undefined
+            )
         })
     }
 

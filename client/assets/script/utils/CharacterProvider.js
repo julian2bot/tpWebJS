@@ -1,22 +1,25 @@
 import { ENDPOINT } from "../config.js";
 import Listing from "../view/Listing.js";
 import MesFavoris from "./MesFavoris.js";
+import Utils from "./Utils.js";
 export default class CharacterProvider {
     // Get all
-    static getCharacters = async () => {
+    static getCharacters = async (page=0, perPage=10) => {
         try {
-            const response = await fetch(`${ENDPOINT}characters`);
+            const response = await fetch(`${ENDPOINT}characters?_page=${page}&_per_page=${perPage}`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
-            return await response.json();
+            let t =  await response.json();
+            console.log(t);
+            return t;  
         } catch (error) {
             console.error(error);
             return null;
         }
     };
 
-    static getCharactersByPseudo = async (pseudo) => {
+    static getCharactersByPseudo = async (pseudo,page=1, perPage=10) => {
         try {
-            const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}`);
+            const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}&_page=${page}&_per_page=${perPage}`);
             if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
             return await response.json();
         } catch (error) {
@@ -38,30 +41,9 @@ export default class CharacterProvider {
 
     static getSearchCharacters = async ()=>{
         let name = document.getElementById("searchCharacters").value;
-        window.location.href = `#/listing/${name}`
-        // document.getElementById("app").innerHTML = await Listing.render(true,name);
+
+        window.location.href = `#/listing/${Utils.updateListingId(name=name)}`
     };
-
-    // static getCharactersFav = async () =>{
-    //     try {
-    //         // const response = await fetch(`${ENDPOINT}characters`);
-    //         // if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
-    //         // return await response.json();
-            
-    //         return [
-
-    //             { "id": "f11", "name": "perso5", "head": 1, "torso": 7, "pants": 3, "shoes": 1 },
-    //             { "id": "f12", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 },
-    //             { "id": "f12", "name": "perso6", "head": 1, "torso": 8, "pants": 2, "shoes": 1 }
-    //         ]
-
-
-    //     } catch (error) {
-    //         console.error(error);
-    //         return null;
-    //     }
-    // }
-
 
     static getCharactersFav = async () => {
         try {
@@ -69,7 +51,7 @@ export default class CharacterProvider {
             if (!favorites.length) return []; 
 
             // get all
-            const characters = await CharacterProvider.getCharacters()
+            const characters = await CharacterProvider.getCharacters(page, perPage)
             
             // chercher les favoris car json server et leurs 'OR' marche pas 
             const favoriteCharacters = characters.filter(char => favorites.includes(char.id));
@@ -86,9 +68,11 @@ export default class CharacterProvider {
     static getSearchCharactersbyName = async (name) => {
         try {
             if (!name) return []; 
+            name = name.toString();
     
-            const characters = await CharacterProvider.getCharacters();
+            let characters = await CharacterProvider.getCharacters();
             
+            console.log(characters);
     
             const CharactersSearch = characters.filter(char => 
                 char.name.toLowerCase().includes(name.toLowerCase())

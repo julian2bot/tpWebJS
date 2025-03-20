@@ -9,6 +9,11 @@ import Note from '../utils/note.js';
 
 
 export default class Listing extends BaseView{
+    static page = 1;
+    static maxPage = 1;
+    static perPage = 10;
+    static mine = false;
+
     static equipement = {
         heads : null,
         torso : null,
@@ -23,25 +28,35 @@ export default class Listing extends BaseView{
         Listing.equipement.shoes = await EquipmentProvider.getShoesById(shoes);
     }
 
-    static async renderCharacters(mine=false){
+    static async renderCharacters(){
         let view = "";
-        let url = Utils.parseRequestURL()
         let characters = [];
+        let response = null;
+        let parsedId = Utils.parseListingId();
+        let limitInput = document.getElementById("limitInput");
+
+        Listing.page = parsedId.page>0 ? parsedId.page : 1;
+        Listing.perPage = parsedId.perpage ?? 10;
+        if(limitInput){limitInput.value = Listing.perPage;}
       
         window.CharacterProvider = CharacterProvider;
         window.MesFavoris = MesFavoris;
         
-        if(!url.id){
-            if(mine){
-                characters = await CharacterProvider.getCharactersByPseudo(UserManagement.getUsername());
+        if(!parsedId.name){
+            if(Listing.mine){
+                response = await CharacterProvider.getCharactersByPseudo(UserManagement.getUsername(), Listing.page, Listing.perPage);
             }
             else{
-                characters = await CharacterProvider.getCharacters();
+                response = await CharacterProvider.getCharacters(Listing.page, Listing.perPage);
             }
+            characters = response.data;
+            Listing.maxPage = response.last ?? Listing.page+4;
         }
         else{
-            characters = await CharacterProvider.getSearchCharactersbyName(url.id);
+            characters = await CharacterProvider.getSearchCharactersbyName(parsedId.name ?? "", Listing.page, Listing.perPage);
         }
+
+
         for (let character of characters) {
 
             await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
@@ -49,7 +64,7 @@ export default class Listing extends BaseView{
             view += `<div class="card" id=${character.id}>
             <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
             <h3>${character.name}</h3>
-            <h4 class="creator" ${mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
+            <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
@@ -80,6 +95,7 @@ export default class Listing extends BaseView{
     }
 
     static async render(){
+        window.Utils = Utils;
         let view = `<style>main{ margin-top:6rem}</style>
 
             
@@ -89,13 +105,13 @@ export default class Listing extends BaseView{
                 <button onclick="CharacterProvider.getSearchCharacters()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L14.9497 14.9497M14.9497 14.9497C16.2165 13.683 17 11.933 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17C11.933 17 13.683 16.2165 14.9497 14.9497Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 </button>
-                <button onclick="window.location.href ='#/listing'">
+                <button onclick="const updatedId = Utils.updateListingId(name='_'); window.location.href = '#/listing/' + updatedId;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.87 10.5046L10.8204 12.4504L9.76045 13.511L6 9.75456L9.76045 5.99805L10.8204 7.05871L8.87 9.00456H18V18H11.9532V16.5H16.5V10.5046H8.87Z" fill="#1F2328"/>
                     </svg>        
                 </button>
-
             </div>`;
+
         if(UserManagement.isConnected()){
             view += `<select id="selectListing" style="width:10%;">
             <option value="all">all</option>
@@ -107,8 +123,70 @@ export default class Listing extends BaseView{
         
         view+= await Listing.renderCharacters();
         
-        view+'</div>';
+        view+='</div>';
+        view += `<footer>
+            <div id='pageSelector'>
+            <div id='pagination'>
+            ${Listing.renderPagination()}</div>
+            <form id='limitSelector'>
+                <input type="number" name="limitInput" id="limitInput" placeholder='Limite' value=${Listing.perPage} required>
+                <button id='changeLimit'>Valider</button>
+            </form>
+        </footer>`;
+
+        
         return view;
+    }
+
+    static renderPagination(){
+        let pagination = `
+            <ul class="pagination">
+                <li class="page-item">
+                    <button class="page-link" onclick="const updatedId = Utils.updateListingId('',${Listing.page-1}); window.location.href = '#/listing/' + updatedId;" ${Listing.page==1 ? "disabled" : ""}>&laquo;</button>
+                </li>
+                <li class="page-item">
+                    <button class="page-link" onclick="const updatedId = Utils.updateListingId('',1); window.location.href = '#/listing/' + updatedId;" ${Listing.page==1 ? "disabled" : ""}>1</button>
+                </li>
+        `;
+
+        if(Listing.page>3){
+            pagination += `
+                <li class="page-item">...</li>`;
+        }
+        
+        let index = Listing.page-1;
+        let cpt=0;
+        while (index<Listing.maxPage && cpt<3) {
+            if(index>1){
+                pagination += `
+                <li class="page-item">
+                    <button class="page-link" onclick="const updatedId = Utils.updateListingId('',${index}); window.location.href = '#/listing/' + updatedId;" ${Listing.page==index ? "disabled" : ""}>${index}</button>
+                </li>`;
+            }
+            cpt++;
+            index++;
+        }
+
+        if(Listing.maxPage-Listing.page>2){
+            pagination += `
+                <li class="page-item">...</li>`;
+        }
+
+        if(Listing.maxPage>1){
+            pagination += `
+                <li class="page-item">
+                    <button class="page-link" onclick="const updatedId = Utils.updateListingId('',${Listing.maxPage}); window.location.href = '#/listing/' + updatedId;" ${Listing.page>=Listing.maxPage ? "disabled" : ""}>${Listing.maxPage}</button>
+                </li>`;
+        }
+
+        pagination +=
+        `   
+            <li class="page-item">
+                <button class="page-link" onclick="const updatedId = Utils.updateListingId('',${Listing.page+1}); window.location.href = '#/listing/' + updatedId;" ${Listing.page>=Listing.maxPage ? "disabled" : ""}>&raquo;</button>
+            </li>
+        </ul>`;
+
+        return pagination;
     }
 
     static renderPopUp(card) {
@@ -164,10 +242,6 @@ export default class Listing extends BaseView{
             boutons.appendChild(boutonModif);
         }
 
-
-        
-
-
         popUp.appendChild(boutons);
 
         document.getElementById("app").appendChild(fondNoir);
@@ -192,26 +266,33 @@ export default class Listing extends BaseView{
                 }
             });
         }
-
     }
 
     static async init(){
         let select = document.getElementById("selectListing");
+        let content = document.getElementById("content");
+
         if(select != undefined){
-            let content = document.getElementById("content");
             select.addEventListener("change", async (event)=>{
-                switch(select.value){
-                    case 'mine':
-                        content.innerHTML = await Listing.renderCharacters(true);
-                        break;
+                Listing.mine = select.value=='mine';
+                content.innerHTML = await Listing.renderCharacters();
                     
-                    default: // all
-                        content.innerHTML = await Listing.renderCharacters();
-                        break;
-                }
                 Listing.addListenerCard();
             })
         }
         Listing.addListenerCard();
+
+        let limitInput = document.getElementById("limitInput");
+        let changeLimit = document.getElementById("changeLimit");
+        changeLimit.addEventListener('click', async (event)=>{
+            if(limitInput.value == ""){
+                return;
+            }
+            else{
+                event.preventDefault();
+                let params = Utils.updateListingId("",1, limitInput.value);
+                window.location.href = `#/listing/${params}`
+            }
+        })
     }
 }

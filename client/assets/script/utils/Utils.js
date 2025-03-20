@@ -14,6 +14,34 @@ const Utils = {
         request.verb = r[3];
 
         return request;
+    },
+    parseListingId : ()=>{
+        let id = Utils.parseRequestURL().id;
+        console.log(id);
+        if (id == null){
+            return {};
+        }
+        id = id.replaceAll("%22", "\"");
+        try {
+            console.log(JSON.parse(`{${id}}`));
+            return JSON.parse(`{${id}}`);            
+        } catch (error) {
+            console.error(error);
+            return {};
+        }
+    },
+    updateListingId : (name="",page=-1, perpage=-1)=>{
+        let param = Utils.parseListingId();
+        console.log(name=="_")
+        if(name=="_"){delete param["name"]}
+        else if(name != ""){param.name = name;}
+        if(page != -1){param.page = page;}
+        if(perpage != -1){param.perpage = perpage;}
+
+        let strParam = JSON.stringify(param);
+        strParam = strParam.replace("{", "");
+        strParam = strParam.replace("}", "");
+        return strParam;
     }
 }
 
