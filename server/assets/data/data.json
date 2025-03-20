@@ -215,6 +215,33 @@
       "shoes": 1,
       "creator": "chris",
       "id": "f862"
+    },
+    {
+      "id": "e9bb",
+      "name": "sss",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "1700",
+      "name": "edede",
+      "head": 1,
+      "torso": 8,
+      "pants": 5,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "7521",
+      "name": "e",
+      "head": 1,
+      "torso": 7,
+      "pants": 5,
+      "shoes": 1,
+      "creator": "chris"
     }
   ]
 }
