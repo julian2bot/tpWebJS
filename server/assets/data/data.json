@@ -445,7 +445,7 @@
     },
     {
       "id": "d920",
-      "name": "dÃ©fi couscous",
+      "name": "défi couscous",
       "head": 1,
       "torso": 5,
       "pants": 1,
@@ -487,6 +487,42 @@
       "pants": 5,
       "shoes": 1,
       "creator": "michel"
+    },
+    {
+      "id": "4ed5",
+      "name": "dsefs",
+      "head": 1,
+      "torso": 5,
+      "pants": 4,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "941a",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "b57c",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "0a3c",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
     }
   ]
 }

@@ -25,7 +25,18 @@ export default class Favoris extends BaseView{
     static async render(){
         let characters = await CharacterProvider.getCharactersFav();
         // console.log(characters)
-        let view = `<style>main{margin:2.2rem;  margin-top:3rem; display: flex; justify-content: space-around; gap:10px; flex-wrap: wrap;}</style>`
+        let view = `<style>
+            main{
+                margin:2.2rem;  
+                margin-top:3rem; 
+                display: flex; 
+                justify-content: 
+                space-around; 
+                gap:10px; 
+                flex-wrap: wrap;
+            }
+
+        </style>`
         // characters.forEach(character=>{
         window.MesFavoris = MesFavoris;
 
@@ -35,7 +46,7 @@ export default class Favoris extends BaseView{
             // console.log(character.id)
             view += `<div class="card">
 
-            <button id="${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}', true)">♥</button>
+            <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}', true)">♥</button>
             
             <h3>${character.name}</h3>
             <div class="image">

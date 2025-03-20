@@ -24,6 +24,7 @@ export default class MesFavoris{
     
         localStorage.setItem("fav", JSON.stringify(favs));
     }
+
     
     static getFavoris() {
         return JSON.parse(localStorage.getItem("fav")) || [];

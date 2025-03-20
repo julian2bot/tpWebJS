@@ -108,8 +108,9 @@ export default class Note{
             }
 
         }
-        static async saveNote(userID, idCharacter, note){
 
+
+        static async saveNote(userID, idCharacter, note){
             
             const response = await fetch(`${ENDPOINT}note/${idCharacter}`);
             
@@ -119,7 +120,6 @@ export default class Note{
                 methode = "PUT";
                 url = `${ENDPOINT}note/${idCharacter}`;
             }
-            console.log("la")
 
             fetch(url, {
                 headers: {
