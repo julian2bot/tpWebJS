@@ -5,6 +5,9 @@ import UserManagement from '../utils/UserManagement.js';
 import {ENDPOINT} from '../config.js'
 import MesFavoris from '../utils/MesFavoris.js';
 import Utils from '../utils/Utils.js';
+import Note from '../utils/note.js';
+
+
 export default class Listing extends BaseView{
     static page = 1;
     static maxPage = 1;
@@ -116,7 +119,7 @@ export default class Listing extends BaseView{
         </select>`;
           
         }
-        view += "<div id='content' style=' margin-top:3rem; display: flex; justify-content: space-around; gap:40px; flex-wrap: wrap;'>";
+        view += "<div id='content' style=' margin:2.2rem; margin-top:3rem; display: flex; justify-content: space-around; gap:40px; flex-wrap: wrap;'>";
         
         view+= await Listing.renderCharacters();
         
@@ -194,7 +197,25 @@ export default class Listing extends BaseView{
 
         let popUp = document.createElement("div");
         let upperPart = document.createElement("div");
-        upperPart.innerHTML = card.innerHTML;
+        upperPart.innerHTML = card.innerHTML + `
+            <div class="containerStar">
+                <div>
+                    <h2 class="noteMoyenne">Note Moyenne</h2>
+                    <p class="noteMoyenne" id="characterNote-${card.id}" >../4</p>
+                    
+                </div>
+                <h2 class="noteMoyenne">Ma Note</h2>
+                <div class="stars" id="character-${card.id}">
+                    <input type="hidden" name="nbEtoile" value='-1'>
+                    
+                    <a href="#lanote=5" class="star stargrey" ><i data-index="5">★</i></a>
+                    <a href="#lanote=4" class="star stargrey" ><i data-index="4">★</i></a>
+                    <a href="#lanote=3" class="star stargrey" ><i data-index="3">★</i></a>
+                    <a href="#lanote=2" class="star stargrey" ><i data-index="2">★</i></a>
+                    <a href="#lanote=1" class="star stargrey" ><i data-index="1">★</i></a>
+                </div>
+            </div>`;
+
         popUp.appendChild(upperPart);
         popUp.classList.add("pop-up-listing");
 
@@ -232,12 +253,16 @@ export default class Listing extends BaseView{
         }
     }
 
-    static addListenerCard(){
+    static async addListenerCard(){
         let cards = document.getElementsByClassName("card");
         for (const card of cards) {
             card.addEventListener("click",(event)=>{
                 if(! event.target.id.startsWith('heart-')){
                     Listing.renderPopUp(card);
+
+                    Note.noteStar(UserManagement.getUsername() , card.id)
+                    Note.afficheNote(card.id);
+
                 }
             });
         }

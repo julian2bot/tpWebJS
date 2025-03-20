@@ -14,6 +14,13 @@
     filter: url(#squiggly-filter);
     /* animation: wobble 0.8s infinite alternate ease-in-out; */
 }
+
+.card:hover{
+    cursor:pointer;
+    animation: sketchyAnim 1.5s infinite; /* todo : ou forward?????*/
+    /* filter: url(#squiggly-filterHover); */
+}
+
 .card > div{
     display: flex;
     justify-content: center;
@@ -92,7 +99,112 @@
     right: 5px;
 }
 
+@keyframes sketchyAnim {
+    0%{
+        filter: url(#squiggly-filter);
+    }
+    50%{
+        filter: url(#squiggly-filterHover);
+    }
+    100%{
+        filter: url(#squiggly-filter);
+    }
+}
+
+#nameUser{
+    position: absolute;
+    top: 9rem;
+}
+#selectListing{
+    filter: url(#squiggly-filter);
+    width: 10%;
+    position: absolute;
+    left: 50%;
+    translate: -50%;
+    top: 9rem;
+}
+#searchCharacters{
+    height: 1.5rem;
+    border: none;
+    border-bottom: 2px solid;
+}
+
+.seachBar {
+    filter: url(#squiggly-filter);
+    position:absolute;
+    right:0; 
+    top:9rem;
+}
+.seachBar *{
+    border: none;
+    background: transparent;
+}
+
+.seachBar button{
+    translate: -100% 25%;
+    transition: 200ms;
+}
+.seachBar button:hover{
+    scale: 1.1;
+    color: rgb(117, 117, 117);
+}
+
+#searchCharacters:focus {
+    outline: none;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.085);
+    border-bottom: 3px solid grey;
+    border-radius: 10px 10px 0px 0px;
+}
+
+
+
+
+/* star */
+.noteMoyenne{
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.containerStar{
+    position: absolute;
+    top:20px;
+    right:20px;
+}
+
+.stars {
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.stargrey {
+    color: #96969d;
+}
+
+.stars > a {
+    text-decoration: none;
+}
+
+.staryellow i {
+    color: #feb624;
+}
+.stars .star:hover,
+.stars .star:hover ~ .star i{
+    color: #fac251 !important;
+    cursor: pointer;
+}
+
+
+
+/* pop up */
+
+
 .pop-up-listing{
+    filter: url(#squiggly-filter);
+
     position: fixed;
     width: 70vw;
     height: 70vh;
@@ -109,9 +221,9 @@
 }
 
 .pop-up-listing .stats{
+    margin-top: 20px;    
     position: absolute;
-    left: 2;
-    scale:1.2;
+    scale:1.4;
 }
 
 .pop-up-listing .creator{
@@ -137,10 +249,8 @@
     height: 150vh;
 }
 
-#searchCharacters{
-    height: 1.5rem;
-    border: none;
-    border-bottom: 2px solid;
+.pop-up-listing .hearts{
+    display: none;
 }
 
 .seachBar {
@@ -207,4 +317,9 @@ footer{
 
 .page-link:disabled{
     background-color: gray;
+  
+.pop-up-listing h3,.pop-up-listing .creator{
+    font-size: 2rem;
+    margin: 20px;
+    margin-left: 0;
 }

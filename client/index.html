@@ -31,6 +31,15 @@
         </filter>
     </svg>
     
+    <svg style="display:none;">
+        <filter id="squiggly-filterHover">
+            <feTurbulence type="fractalNoise" baseFrequency="0.046" numOctaves="5" result="noise"></feTurbulence>           
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" />
+
+
+        </filter>
+    </svg>
+    
     
     <main id="app">
         <p>Rien a voir ici</p>
