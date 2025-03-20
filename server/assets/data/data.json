@@ -27,8 +27,8 @@
     },
     {
       "id": "4b3f",
-      "idUser": "chris",
-      "note": "4"
+      "idUser": "michel",
+      "note": "2"
     },
     {
       "id": "2e63",
@@ -44,6 +44,21 @@
       "id": "ba9d",
       "idUser": "michel",
       "note": "3"
+    },
+    {
+      "id": "b3bd",
+      "idUser": "michel",
+      "note": "5"
+    },
+    {
+      "id": "30da",
+      "idUser": "michel",
+      "note": "2"
+    },
+    {
+      "id": "5f09",
+      "idUser": "michel",
+      "note": "3"
     }
   ],
   "equipement": {
@@ -52,25 +67,49 @@
         "id": 1,
         "name": "head1",
         "img": "img/equipement/head/casque.png",
-        "strength": 10,
-        "stamina": 0,
-        "agility": -2
+        "strength": 1,
+        "stamina": 10,
+        "agility": -1
       },
       {
         "id": 2,
         "name": "head2",
-        "img": "img/equipement/head/haut2.png",
+        "img": "img/equipement/head/casque2.png",
         "strength": -3,
         "stamina": 7,
         "agility": -2
       },
       {
+        "id": 1,
+        "name": "head1",
+        "img": "img/equipement/head/casque3.png",
+        "strength": 10,
+        "stamina": 0,
+        "agility": -2
+      },
+      {
         "id": 3,
         "name": "head3",
-        "img": "img/equipement/head/haut3.png",
+        "img": "img/equipement/head/casque4.png",
         "strength": 5,
         "stamina": -6,
         "agility": 8
+      },
+      {
+        "id": 1,
+        "name": "head1",
+        "img": "img/equipement/head/casque5.png",
+        "strength": 5,
+        "stamina": 5,
+        "agility": 2
+      },
+      {
+        "id": 1,
+        "name": "head1",
+        "img": "img/equipement/head/casque6.png",
+        "strength": 8,
+        "stamina": 1,
+        "agility": -2
       }
     ],
     "torso": [
@@ -191,17 +230,41 @@
         "agility": -2
       },
       {
+        "id": 1,
+        "name": "shoes1",
+        "img": "img/equipement/shoes/basbas2.png",
+        "strength": 0,
+        "stamina": 6,
+        "agility": 2
+      },
+      {
+        "id": 1,
+        "name": "shoes1",
+        "img": "img/equipement/shoes/basbas3.png",
+        "strength": 1,
+        "stamina": 10,
+        "agility": 2
+      },
+      {
         "id": 2,
         "name": "shoes2",
-        "img": "img/equipement/shoes/haut2.png",
+        "img": "img/equipement/shoes/basbas4.png",
         "strength": -3,
         "stamina": 7,
         "agility": -2
       },
       {
+        "id": 1,
+        "name": "shoes1",
+        "img": "img/equipement/shoes/basbas5.png",
+        "strength": 1,
+        "stamina": 4,
+        "agility": 2
+      },
+      {
         "id": 3,
         "name": "shoes3",
-        "img": "img/equipement/shoes/haut3.png",
+        "img": "img/equipement/shoes/basbas6.png",
         "strength": 5,
         "stamina": -6,
         "agility": 8
@@ -406,6 +469,78 @@
       "pants": 5,
       "shoes": 1,
       "creator": "julian"
+    },
+    {
+      "id": "b3bd",
+      "name": "gooo",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "michel"
+    },
+    {
+      "id": "5f09",
+      "name": "notetest",
+      "head": 1,
+      "torso": 1,
+      "pants": 5,
+      "shoes": 1,
+      "creator": "michel"
+    },
+    {
+      "id": "4ed5",
+      "name": "dsefs",
+      "head": 1,
+      "torso": 5,
+      "pants": 4,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "941a",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "b57c",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "0a3c",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "b91d",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
+    },
+    {
+      "id": "0945",
+      "name": "fsd",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "d"
     }
   ]
 }

@@ -13,12 +13,16 @@
     position: relative;
     filter: url(#squiggly-filter);
     /* animation: wobble 0.8s infinite alternate ease-in-out; */
+    transition: 200ms;
 }
 
 .card:hover{
     cursor:pointer;
     animation: sketchyAnim 1.5s infinite; /* todo : ou forward?????*/
     /* filter: url(#squiggly-filterHover); */
+
+    scale: 1.05;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .card > div{
@@ -41,8 +45,27 @@
     position: relative;
     top: 0;
     left: 0;
-    
+    transition: 500ms;
 }
+
+.card .image:hover {
+    width: 93%;
+    height: 88%;
+
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    left: 5px;
+}
+
+.card .image:hover .persoPreview {
+    scale:.7;
+    position: relative;
+    left: 0;
+    top: 50px;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
 
 .card p {
     font-size: 14px;
@@ -113,7 +136,8 @@
 
 #nameUser{
     position: absolute;
-    top: 9rem;
+    top: 0;
+    left: 10px;
 }
 #selectListing{
     filter: url(#squiggly-filter);
@@ -149,7 +173,7 @@
     color: rgb(117, 117, 117);
 }
 
-#searchCharacters:focus {
+#searchCharacters:focus,#inputName:focus {
     outline: none;
     border: none;
     background-color: rgba(128, 128, 128, 0.085);
@@ -157,7 +181,15 @@
     border-radius: 10px 10px 0px 0px;
 }
 
+#createCharacter{
+    filter: url(#squiggly-filter);
 
+}
+#inputName{
+    height: 1.5rem;
+    border: none;
+    border-bottom: 2px solid;
+}
 
 
 /* star */
@@ -214,10 +246,13 @@
     border: black 5px solid;
     z-index: 100;
     padding: 2em;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .pop-up-listing .image{
-    scale: 2;
+    scale: 4;
+    top: -86px;
+    position: relative;
 }
 
 .pop-up-listing .stats{

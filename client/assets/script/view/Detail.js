@@ -37,13 +37,37 @@ export default class Detail extends BaseView{
             return "Veuillez vous connecter";
         }
         return `
-            <style>main{ margin-top:3rem; display: flex; justify-content: space-around;}</style>
+            <style>
+            main{ 
+                margin-top:3rem; 
+                display: flex; 
+                justify-content: space-around;
+            }
+                
+            /*
+            #nameUser {
+                position: absolute;
+                top: 6rem;
+                }
+            */
+            @media (max-width: 720px) {
+                main{ 
+                    display:block;
+                }        
+            }
+            </style>
             <aside>
                 <ul>
                     <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
                     <div class="stat"><img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
                     <div class="stat"><img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
                 </ul>
+
+                <form id='createCharacter' action="">
+                    <label for="name">Nom Perso</label>
+                    <input id='inputName' class="inputRecherche" type="text" name="name" placeholder="Michel">
+                    <input id='createCharacterButton' type="submit" value="Créer">
+                </form>
             </aside>
             <section id="editPerso">
                 <div  id="perso">
@@ -83,13 +107,7 @@ export default class Detail extends BaseView{
                     </div>        
                 </div>
             </section>
-            <aside>
-                <form id='createCharacter' action="">
-                    <label for="name">Nom Perso</label>
-                    <input id='inputName' type="text" name="name" placeholder="Michel">
-                    <input id='createCharacterButton' type="submit" value="Créer">
-                </form>
-            </aside>`
+`
     }
 
     static characteristicsCalculus(){
@@ -105,7 +123,7 @@ export default class Detail extends BaseView{
         Detail.updateStrength(strength);
         Detail.updateStamina(stamina);
         Detail.updateAgility(agility);
-        // console.log(strength, stamina, agility);
+        console.log(strength, stamina, agility);
     }
     
     // change la valeur de la var strength dans le css
@@ -123,20 +141,38 @@ export default class Detail extends BaseView{
     // change la valeur de la var souplaise dans le css
     static updateAgility(agility){
         let r = document.querySelector(':root');
-        r.style.setProperty('--progress-souplaise', `${agility}%`);
+        r.style.setProperty('--progress-agility', `${agility}%`);
+        console.log(r)
     }
     
     // affiche le personnage
     static updateDisplay() {
+        // CASQUE
+        let imgGaucheCasque = document.querySelector("#gauchePreview .casque");
+        let imgCentreCasque = document.getElementById("casque");
+        let imgDroiteCasque = document.querySelector("#droitePreview .casque");
+        
+        let totalCasque = Detail.equipments.head.length;
+        
+        let indexGaucheCasque = (Detail.centerIndex.head - 1 + totalCasque) % totalCasque;
+        let indexDroiteCasque = (Detail.centerIndex.head + 1) % totalCasque;
+        
+        
+        imgGaucheCasque.src = ENDPOINT+Detail.equipments.head[indexGaucheCasque].img;
+        imgCentreCasque.src = ENDPOINT+Detail.equipments.head[Detail.centerIndex.head].img;
+        imgDroiteCasque.src = ENDPOINT+Detail.equipments.head[indexDroiteCasque].img;
+        
+        
+        // HAUT
         let imgGaucheHaut = document.querySelector("#gauchePreview .haut");
         let imgCentreHaut = document.getElementById("haut");
         let imgDroiteHaut = document.querySelector("#droitePreview .haut");
-    
+        
         let totalHaut = Detail.equipments.torso.length;
         
         let indexGaucheHaut = (Detail.centerIndex.torso - 1 + totalHaut) % totalHaut;
         let indexDroiteHaut = (Detail.centerIndex.torso + 1) % totalHaut;
-    
+        
         
         imgGaucheHaut.src = ENDPOINT+Detail.equipments.torso[indexGaucheHaut].img;
         imgCentreHaut.src = ENDPOINT+Detail.equipments.torso[Detail.centerIndex.torso].img;
@@ -144,6 +180,7 @@ export default class Detail extends BaseView{
         
         
         
+        // BAS
         let imgGaucheBas = document.querySelector("#gauchePreview .bas");
         let imgCentreBas = document.getElementById("bas");
         let imgDroiteBas = document.querySelector("#droitePreview .bas");
@@ -159,6 +196,22 @@ export default class Detail extends BaseView{
         imgDroiteBas.src = ENDPOINT+Detail.equipments.pants[indexDroiteBas].img;
     
     
+        // Shoes
+        let imgGaucheShoes = document.querySelector("#gauchePreview .basbas");
+        let imgCentreShoes = document.getElementById("basbas");
+        let imgDroiteShoes = document.querySelector("#droitePreview .basbas");
+    
+        let totalShoes = Detail.equipments.shoes.length;
+        
+        let indexGaucheShoes = (Detail.centerIndex.shoes - 1 + totalShoes) % totalShoes;
+        let indexDroiteShoes = (Detail.centerIndex.shoes + 1) % totalShoes;
+    
+    
+        imgGaucheShoes.src = ENDPOINT+Detail.equipments.shoes[indexGaucheShoes].img;
+        imgCentreShoes.src = ENDPOINT+Detail.equipments.shoes[Detail.centerIndex.shoes].img;
+        imgDroiteShoes.src = ENDPOINT+Detail.equipments.shoes[indexDroiteShoes].img;
+    
+            
         Detail.characteristicsCalculus();
     }
     
@@ -173,6 +226,21 @@ export default class Detail extends BaseView{
         Detail.centerIndex.torso = (Detail.centerIndex.torso - 1) % Detail.equipments.torso.length
         if(Detail.centerIndex.torso < 0){
             Detail.centerIndex.torso = Detail.equipments.torso.length - 1
+        }
+        Detail.updateDisplay();
+    }
+
+    // update au moment du clique sur le bouton
+    static updatePreviewCasqueDroite(){
+        Detail.centerIndex.head = (Detail.centerIndex.head + 1) % Detail.equipments.head.length;
+        Detail.updateDisplay();
+    }
+    
+    // update au moment du clique sur le bouton
+    static updatePreviewCasqueGauche(){
+        Detail.centerIndex.head = (Detail.centerIndex.head - 1) % Detail.equipments.head.length
+        if(Detail.centerIndex.head < 0){
+            Detail.centerIndex.head = Detail.equipments.head.length - 1
         }
         Detail.updateDisplay();
     }
@@ -191,7 +259,23 @@ export default class Detail extends BaseView{
         }
         Detail.updateDisplay();
     }
+
+    // update au moment du clique sur le bouton
+    static updatePreviewShoesDroite(){
+        Detail.centerIndex.shoes = (Detail.centerIndex.shoes + 1) % Detail.equipments.shoes.length;
+        Detail.updateDisplay();
+    }
     
+    // update au moment du clique sur le bouton
+    static updatePreviewShoesGauche(){
+        Detail.centerIndex.shoes = (Detail.centerIndex.shoes - 1) % Detail.equipments.shoes.length
+        if(Detail.centerIndex.shoes < 0){
+            Detail.centerIndex.shoes = Detail.equipments.shoes.length - 1
+        }
+        Detail.updateDisplay();
+    }
+
+
     static async init(){
         if(! UserManagment.isConnected()){
             return ;
@@ -248,19 +332,27 @@ export default class Detail extends BaseView{
         Detail.updateDisplay();
     
         document.querySelector("#droite").addEventListener("click", (event) => {
-            if (event.target.closest(".haut")) {
+            if (event.target.closest(".casque")) {
+                Detail.updatePreviewCasqueDroite();
+            }else if (event.target.closest(".haut")) {
                 Detail.updatePreviewHautDroite();
             }else if(event.target.closest(".bas")){
                 Detail.updatePreviewBasDroite();
+            }else if(event.target.closest(".basbas")){
+                Detail.updatePreviewShoesDroite();
             }
         });
         
         document.querySelector("#gauche").addEventListener("click", (event) => {
-            if (event.target.closest(".haut")) {
+            if(event.target.closest(".casque")){
+                Detail.updatePreviewCasqueGauche();    
+            }
+            else if (event.target.closest(".haut")) {
                 Detail.updatePreviewHautGauche();
             }else if(event.target.closest(".bas")){
                 Detail.updatePreviewBasGauche();
-                
+            }else if(event.target.closest(".basbas")){
+                Detail.updatePreviewShoesGauche();
             }
         });
 
