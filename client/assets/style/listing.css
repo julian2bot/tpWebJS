@@ -253,6 +253,71 @@
     display: none;
 }
 
+.seachBar {
+    filter: url(#squiggly-filter);
+    position:absolute;
+    right:0; 
+    top:9rem;
+}
+.seachBar *{
+    border: none;
+    background: transparent;
+}
+
+.seachBar button{
+    translate: -100% 25%;
+    transition: 200ms;
+}
+.seachBar button:hover{
+    scale: 1.1;
+    color: rgb(117, 117, 117);
+}
+
+#searchCharacters:focus {
+    outline: none;
+    border: none;
+    background-color: rgba(128, 128, 128, 0.085);
+    border-bottom: 3px solid grey;
+    border-radius: 10px 10px 0px 0px;
+}
+
+footer{
+    margin-top: 2em;
+    width: 95%;
+    max-width: 95%;
+    background-color: grey;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 0;
+}
+
+.pagination *{
+    color: black;
+    text-decoration: none;
+}
+
+.page-item{
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: black solid 1px;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-link:disabled{
+    background-color: gray;
+  
 .pop-up-listing h3,.pop-up-listing .creator{
     font-size: 2rem;
     margin: 20px;
