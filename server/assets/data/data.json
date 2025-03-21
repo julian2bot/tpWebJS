@@ -559,33 +559,6 @@
       "pants": 1,
       "shoes": 1,
       "creator": "chris"
-    },
-    {
-      "id": "ec17",
-      "name": "de",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
-    },
-    {
-      "id": "a57b",
-      "name": "de",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
-    },
-    {
-      "id": "6084",
-      "name": "ede",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
     }
   ]
 }
