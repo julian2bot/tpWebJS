@@ -525,10 +525,37 @@
       "creator": "d"
     },
     {
-      "id": "b59a",
-      "name": "de",
+      "name": "hibehbdhueededdeded",
+      "head": 1,
+      "torso": 8,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris",
+      "id": "8e3c"
+    },
+    {
+      "id": "fcda",
+      "name": "dede",
+      "head": 1,
+      "torso": 8,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "6f32",
+      "name": "d",
       "head": 1,
       "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "9db3",
+      "name": "de",
+      "head": 1,
+      "torso": 7,
       "pants": 1,
       "shoes": 1,
       "creator": "chris"
