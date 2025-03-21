@@ -189,7 +189,7 @@ export default class Listing extends BaseView{
         return pagination;
     }
 
-    static renderPopUp(card) {
+    static async renderPopUp(card){
         console.log(card);
         let fondNoir = document.createElement("div");
         fondNoir.classList.add("fondnoir");
@@ -251,6 +251,68 @@ export default class Listing extends BaseView{
             document.getElementById("app").removeChild(fondNoir);
             document.getElementById("app").removeChild(popUp);
         }
+
+        let d = document.createElement("div")
+        d.innerHTML = await Listing.renderOtherCharacters(card.getElementsByClassName("creator")[0].textContent.split(" : ")[1], card.id);
+        d.id = "otherCharacters";
+        for (const element of d.children) {
+            element.addEventListener("click", (event)=>{
+                document.getElementById("app").removeChild(fondNoir);
+                document.getElementById("app").removeChild(popUp);
+                Listing.renderPopUp(element.getElementsByClassName("card")[0]);
+            });
+        }
+        document.getElementsByClassName("containerStar")[0].appendChild(d);
+    }
+
+    static async renderOtherCharacters(username, charid){
+        let characters = await CharacterProvider.getCharactersByPseudoOthers(username, charid);
+        let view = "";
+        for(let character of characters){
+            await Listing.updateEquipments(character.head, character.torso, character.pants, character.shoes);
+            view+=`
+            <div class="littleCard">
+                <div class="card" id=${character.id}>
+                    <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
+                    <h3>${character.name}</h3>
+                    <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
+                    <div class="image">
+                        <div class="persoPreview">
+                            <img src="../assets/img/perso.png">
+                            <img class="imgPersoCasque" src="${ENDPOINT + Listing.equipement.heads.img}">
+                            <img class="imgPersoHaut" src="${ENDPOINT + Listing.equipement.torso.img}">
+                            <img class="imgPersoBas" src="${ENDPOINT + Listing.equipement.pants.img}">
+                            <img class="imgPersoBasBas" src="${ENDPOINT + Listing.equipement.shoes.img}">
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <img src="../assets/img/strength.png" class="iconCaract" alt="strength">
+                            <span>${50 + Listing.equipement.heads.strength + Listing.equipement.torso.strength + Listing.equipement.pants.strength + Listing.equipement.shoes.strength}%</span>
+                        </div>
+                        <div class="stat">
+                            <img src="../assets/img/stamina.png" class="iconCaract" alt="stamina">
+                            <span>${50 + Listing.equipement.heads.stamina + Listing.equipement.torso.stamina + Listing.equipement.pants.stamina + Listing.equipement.shoes.stamina}%</span>
+                        </div>
+                        <div class="stat">
+                            <img src="../assets/img/agility.png" class="iconCaract" alt="agility">
+                            <span>${50 + Listing.equipement.heads.agility + Listing.equipement.torso.agility + Listing.equipement.pants.agility + Listing.equipement.shoes.agility}%</span>
+                        </div>
+                    </div>
+                </div>
+                <h3>${character.name}</h3>
+                <div class="imageLittle">
+                    <div class="persoPreview">
+                        <img src="../assets/img/perso.png">
+                        <img class="imgPersoCasque" src="${ENDPOINT + Listing.equipement.heads.img}">
+                        <img class="imgPersoHaut" src="${ENDPOINT + Listing.equipement.torso.img}">
+                        <img class="imgPersoBas" src="${ENDPOINT + Listing.equipement.pants.img}">
+                        <img class="imgPersoBasBas" src="${ENDPOINT + Listing.equipement.shoes.img}">
+                    </div>
+                </div>
+            </div>`;
+        }
+        return view;
     }
 
     static async addListenerCard(){

@@ -523,6 +523,15 @@
       "pants": 1,
       "shoes": 1,
       "creator": "d"
+    },
+    {
+      "id": "b59a",
+      "name": "de",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
     }
   ]
 }
