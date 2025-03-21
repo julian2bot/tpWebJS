@@ -5,7 +5,7 @@ export default class CharacterManagement{
         let url = characterId ? `${ENDPOINT}characters/${characterId}` : `${ENDPOINT}characters`;
         let method = characterId ? "PUT" : "POST";
 
-        fetch(url, {
+        return fetch(url, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -23,18 +23,18 @@ export default class CharacterManagement{
         })
         .then(res => {
             console.log('Save Success : ', res);
-            return true;
+            return res.ok;
         })
         .catch(res => { console.log(res); return false;});
     }
 
     static async deleteCharacter(id){
-        fetch(`${ENDPOINT}characters/${id}`, {
+        return fetch(`${ENDPOINT}characters/${id}`, {
             method: "DELETE",
         })
         .then(res => {
             console.log('Delete Success : ', res);
-            return true;
+            return res.ok;
         })
         .catch(res => { console.log(res); return false;});
     }

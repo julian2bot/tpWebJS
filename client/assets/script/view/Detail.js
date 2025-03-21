@@ -314,8 +314,9 @@ export default class Detail extends BaseView{
                     supp.textContent = "Supprimer";
                     supp.onclick = async (event)=>{
                         event.preventDefault();
-                        await CharacterManagement.deleteCharacter(request.id);
-                        // POP UP + Redirection
+                        let succes = await CharacterManagement.deleteCharacter(request.id);
+                        showPopUp(succes ? "Personnage supprimé avec succès" : "Suppression impossible", succes);
+                        window.location.href = "#/listing";
                     }
                     document.getElementById("createCharacter").appendChild(supp);
                     Detail.updating = true;
@@ -397,7 +398,7 @@ export default class Detail extends BaseView{
                 }
                 showPopUp(message, succes);
                 window.location.href = "#/listing";
-                }
+            }
         })
     }
 

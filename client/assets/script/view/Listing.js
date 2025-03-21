@@ -7,6 +7,7 @@ import {ENDPOINT} from '../config.js'
 import MesFavoris from '../utils/MesFavoris.js';
 import Utils from '../utils/Utils.js';
 import Note from '../utils/note.js';
+import { showPopUp } from '../utils/popUp.js';
 
 
 export default class Listing extends BaseView{
@@ -195,9 +196,6 @@ export default class Listing extends BaseView{
         let fondNoir = document.createElement("div");
         fondNoir.classList.add("fondnoir");
 
-        // window.CharacterManagement = CharacterManagement;
-        
-
         let popUp = document.createElement("div");
         let upperPart = document.createElement("div");
         upperPart.innerHTML = card.innerHTML + `
@@ -236,14 +234,16 @@ export default class Listing extends BaseView{
                 boutons.appendChild(boutonModif);
                 let boutonSupp = document.createElement("button");
                 boutonSupp.textContent = "Supprimer";
-                boutonSupp.onclick = async () =>{
-                    await CharacterManagement.deleteCharacter(card.id);
-                    document.getElementById("app").removeChild(fondNoir);
-                    document.getElementById("app").removeChild(popUp);
-                    card.remove();
-
-                    // POP UP SUPPRESSION
-                }
+                boutonSupp.addEventListener('click', async (event)=>{
+                    let succes = await CharacterManagement.deleteCharacter(card.id);
+                    console.log(succes);
+                    if(succes){
+                        document.getElementById("app").removeChild(fondNoir);
+                        document.getElementById("app").removeChild(popUp);
+                        card.remove();
+                    }
+                    showPopUp(succes ? "Personnage supprimé avec succès" : "Suppression impossible", succes);
+                })
                 boutons.appendChild(boutonSupp);
             }
             else{
