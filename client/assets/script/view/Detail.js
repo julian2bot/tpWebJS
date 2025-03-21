@@ -66,7 +66,7 @@ export default class Detail extends BaseView{
 
                 <form id='createCharacter' action="">
                     <label for="name">Nom Perso</label>
-                    <input id='inputName' class="inputRecherche" type="text" name="name" placeholder="Michel">
+                    <input id='inputName' class="inputRecherche" type="text" name="name" placeholder="Michel" required>
                     <input id='createCharacterButton' type="submit" value="Créer">
                 </form>
             </aside>
@@ -358,17 +358,22 @@ export default class Detail extends BaseView{
         });
 
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
-            event.preventDefault();
-            console.log(Detail.centerIndex)
-            CharacterManagement.createOrUpdateCharacter(
-                document.getElementById("inputName").value,
-                Detail.equipments.head[Detail.centerIndex.head].id,
-                Detail.equipments.torso[Detail.centerIndex.torso].id,
-                Detail.equipments.pants[Detail.centerIndex.pants].id,
-                Detail.equipments.shoes[Detail.centerIndex.shoes].id,
-                UserManagment.getUsername(),
-                character ? character.id : undefined
-            )
+            if(document.getElementById("inputName").value == ""){
+                return;
+            }
+            else{
+                event.preventDefault();
+                console.log(Detail.centerIndex)
+                CharacterManagement.createOrUpdateCharacter(
+                    document.getElementById("inputName").value,
+                    Detail.equipments.head[Detail.centerIndex.head].id,
+                    Detail.equipments.torso[Detail.centerIndex.torso].id,
+                    Detail.equipments.pants[Detail.centerIndex.pants].id,
+                    Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                    UserManagment.getUsername(),
+                    character ? character.id : undefined
+                )
+            }
         })
     }
 
