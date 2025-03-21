@@ -1,5 +1,6 @@
 import EquipmentProvider from '../utils/EquipmentProvider.js';
 import CharacterProvider from "../utils/CharacterProvider.js";
+import CharacterManagement from '../utils/CharacterManagement.js';
 import BaseView from './BaseView.js';
 import UserManagement from '../utils/UserManagement.js';
 import {ENDPOINT} from '../config.js'
@@ -193,6 +194,8 @@ export default class Listing extends BaseView{
         console.log(card);
         let fondNoir = document.createElement("div");
         fondNoir.classList.add("fondnoir");
+
+        // window.CharacterManagement = CharacterManagement;
         
 
         let popUp = document.createElement("div");
@@ -230,16 +233,28 @@ export default class Listing extends BaseView{
 
             if(card.getElementsByClassName("creator")[0].textContent.split(" : ")[1] == UserManagement.getUsername()){
                 boutonModif.textContent="Modifier";
+                boutons.appendChild(boutonModif);
+                let boutonSupp = document.createElement("button");
+                boutonSupp.textContent = "Supprimer";
+                boutonSupp.onclick = async () =>{
+                    await CharacterManagement.deleteCharacter(card.id);
+                    document.getElementById("app").removeChild(fondNoir);
+                    document.getElementById("app").removeChild(popUp);
+                    card.remove();
+
+                    // POP UP SUPPRESSION
+                }
+                boutons.appendChild(boutonSupp);
             }
             else{
                 boutonModif.textContent="Copier (Oh le plagiat)";
+                boutons.appendChild(boutonModif);
             }
 
             boutonModif.onclick = ()=>{
                 window.location.href = `/#/detail/${card.id}`;
             }
             
-            boutons.appendChild(boutonModif);
         }
 
         popUp.appendChild(boutons);

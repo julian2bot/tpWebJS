@@ -27,4 +27,15 @@ export default class CharacterManagement{
         })
         .catch(res => { console.log(res); return false;});
     }
+
+    static async deleteCharacter(id){
+        fetch(`${ENDPOINT}characters/${id}`, {
+            method: "DELETE",
+        })
+        .then(res => {
+            console.log('Delete Success : ', res);
+            return true;
+        })
+        .catch(res => { console.log(res); return false;});
+    }
 }

@@ -309,6 +309,14 @@ export default class Detail extends BaseView{
                 if(character.creator == UserManagment.getUsername()){
                     document.getElementById("inputName").value = character.name;
                     document.getElementById("createCharacterButton").value = 'Modifier';
+                    let supp = document.createElement("button");
+                    supp.textContent = "Supprimer";
+                    supp.onclick = async (event)=>{
+                        event.preventDefault();
+                        await CharacterManagement.deleteCharacter(request.id);
+                        // POP UP + Redirection
+                    }
+                    document.getElementById("createCharacter").appendChild(supp);
                     Detail.updating = true;
                 }
                 else{
