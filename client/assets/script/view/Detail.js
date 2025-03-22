@@ -67,7 +67,7 @@ export default class Detail extends BaseView{
 
                 <form id='createCharacter' action="">
                     <label for="name">Nom Perso</label>
-                    <input id='inputName' class="inputRecherche" type="text" name="name" placeholder="Michel">
+                    <input id='inputName' class="inputRecherche" type="text" name="name" placeholder="Michel" required>
                     <input id='createCharacterButton' type="submit" value="Créer">
                 </form>
             </aside>
@@ -310,6 +310,15 @@ export default class Detail extends BaseView{
                 if(character.creator == UserManagment.getUsername()){
                     document.getElementById("inputName").value = character.name;
                     document.getElementById("createCharacterButton").value = 'Modifier';
+                    let supp = document.createElement("button");
+                    supp.textContent = "Supprimer";
+                    supp.onclick = async (event)=>{
+                        event.preventDefault();
+                        let succes = await CharacterManagement.deleteCharacter(request.id);
+                        showPopUp(succes ? "Personnage supprimé avec succès" : "Suppression impossible", succes);
+                        window.location.href = "#/listing";
+                    }
+                    document.getElementById("createCharacter").appendChild(supp);
                     Detail.updating = true;
                 }
                 else{
@@ -360,31 +369,36 @@ export default class Detail extends BaseView{
 
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
             event.target.disabled = true;
-            event.preventDefault();
-            console.log(Detail.centerIndex)
-            let succes = CharacterManagement.createOrUpdateCharacter(
-                document.getElementById("inputName").value,
-                Detail.equipments.head[Detail.centerIndex.head].id,
-                Detail.equipments.torso[Detail.centerIndex.torso].id,
-                Detail.equipments.pants[Detail.centerIndex.pants].id,
-                Detail.equipments.shoes[Detail.centerIndex.shoes].id,
-                UserManagment.getUsername(),
-                character ? character.id : undefined
-            )
-            let message = "";
-            if(succes){
-                if(character){
-                    message = "Personnage modifié avec succès";
-                }
-                else{
-                    message = "Personnage crée avec succès";
-                }
+            if(document.getElementById("inputName").value == ""){
+                return;
             }
             else{
-                message = "Création impossible"
+                event.preventDefault();
+                console.log(Detail.centerIndex)
+                let succes = CharacterManagement.createOrUpdateCharacter(
+                    document.getElementById("inputName").value,
+                    Detail.equipments.head[Detail.centerIndex.head].id,
+                    Detail.equipments.torso[Detail.centerIndex.torso].id,
+                    Detail.equipments.pants[Detail.centerIndex.pants].id,
+                    Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                    UserManagment.getUsername(),
+                    character ? character.id : undefined
+                )
+                let message = "";
+                if(succes){
+                    if(character){
+                        message = "Personnage modifié avec succès";
+                    }
+                    else{
+                        message = "Personnage crée avec succès";
+                    }
+                }
+                else{
+                    message = "Création impossible"
+                }
+                showPopUp(message, succes);
+                window.location.href = "#/listing";
             }
-            showPopUp(message, succes);
-            window.location.href = "#/listing";
         })
     }
 

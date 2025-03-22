@@ -300,33 +300,6 @@
       "creator": "base"
     },
     {
-      "name": "Julian2",
-      "head": 1,
-      "torso": 8,
-      "pants": 3,
-      "shoes": 1,
-      "creator": "chris",
-      "id": "6ccd"
-    },
-    {
-      "name": "UIEFbiegfnebjhgjirhg",
-      "head": 1,
-      "torso": 1,
-      "pants": 5,
-      "shoes": 1,
-      "creator": "chris",
-      "id": "4b3f"
-    },
-    {
-      "name": "nedede",
-      "head": 1,
-      "torso": 7,
-      "pants": 2,
-      "shoes": 1,
-      "creator": "chris",
-      "id": "f862"
-    },
-    {
       "id": "1063",
       "name": "fsd'''",
       "head": 1,
@@ -442,15 +415,6 @@
       "pants": 1,
       "shoes": 1,
       "creator": "michel"
-    },
-    {
-      "id": "d920",
-      "name": "défi couscous",
-      "head": 1,
-      "torso": 5,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
     },
     {
       "id": "ba9d",
