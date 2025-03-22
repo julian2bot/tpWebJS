@@ -202,6 +202,8 @@
     position: absolute;
     top:20px;
     right:20px;
+    width: 25%;
+    height: 93%;
 }
 
 .stars {
@@ -353,8 +355,54 @@ footer{
 .page-link:disabled{
     background-color: gray;
 }
+
 .pop-up-listing h3,.pop-up-listing .creator{
     font-size: 2rem;
     margin: 20px;
     margin-left: 0;
+}
+
+.littleCard{
+    width: 80px;
+    height: 150px;
+    background: white;
+    border: 3px solid black;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    position: relative;
+    filter: url(#squiggly-filter);
+    /* animation: wobble 0.8s infinite alternate ease-in-out; */
+    transition: 200ms;
+    cursor: pointer;
+}
+
+.littleCard h3{
+    font-size: 1em;
+    margin: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.littleCard .persoPreview{
+    scale: .38 !important;
+    top: 1em;
+}
+
+#otherCharacters{
+    display: flex;
+    gap : 10px;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 70%;
+    align-items: center;
+    justify-content: center;
+}
+
+#otherCharacters .card, #otherCharacters .card *{
+    display: none !important;
 }

@@ -28,6 +28,21 @@ export default class CharacterProvider {
         }
     };
 
+    static getCharactersByPseudoOthers = async (pseudo, characterId, page=1, perPage=10) => {
+        try {
+            const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}&_page=${page}&_per_page=${perPage}`);
+            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            let json = await response.json();
+            const CharactersSearch = json.data.filter(char =>
+                !char.id.toLowerCase().includes(characterId.toLowerCase())
+            );
+            return CharactersSearch;
+        } catch (error) {
+            console.error(error);
+            return null;
+        }
+    };
+
     static getCharactersByID = async (id) => {
         try {
             const response = await fetch(`${ENDPOINT}characters/${id}`);
