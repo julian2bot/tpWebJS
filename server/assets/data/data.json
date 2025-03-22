@@ -59,6 +59,16 @@
       "id": "5f09",
       "idUser": "michel",
       "note": "3"
+    },
+    {
+      "id": "68c7",
+      "idUser": "chris",
+      "note": "5"
+    },
+    {
+      "id": "3aa8",
+      "idUser": "chris",
+      "note": "4"
     }
   ],
   "equipement": {
@@ -523,6 +533,51 @@
       "pants": 1,
       "shoes": 1,
       "creator": "d"
+    },
+    {
+      "id": "9407",
+      "name": "hahah",
+      "head": 1,
+      "torso": 6,
+      "pants": 4,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "6455",
+      "name": "",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "7ba0",
+      "name": "",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "06d3",
+      "name": "",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "3aa8",
+      "name": "ddd",
+      "head": 3,
+      "torso": 7,
+      "pants": 5,
+      "shoes": 2,
+      "creator": "chris"
     }
   ]
 }
