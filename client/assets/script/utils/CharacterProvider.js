@@ -66,7 +66,7 @@ export default class CharacterProvider {
             if (!favorites.length) return []; 
 
             // get all
-            const characters = await CharacterProvider.getCharacters(page, perPage)
+            const characters = await CharacterProvider.getCharacters()
             
             // chercher les favoris car json server et leurs 'OR' marche pas 
             const favoriteCharacters = characters.filter(char => favorites.includes(char.id));
