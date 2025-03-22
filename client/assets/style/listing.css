@@ -118,7 +118,7 @@
 
 .creator{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     right: 5px;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .seachBar button{
-    translate: -100% 25%;
+    translate: -125% 30%;
     transition: 200ms;
 }
 .seachBar button:hover{
@@ -183,8 +183,16 @@
 
 #createCharacter{
     filter: url(#squiggly-filter);
-
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
+#createCharacterButton{
+    margin: 10px;
+    width: 30%;
+    align-self: center;
+}
+
 #inputName{
     height: 1.5rem;
     border: none;
@@ -212,6 +220,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: row-reverse;
+    margin-left: -10px;
 }
 
 .stargrey {
@@ -249,10 +258,11 @@
     z-index: 100;
     padding: 2em;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    overflow: clip;
 }
 
 .pop-up-listing .image{
-    scale: 4;
+    scale: 2.5;
     top: -86px;
     position: relative;
 }
@@ -290,45 +300,28 @@
     display: none;
 }
 
-.seachBar {
-    filter: url(#squiggly-filter);
-    position:absolute;
-    right:0; 
-    top:9rem;
-}
-.seachBar *{
-    border: none;
-    background: transparent;
-}
-
-.seachBar button{
-    translate: -100% 25%;
-    transition: 200ms;
-}
-.seachBar button:hover{
-    scale: 1.1;
-    color: rgb(117, 117, 117);
-}
-
-#searchCharacters:focus {
-    outline: none;
-    border: none;
-    background-color: rgba(128, 128, 128, 0.085);
-    border-bottom: 3px solid grey;
-    border-radius: 10px 10px 0px 0px;
-}
-
 footer{
     margin-top: 2em;
-    width: 95%;
-    max-width: 95%;
+    width: 100%;
+    max-width: 100%;
     background-color: grey;
-    padding: 1em;
+    padding: 1em 0 1em 0;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    filter: url(#squiggly-filter);
 
+}
+#pageSelector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-items: center;
+}
+#limitSelector{
+    margin-top: 10px;
+}
 .pagination{
     display: flex;
     flex-direction: row;
@@ -352,14 +345,21 @@ footer{
     justify-content: center;
 }
 
+.page-link{
+    border:0;
+    background-color: transparent;
+}
+
 .page-link:disabled{
     background-color: gray;
+    box-shadow: 
+    rgba(0, 0, 0, 0.19) 0px 18px 77px, rgba(0, 0, 0, 0.53) 2px 2px 0px;
 }
 
 .pop-up-listing h3,.pop-up-listing .creator{
     font-size: 2rem;
-    margin: 20px;
-    margin-left: 0;
+    margin: 10px;
+    margin-left: -22px;
 }
 
 .littleCard{
