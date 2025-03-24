@@ -1,14 +1,13 @@
-
 # TP noté JS  
 
-## Team  
-Chris Mathevet  
-Julian Marques  
+## Equipe  
+Chris MATHEVET  
+Julian MARQUES  
 
 ## Présentation  
 Le but de ce TP noté est de développer une application de gestion de personnages. Ces personnages peuvent évoluer en fonction des caractéristiques données : la force, l'endurance ainsi que la souplesse. Elles évoluent en fonction des équipements portés. Ces statistiques changent en fonction de tous les équipements qu'ils portent ; ils peuvent être bénéfiques comme négatifs pour le personnage.  
 
-## Les fonctionnalités faites  
+## Les fonctionnalités réalisées  
 D'après ce qui est demandé dans le sujet, l'intégralité des fonctionnalités et contraintes a été respectée :  
 
 - Le router dans `app.js`, utilisation de 3 classes : `details`, `listing` et `favoris`.  
@@ -19,7 +18,7 @@ D'après ce qui est demandé dans le sujet, l'intégralité des fonctionnalités
   - Un même équipement peut être utilisé sur plusieurs personnages.  
 - Une page listing avec des cartes de personnages affichant une image et des informations sur le personnage.  
 - Une page favoris identique, mais utilisant les favoris stockés dans le `localStorage`.  
-- Une page création, où l'on peut créer un personnage.  
+- Une page création, où l'on peut créer et modifier un personnage.
 - Un outil de recherche permettant de chercher un personnage par son nom.  
 - Les clients peuvent cliquer sur un personnage : une pop-up apparaîtra avec toutes les informations sur celui-ci, ainsi que la possibilité de voir la note moyenne et de noter eux-mêmes le personnage.  
 
@@ -53,7 +52,13 @@ Une fois calculé, pour l'afficher dans la progress bar, nous avons initialement
 
 Le fonctionnement est exactement le même pour chaque équipement !  
 
-[Explication de Chris]  
+### Système de pagination
+
+Sur la page Listing, un système de pagination est disponible. Il est composé d'un système pour changer de page et d'un input pour changer le nombre de personnage par page.
+
+Gràce à JSON Server, et aux arguments de Fetch ```_page=``` (numéro de page) et ```_per_page=```(nombre par page), nous pouvons limiter le nombre de personnage obtenus par la requete. Elle nous renvoie également le nombre de page maximal (selon le nombre par page), qui est utilisé pour afficher la page maximal.
+
+L'utilisateur peut changer ces paramètres via les inputs et boutons en bas de page, ou en changeant l'url (valeurs de : page et perpage).
 
 ## Commandes  
 
