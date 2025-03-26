@@ -107,3 +107,26 @@ nav a:hover{
 .succes{
     background-color:greenyellow; 
 }
+
+
+.arrowAnime{
+    animation: arrow 500ms forwards ;
+}
+
+@keyframes arrow {
+    0%{
+        scale: 1;
+    }
+    30%{
+        scale: 1.3;
+    }
+    50%{
+        scale: 1;
+    }
+    70%{
+        scale: 1.3;
+    }
+    100%{
+        scale: 1;
+    }
+}
