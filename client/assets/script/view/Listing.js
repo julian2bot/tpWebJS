@@ -121,7 +121,7 @@ export default class Listing extends BaseView{
         </select>`;
           
         }
-        view += "<div id='content' style=' margin:2.2rem; margin-top:3rem; display: flex; justify-content: space-around; gap:40px; flex-wrap: wrap;'>";
+        view += "<div id='content' style=' margin:2.2rem; margin-top:8rem; display: flex; justify-content: space-around; gap:40px; flex-wrap: wrap;'>";
         
         view+= await Listing.renderCharacters();
         
@@ -199,6 +199,7 @@ export default class Listing extends BaseView{
         let popUp = document.createElement("div");
         let upperPart = document.createElement("div");
         upperPart.innerHTML = card.innerHTML + `
+            <style>body{overflow:hidden;}</style>
             <div class="containerStar">
                 <div>
                     <h2 class="noteMoyenne">Note Moyenne</h2>

@@ -2,8 +2,8 @@
   "note": [
     {
       "id": "2",
-      "idUser": "michel",
-      "note": "2"
+      "idUser": "chris",
+      "note": "1"
     },
     {
       "id": "1",
@@ -57,7 +57,7 @@
     },
     {
       "id": "5f09",
-      "idUser": "michel",
+      "idUser": "chris",
       "note": "3"
     },
     {
@@ -69,6 +69,16 @@
       "id": "3aa8",
       "idUser": "chris",
       "note": "4"
+    },
+    {
+      "id": "376e",
+      "idUser": "chris",
+      "note": "4"
+    },
+    {
+      "id": "c37b",
+      "idUser": "chris",
+      "note": "3"
     }
   ],
   "equipement": {
@@ -418,15 +428,6 @@
       "creator": "michel"
     },
     {
-      "id": "c37b",
-      "name": "fsd'''",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "michel"
-    },
-    {
       "id": "b4ef",
       "name": "fsd'''",
       "head": 1,
@@ -454,13 +455,13 @@
       "creator": "michel"
     },
     {
-      "id": "d920",
       "name": "défi couscous",
       "head": 1,
       "torso": 5,
       "pants": 1,
       "shoes": 1,
-      "creator": "chris"
+      "creator": "chris",
+      "id": "d920"
     },
     {
       "id": "ba9d",

@@ -343,6 +343,8 @@ export default class Detail extends BaseView{
         Detail.updateDisplay();
     
         document.querySelector("#droite").addEventListener("click", (event) => {
+            event.target.classList.add("arrowAnime");
+            
             if (event.target.closest(".casque")) {
                 Detail.updatePreviewCasqueDroite();
             }else if (event.target.closest(".haut")) {
@@ -352,9 +354,15 @@ export default class Detail extends BaseView{
             }else if(event.target.closest(".basbas")){
                 Detail.updatePreviewShoesDroite();
             }
+            setTimeout(() => {
+                event.target.classList.remove("arrowAnime");
+            }, "500");
         });
         
         document.querySelector("#gauche").addEventListener("click", (event) => {
+            
+            event.target.classList.add("arrowAnime");
+
             if(event.target.closest(".casque")){
                 Detail.updatePreviewCasqueGauche();    
             }
@@ -365,6 +373,11 @@ export default class Detail extends BaseView{
             }else if(event.target.closest(".basbas")){
                 Detail.updatePreviewShoesGauche();
             }
+            setTimeout(() => {
+                event.target.classList.remove("arrowAnime");
+            }, "500");
+              
+
         });
 
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
