@@ -1,1 +1,1 @@
-export const ENDPOINT = "http://77.37.120.142:3234/";
+export const ENDPOINT = "http://jsonservercharacters.marquesjulian.fr:3234/";
