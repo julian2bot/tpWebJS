@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   # Service JSON Server personnalisé avec Dockerfile
   jsonserver:
@@ -41,5 +39,5 @@ services:
 
 networks:
   web:
-    external: true
+    # external: true
     driver: bridge
