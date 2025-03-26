@@ -1,0 +1,11 @@
+# Utilisation de l'image Nginx officielle
+FROM nginx:alpine
+
+# Copier la configuration Nginx spécifique pour JSON Server
+COPY nginx-json.conf /etc/nginx/conf.d/default.conf
+
+# Exposer le port 80 et 443 pour HTTP/HTTPS
+EXPOSE 80 443
+
+# Commande pour démarrer Nginx
+CMD ["nginx", "-g", "daemon off;"]

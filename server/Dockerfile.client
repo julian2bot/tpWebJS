@@ -4,6 +4,9 @@ FROM nginx:alpine
 # Copier les fichiers de ton site vers le répertoire de Nginx
 COPY assets /usr/share/nginx/html
 
+# Copier la configuration Nginx (optionnel si besoin de config spécifique)
+COPY nginx.conf /etc/nginx/nginx.conf
+
 # Exposer le port 80 pour le serveur web
 EXPOSE 80
 

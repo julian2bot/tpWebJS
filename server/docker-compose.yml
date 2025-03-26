@@ -5,19 +5,33 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "3234:3234"  # Accessible depuis l'extérieur
+    expose:
+      - "3234"
     networks:
       - mynetwork
+
+  json-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - json-server
+    networks:
+      - mynetwork
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
 
   client:
     build:
       context: .
       dockerfile: Dockerfile.client
     ports:
-      - "8080:80"  # Accessible depuis l'extérieur
+      - "8080:80"
     depends_on:
-      - json-server
+      - json-proxy
     networks:
       - mynetwork
 
