@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  json-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Accessible depuis l'extérieur
+    networks:
+      - mynetwork
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "8080:80"  # Accessible depuis l'extérieur
+    depends_on:
+      - json-server
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+  

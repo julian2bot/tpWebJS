@@ -1,0 +1,11 @@
+# Utiliser une image de serveur web léger (Nginx)
+FROM nginx:alpine
+
+# Copier les fichiers de ton site vers le répertoire de Nginx
+COPY assets /usr/share/nginx/html
+
+# Exposer le port 80 pour le serveur web
+EXPOSE 80
+
+# Lancer Nginx
+CMD ["nginx", "-g", "daemon off;"]
