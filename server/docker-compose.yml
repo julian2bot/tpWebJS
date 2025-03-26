@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3234:3234"  # Accessible depuis l'extérieur
+      - "3324:3324"  # Accessible depuis l'extérieur
     networks:
       - mynetwork
 
