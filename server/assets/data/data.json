@@ -100,7 +100,7 @@
         "agility": -2
       },
       {
-        "id": 1,
+        "id": 3,
         "name": "head1",
         "img": "img/equipement/head/casque3.png",
         "strength": 10,
@@ -108,7 +108,7 @@
         "agility": -2
       },
       {
-        "id": 3,
+        "id": 4,
         "name": "head3",
         "img": "img/equipement/head/casque4.png",
         "strength": 5,
@@ -116,7 +116,7 @@
         "agility": 8
       },
       {
-        "id": 1,
+        "id": 5,
         "name": "head1",
         "img": "img/equipement/head/casque5.png",
         "strength": 5,
@@ -124,7 +124,7 @@
         "agility": 2
       },
       {
-        "id": 1,
+        "id": 6,
         "name": "head1",
         "img": "img/equipement/head/casque6.png",
         "strength": 8,
@@ -250,7 +250,7 @@
         "agility": -2
       },
       {
-        "id": 1,
+        "id": 2,
         "name": "shoes1",
         "img": "img/equipement/shoes/basbas2.png",
         "strength": 0,
@@ -258,7 +258,7 @@
         "agility": 2
       },
       {
-        "id": 1,
+        "id": 3,
         "name": "shoes1",
         "img": "img/equipement/shoes/basbas3.png",
         "strength": 1,
@@ -266,7 +266,7 @@
         "agility": 2
       },
       {
-        "id": 2,
+        "id": 4,
         "name": "shoes2",
         "img": "img/equipement/shoes/basbas4.png",
         "strength": -3,
@@ -274,7 +274,7 @@
         "agility": -2
       },
       {
-        "id": 1,
+        "id": 5,
         "name": "shoes1",
         "img": "img/equipement/shoes/basbas5.png",
         "strength": 1,
@@ -282,14 +282,14 @@
         "agility": 2
       },
       {
-        "id": 3,
+        "id": 6,
         "name": "shoes3",
         "img": "img/equipement/shoes/basbas6.png",
         "strength": 5,
         "stamina": -6,
         "agility": 8
       }
-    ]
+    ] 
   },
   "characters": [
     {
@@ -563,13 +563,13 @@
       "creator": "chris"
     },
     {
-      "id": "652f",
       "name": "hnnnnnn",
-      "head": 1,
+      "head": 2,
       "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
+      "pants": 3,
+      "shoes": 3,
+      "creator": "chris",
+      "id": "652f"
     }
   ]
 }

@@ -60,9 +60,9 @@ export default class Detail extends BaseView{
             </style>
             <aside>
                 <ul>
-                    <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Strength</p></div></div>
-                    <div class="stat"><img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Stamina</p></div></div>
-                    <div class="stat"><img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agility</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/strength.png" class="iconCaract" alt="strength"> <div class="slider" id="F"><p>Force</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/stamina.png" class="iconCaract" alt="stamina"> <div class="slider" id="E"><p>Endurance</p></div></div>
+                    <div class="stat"><img loading="lazy" src="../assets/img/agility.png" class="iconCaract" alt="agility"> <div class="slider" id="S"><p>Agilité</p></div></div>
                 </ul>
 
                 <form id='createCharacter' action="">
@@ -389,6 +389,7 @@ export default class Detail extends BaseView{
                 event.target.disabled = true;
                 event.preventDefault();
                 console.log(Detail.centerIndex)
+                console.log( Detail.equipments.head[Detail.centerIndex.head].id)
                 let succes = CharacterManagement.createOrUpdateCharacter(
                     document.getElementById("inputName").value,
                     Detail.equipments.head[Detail.centerIndex.head].id,

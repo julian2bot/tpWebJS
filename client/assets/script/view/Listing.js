@@ -66,7 +66,7 @@ export default class Listing extends BaseView{
             view += `<div class="card" id=${character.id}>
             <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
             <h3>${character.name}</h3>
-            <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
+            <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>Par : ${character.creator}</h4>
             <div class="image">
                 <div class="persoPreview">
                     <img src="../assets/img/perso.png">
@@ -116,8 +116,8 @@ export default class Listing extends BaseView{
 
         if(UserManagement.isConnected()){
             view += `<select id="selectListing" style="width:10%;">
-            <option value="all">all</option>
-            <option value="mine">mine</option>
+            <option value="all">Tous</option>
+            <option value="mine">Les miens</option>
         </select>`;
           
         }
@@ -223,7 +223,7 @@ export default class Listing extends BaseView{
 
         let boutons = document.createElement("div");
         let boutonQuit = document.createElement("button");
-        boutonQuit.textContent="Quit";
+        boutonQuit.textContent="Quitter";
         boutons.appendChild(boutonQuit);
         boutons.classList.add("boutonsPopUp");
 
@@ -291,7 +291,7 @@ export default class Listing extends BaseView{
                 <div class="card" id=${character.id}>
                     <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
                     <h3>${character.name}</h3>
-                    <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>By : ${character.creator}</h4>
+                    <h4 class="creator" ${Listing.mine ? "style='display:none;'" : ""}>Par : ${character.creator}</h4>
                     <div class="image">
                         <div class="persoPreview">
                             <img src="../assets/img/perso.png">
