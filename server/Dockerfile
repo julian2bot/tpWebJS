@@ -15,4 +15,4 @@ RUN npm install -g json-server
 EXPOSE 3234
 
 # Lancer json-server avec les options spécifiées
-CMD ["json-server", "/app/data.json", "--port", "3234", "--static", "/app/assets"]
+CMD ["json-server", "/app/data/data.json", "--port", "3234", "--static", "/app/assets"]
