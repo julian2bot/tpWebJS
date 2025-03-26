@@ -10,8 +10,8 @@ COPY assets/data/data.json /app/data.json
 # Installer json-server
 RUN npm install -g json-server
 
-# Exposer le port 3000
-EXPOSE 3000
+# Exposer le port 3234
+EXPOSE 3234
 
 # Lancer json-server avec les options spécifiées
-CMD ["json-server", "/app/data.json", "--port", "3000", "--static", "/app/assets"]
+CMD ["json-server", "/app/data.json", "--port", "3234", "--static", "/app/assets"]
