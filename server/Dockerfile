@@ -5,7 +5,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copier les fichiers nécessaires
-COPY assets/data/data.json /app/data.json
+COPY assets/data/data.json /app/data/data.json
+COPY assets/ /app/assets
 
 # Installer json-server
 RUN npm install -g json-server
