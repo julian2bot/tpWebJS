@@ -5,7 +5,8 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copier les fichiers nécessaires
-COPY assets/data/data.json /app/data.json
+COPY assets/data/data.json /app/data/data.json
+COPY assets/ /app/assets
 
 # Installer json-server
 RUN npm install -g json-server
@@ -14,4 +15,4 @@ RUN npm install -g json-server
 EXPOSE 3324
 
 # Lancer json-server avec les options spécifiées
-CMD ["json-server", "/app/data.json", "--port", "3324", "--static", "/app/assets"]
+CMD ["json-server", "/app/data/data.json", "--port", "3324", "--static", "/app/assets"]
