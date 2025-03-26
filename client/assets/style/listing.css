@@ -348,6 +348,7 @@ footer{
 .page-link{
     border:0;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .page-link:disabled{

@@ -381,11 +381,12 @@ export default class Detail extends BaseView{
         });
 
         document.getElementById("createCharacterButton").addEventListener("click", (event)=>{
-            event.target.disabled = true;
             if(document.getElementById("inputName").value == ""){
+                showPopUp("Veuillez donner un nom", false);
                 return;
             }
             else{
+                event.target.disabled = true;
                 event.preventDefault();
                 console.log(Detail.centerIndex)
                 let succes = CharacterManagement.createOrUpdateCharacter(
@@ -395,11 +396,11 @@ export default class Detail extends BaseView{
                     Detail.equipments.pants[Detail.centerIndex.pants].id,
                     Detail.equipments.shoes[Detail.centerIndex.shoes].id,
                     UserManagment.getUsername(),
-                    character ? character.id : undefined
+                    (character.id && character.creator == UserManagment.getUsername()) ? character.id : undefined
                 )
                 let message = "";
                 if(succes){
-                    if(character){
+                    if(character.creator == UserManagment.getUsername()){
                         message = "Personnage modifié avec succès";
                     }
                     else{

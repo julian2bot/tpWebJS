@@ -392,12 +392,12 @@
       "creator": "michel"
     },
     {
-      "name": "f",
+      "name": "Donne un nom ",
       "head": 1,
       "torso": 1,
       "pants": 1,
       "shoes": 1,
-      "creator": "michel",
+      "creator": "chris",
       "id": "bb6f"
     },
     {
@@ -545,39 +545,30 @@
       "creator": "chris"
     },
     {
-      "id": "6455",
-      "name": "",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
-    },
-    {
-      "id": "7ba0",
-      "name": "",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
-    },
-    {
-      "id": "06d3",
-      "name": "",
-      "head": 1,
-      "torso": 1,
-      "pants": 1,
-      "shoes": 1,
-      "creator": "chris"
-    },
-    {
       "id": "3aa8",
       "name": "ddd",
       "head": 3,
       "torso": 7,
       "pants": 5,
       "shoes": 2,
+      "creator": "chris"
+    },
+    {
+      "id": "4960",
+      "name": "e",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "652f",
+      "name": "hnnnnnn",
+      "head": 1,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
       "creator": "chris"
     }
   ]
