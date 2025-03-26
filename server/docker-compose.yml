@@ -25,13 +25,13 @@ services:
     command:
       - "--api.insecure=true"
       - "--entryPoints.web.address=:8000"
-      - "--entryPoints.websecure.address=:443"
+      - "--entryPoints.websecure.address=:8443"
       - "--certificatesResolvers.http.acme.email=marquesjulian2@gmail.com"
       - "--certificatesResolvers.http.acme.storage=/letsencrypt/acme.json"
       - "--certificatesResolvers.http.acme.httpChallenge.entryPoint=web"
     ports:
       - "8000:80"   # Port HTTP
-      - "443:443" # Port HTTPS
+      - "8443:443" # Port HTTPS
       - "8080:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
