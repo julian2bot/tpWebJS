@@ -1,14 +1,15 @@
 version: '3.7'
 
 services:
-  # Le service JSON Server
+  # Service JSON Server personnalisé avec Dockerfile
   jsonserver:
-    image: jsonserver:latest
+    build: .
     container_name: jsonserver
-    volumes:
-      - ./db.json:/data/db.json
     ports:
       - "3234:3234"  # Port pour accéder localement en HTTP
+    volumes:
+      - ./assets/data:/app/assets/data  # Monter le répertoire local des assets
+      - ./assets:/app/assets            # Monter le répertoire local des assets
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jsonserver.rule=Host(`sae-projet-jsonserverv-vvr3q3-1b215e-77-37-120-142.traefik.me`)"
@@ -22,23 +23,22 @@ services:
     image: traefik:v2.5
     container_name: traefik
     command:
-      - "--api.insecure=true"  # Interface Traefik Dashboard (pour la gestion)
-      - "--entryPoints.web.address=:80"  # HTTP
-      - "--entryPoints.websecure.address=:443"  # HTTPS
-      - "--certificatesResolvers.http.acme.email=ton-email@example.com"  # Ton email pour Let's Encrypt
+      - "--api.insecure=true"
+      - "--entryPoints.web.address=:80"
+      - "--entryPoints.websecure.address=:443"
+      - "--certificatesResolvers.http.acme.email=ton-email@example.com"
       - "--certificatesResolvers.http.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesResolvers.http.acme.httpChallenge.entryPoint=web"  # Utilisation du challenge HTTP pour Let's Encrypt
+      - "--certificatesResolvers.http.acme.httpChallenge.entryPoint=web"
     ports:
       - "80:80"   # Port HTTP
       - "443:443" # Port HTTPS
       - "8080:8080"  # Traefik Dashboard
     volumes:
-      - "./letsencrypt:/letsencrypt"  # Stockage des certificats SSL générés par Let's Encrypt
-      - "/var/run/docker.sock:/var/run/docker.sock"  # Accès à l'API Docker pour gérer les containers
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
       - web
 
 networks:
   web:
     external: true
-
