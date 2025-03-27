@@ -24,7 +24,6 @@ export default class Favoris extends BaseView{
 
     static async render(){
         let characters = await CharacterProvider.getCharactersFav();
-        // console.log(characters)
         let view = `<style>
             main{
                 margin:2.2rem;  
@@ -37,18 +36,17 @@ export default class Favoris extends BaseView{
             }
 
         </style>`
-        // characters.forEach(character=>{
         window.MesFavoris = MesFavoris;
 
         for (let character of characters) {
 
             await Favoris.updateEquipments(character.head, character.torso, character.pants, character.shoes);
-            // console.log(character.id)
             view += `<div class="card">
 
             <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}', true)">♥</button>
             
             <h3>${character.name}</h3>
+            <h4 class="creator">Par : ${character.creator}</h4>
             <div class="image">
                 <div class="persoPreview">
                     <img loading="lazy" src="../assets/img/perso.png">
@@ -74,17 +72,7 @@ export default class Favoris extends BaseView{
             </div>
         </div>
         `;
-        // });
         }
         return view;
     }
-
-    // static async init(){
-    //     await Character.updateEquipments();
-    //     let characters = await CharacterProvider.getCharacters();
-
-    //     // characters.forEach(character => {
-    //     //     character.addCard();
-    //     // });
-    // }
 }
