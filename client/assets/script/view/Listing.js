@@ -235,6 +235,7 @@ export default class Listing extends BaseView{
                 boutons.appendChild(boutonModif);
                 let boutonSupp = document.createElement("button");
                 boutonSupp.textContent = "Supprimer";
+                boutonSupp.classList.add("buttonSupp");
                 boutonSupp.addEventListener('click', async (event)=>{
                     let succes = await CharacterManagement.deleteCharacter(card.id);
                     console.log(succes);

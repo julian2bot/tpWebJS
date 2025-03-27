@@ -311,6 +311,8 @@ export default class Detail extends BaseView{
                     document.getElementById("inputName").value = character.name;
                     document.getElementById("createCharacterButton").value = 'Modifier';
                     let supp = document.createElement("button");
+                    supp.classList.add("boutonsChar");
+                    supp.classList.add("buttonSupp");
                     supp.textContent = "Supprimer";
                     supp.onclick = async (event)=>{
                         event.preventDefault();

@@ -187,7 +187,7 @@
     flex-direction: column;
     margin: 10px;
 }
-#createCharacterButton{
+#createCharacterButton, .boutonsChar{
     margin: 10px;
     width: 30%;
     align-self: center;
