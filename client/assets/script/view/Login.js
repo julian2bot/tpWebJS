@@ -21,7 +21,7 @@ export default class Login extends BaseView{
         if(UserManagment.isConnected()){
             UserManagment.disconnect();
             let link = document.getElementById("login-link");
-            link.textContent = "Login / Sign in";
+            link.textContent = "Connexion";
             let textUserCo = document.getElementById("nameUser");
             textUserCo.textContent = "";
             let link_create = document.getElementById("creation-link");
@@ -47,8 +47,8 @@ export default class Login extends BaseView{
             let link_create = document.getElementById("creation-link");
             
             if(UserManagment.isConnected()){
-                link.textContent = "Sign out";
-                textUserCo.textContent ="User : "+UserManagment.getUsername();
+                link.textContent = "Déconnexion";
+                textUserCo.textContent ="Utilisateur : "+UserManagment.getUsername();
                 link_create.style.display = "initial";
             }else{
                 textUserCo.textContent =""
