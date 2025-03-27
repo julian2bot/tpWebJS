@@ -130,6 +130,94 @@
         "strength": 8,
         "stamina": 1,
         "agility": -2
+      },
+      {
+        "id": 16,
+        "name": "castleCrasher0",
+        "img": "img/equipement/head/castleCrasher0.png",
+        "strength": 3,
+        "stamina": 0,
+        "agility": -6
+      },
+      {
+        "id": 7,
+        "name": "castleCrasher1",
+        "img": "img/equipement/head/castleCrasher1.png",
+        "strength": -10,
+        "stamina": 3,
+        "agility": 8
+      },
+      {
+        "id": 8,
+        "name": "castleCrasher2",
+        "img": "img/equipement/head/castleCrasher2.png",
+        "strength": 9,
+        "stamina": 9,
+        "agility": -6
+      },
+      {
+        "id": 9,
+        "name": "castleCrasher3",
+        "img": "img/equipement/head/castleCrasher3.png",
+        "strength": -8,
+        "stamina": -10,
+        "agility": 0
+      },
+      {
+        "id": 10,
+        "name": "castleCrasher4",
+        "img": "img/equipement/head/castleCrasher4.png",
+        "strength": 10,
+        "stamina": 10,
+        "agility": -3
+      },
+      {
+        "id": 11,
+        "name": "castleCrasher5",
+        "img": "img/equipement/head/castleCrasher5.png",
+        "strength": 7,
+        "stamina": 2,
+        "agility": -3
+      },
+      {
+        "id": 12,
+        "name": "castleCrasher6",
+        "img": "img/equipement/head/castleCrasher6.png",
+        "strength": -9,
+        "stamina": 1,
+        "agility": 0
+      },
+      {
+        "id": 13,
+        "name": "castleCrasher7",
+        "img": "img/equipement/head/castleCrasher7.png",
+        "strength": 0,
+        "stamina": 0,
+        "agility": -7
+      },
+      {
+        "id": 14,
+        "name": "castleCrasher8",
+        "img": "img/equipement/head/castleCrasher8.png",
+        "strength": 6,
+        "stamina": 5,
+        "agility": -7
+      },
+      {
+        "id": 15,
+        "name": "castleCrasher9",
+        "img": "img/equipement/head/castleCrasher9.png",
+        "strength": 1,
+        "stamina": 7,
+        "agility": 10
+      },
+      {
+        "id": 17,
+        "name": "cagoule",
+        "img": "img/equipement/head/cagoule.png",
+        "strength": 0,
+        "stamina": 0,
+        "agility": 0
       }
     ],
     "torso": [
