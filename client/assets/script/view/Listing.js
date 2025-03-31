@@ -55,7 +55,7 @@ export default class Listing extends BaseView{
             Listing.maxPage = response.last ?? Listing.page+4;
         }
         else{
-            characters = await CharacterProvider.getSearchCharactersbyName(parsedId.name ?? "", Listing.page, Listing.perPage);
+            characters = await CharacterProvider.getSearchCharactersbyName(parsedId.name ?? "", Listing.mine);
         }
 
 
@@ -98,6 +98,7 @@ export default class Listing extends BaseView{
 
     static async render(){
         window.Utils = Utils;
+        window.Listing = Listing;
         let view = `<style>main{ margin-top:6rem}</style>
 
             
@@ -116,8 +117,8 @@ export default class Listing extends BaseView{
 
         if(UserManagement.isConnected()){
             view += `<select id="selectListing" style="width:10%;">
-            <option value="all">Tous</option>
-            <option value="mine">Les miens</option>
+            <option value="all" >Tous</option>
+            <option value="mine" ${Listing.mine ? "selected" : ""}>Les miens</option>
         </select>`;
           
         }
