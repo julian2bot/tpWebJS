@@ -392,18 +392,32 @@ export default class Detail extends BaseView{
                 event.preventDefault();
                 console.log(Detail.centerIndex)
                 console.log( Detail.equipments.head[Detail.centerIndex.head].id)
-                let succes = CharacterManagement.createOrUpdateCharacter(
-                    document.getElementById("inputName").value,
-                    Detail.equipments.head[Detail.centerIndex.head].id,
-                    Detail.equipments.torso[Detail.centerIndex.torso].id,
-                    Detail.equipments.pants[Detail.centerIndex.pants].id,
-                    Detail.equipments.shoes[Detail.centerIndex.shoes].id,
-                    UserManagment.getUsername(),
-                    (character.id && character.creator == UserManagment.getUsername()) ? character.id : undefined
-                )
+                let succes = false;
+                if(character){
+                    succes = CharacterManagement.createOrUpdateCharacter(
+                        document.getElementById("inputName").value,
+                        Detail.equipments.head[Detail.centerIndex.head].id,
+                        Detail.equipments.torso[Detail.centerIndex.torso].id,
+                        Detail.equipments.pants[Detail.centerIndex.pants].id,
+                        Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                        UserManagment.getUsername(),
+                        (character.id  && character.creator == UserManagment.getUsername()) ? character.id : undefined
+                    )
+                }
+                else{
+                    succes = CharacterManagement.createOrUpdateCharacter(
+                        document.getElementById("inputName").value,
+                        Detail.equipments.head[Detail.centerIndex.head].id,
+                        Detail.equipments.torso[Detail.centerIndex.torso].id,
+                        Detail.equipments.pants[Detail.centerIndex.pants].id,
+                        Detail.equipments.shoes[Detail.centerIndex.shoes].id,
+                        UserManagment.getUsername()
+                    )
+                }
+                
                 let message = "";
                 if(succes){
-                    if(character.creator == UserManagment.getUsername()){
+                    if(character!=null && character.creator == UserManagment.getUsername()){
                         message = "Personnage modifié avec succès";
                     }
                     else{

@@ -90,7 +90,7 @@ export default class CharacterProvider {
             console.log(characters);
     
             const CharactersSearch = characters.filter(char => 
-                char.name.toLowerCase().includes(name.toLowerCase())
+                char.name.toLowerCase().includes(name.toLowerCase()) || char.creator.toLowerCase().includes(name.toLowerCase())
             );
     
             return CharactersSearch;
