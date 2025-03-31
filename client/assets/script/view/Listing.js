@@ -269,7 +269,8 @@ export default class Listing extends BaseView{
             document.getElementById("app").removeChild(popUp);
         }
 
-        let d = document.createElement("div")
+        let divContainer =  document.createElement("div");
+        let d = document.createElement("div");
         d.innerHTML = await Listing.renderOtherCharacters(card.getElementsByClassName("creator")[0].textContent.split(" : ")[1], card.id);
         d.id = "otherCharacters";
         for (const element of d.children) {
@@ -279,7 +280,12 @@ export default class Listing extends BaseView{
                 Listing.renderPopUp(element.getElementsByClassName("card")[0]);
             });
         }
-        document.getElementsByClassName("containerStar")[0].appendChild(d);
+        let texte = document.createElement("h4");
+        texte.textContent = `Personnage aussi fait par : ${card.getElementsByClassName("creator")[0].textContent.split(" : ")[1]}`;
+        divContainer.appendChild(texte);
+        divContainer.style.height = "70vh";
+        divContainer.appendChild(d);
+        document.getElementsByClassName("containerStar")[0].appendChild(divContainer);
     }
 
     static async renderOtherCharacters(username, charid){
