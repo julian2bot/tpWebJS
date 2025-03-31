@@ -1,6 +1,6 @@
 import { ENDPOINT } from "../config.js";
-import Listing from "../view/Listing.js";
 import MesFavoris from "./MesFavoris.js";
+import UserManagement from "./UserManagement.js";
 import Utils from "./Utils.js";
 export default class CharacterProvider {
     // Get all
@@ -80,20 +80,25 @@ export default class CharacterProvider {
     
 
     
-    static getSearchCharactersbyName = async (name) => {
+    static getSearchCharactersbyName = async (name, mine=false) => {
         try {
             if (!name) return []; 
             name = name.toString();
-    
             let characters = await CharacterProvider.getCharacters();
             
-            console.log(characters);
+            if(!mine){
+                const CharactersSearch = characters.filter(char => 
+                    char.name.toLowerCase().includes(name.toLowerCase()) || char.creator.toLowerCase().includes(name.toLowerCase())
+                );
+                return CharactersSearch;
+            }
+            else{
+                const CharactersSearch = characters.filter(char => 
+                    char.name.toLowerCase().includes(name.toLowerCase()) && char.creator.toLowerCase().includes(UserManagement.getUsername())
+                );
+                return CharactersSearch;
+            }
     
-            const CharactersSearch = characters.filter(char => 
-                char.name.toLowerCase().includes(name.toLowerCase())
-            );
-    
-            return CharactersSearch;
         } catch (error) {
             console.error(error);
             return [];

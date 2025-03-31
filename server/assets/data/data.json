@@ -427,7 +427,7 @@
     },
     {
       "name": "nedede",
-      "head": 1,
+      "head": 15,
       "torso": 7,
       "pants": 2,
       "shoes": 1,
@@ -639,6 +639,42 @@
       "torso": 7,
       "pants": 5,
       "shoes": 2,
+      "creator": "chris"
+    },
+    {
+      "id": "1190",
+      "name": "dee",
+      "head": 17,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "f23c",
+      "name": "dede",
+      "head": 17,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "5031",
+      "name": "de",
+      "head": 15,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
+    },
+    {
+      "id": "074d",
+      "name": "hvgyv",
+      "head": 17,
+      "torso": 8,
+      "pants": 1,
+      "shoes": 1,
       "creator": "chris"
     }
   ]
