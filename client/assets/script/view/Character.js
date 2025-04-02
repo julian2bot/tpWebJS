@@ -1,7 +1,8 @@
-import CharacterManagement from './CharacterManagement.js';
-import UserManagement from './UserManagement.js';
-import MesFavoris from './MesFavoris.js';
-import EquipmentProvider from './EquipmentProvider.js';
+import CharacterManagement from '../utils/CharacterManagement.js';
+import UserManagement from '../utils/UserManagement.js';
+import MesFavoris from '../utils/MesFavoris.js';
+import EquipmentProvider from '../utils/EquipmentProvider.js';
+import Note from '../utils/note.js';
 import { ENDPOINT } from '../config.js';
 
 export default class Character{
@@ -198,6 +199,20 @@ export default class Character{
                 </div>`;
             }
             return view;
+    }
+
+    // Ajoute un listenner aux cartes de perso permettant d'afficher une pop up
+    static async addListenerCard(){
+        let cards = document.getElementsByClassName("card");
+        for (const card of cards) {
+            card.addEventListener("click",(event)=>{
+                if(! event.target.id.startsWith('heart-')){
+                    Character.renderPopUp(card, Listing.mine);
+                    Note.noteStar(UserManagement.getUsername() , card.id)
+                    Note.afficheNote(card.id);
+                }
+            });
+        }
     }
 }
 

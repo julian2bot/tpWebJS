@@ -4,7 +4,7 @@ import UserManagement from '../utils/UserManagement.js';
 import MesFavoris from '../utils/MesFavoris.js';
 import Utils from '../utils/Utils.js';
 import Note from '../utils/note.js';
-import Character from '../utils/Character.js';
+import Character from './Character.js';
 
 export default class Listing extends BaseView{
     static page = 1;
@@ -144,18 +144,7 @@ export default class Listing extends BaseView{
         return pagination;
     }
 
-    static async addListenerCard(){
-        let cards = document.getElementsByClassName("card");
-        for (const card of cards) {
-            card.addEventListener("click",(event)=>{
-                if(! event.target.id.startsWith('heart-')){
-                    Character.renderPopUp(card, Listing.mine);
-                    Note.noteStar(UserManagement.getUsername() , card.id)
-                    Note.afficheNote(card.id);
-                }
-            });
-        }
-    }
+    
 
     static async init(){
         let select = document.getElementById("selectListing");
