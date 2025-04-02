@@ -1,4 +1,6 @@
 import { ENDPOINT } from "../config.js";
+
+// Recupere les equipements depuis le json server
 export default class EquipmentProvider{
     
     // Get ALL
@@ -24,18 +26,21 @@ export default class EquipmentProvider{
     };        
 
     
+    // Get torso by id
     static getTorsoById = async (id) => {
         const equipement = await EquipmentProvider.getEquipement();
-    
+        
         return equipement.torso.find(head => head.id === id);
     };      
     
+    // Get pants by id
     static getPantsById = async (id) => {
         const equipement = await EquipmentProvider.getEquipement();
-    
+        
         return equipement.pants.find(head => head.id === id);
     };      
     
+    // Get Shoes by id
     static getShoesById = async (id) => {
         const equipement = await EquipmentProvider.getEquipement();
     
