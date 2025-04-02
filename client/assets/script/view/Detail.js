@@ -8,6 +8,7 @@ import { ENDPOINT } from '../config.js';
 import { showPopUp } from '../utils/popUp.js';
 import DetailUtils from '../utils/DetailUtils.js';
 
+// Class permatant l'affichage de la création et la modification de personnage
 export default class Detail extends BaseView{
     static updating = false;
 
@@ -25,6 +26,7 @@ export default class Detail extends BaseView{
         shoes : []
     };
 
+    // Met à jour la liste des équipements via le provider
     static async updateEquipments(){
         let equipments = await EquipmentProvider.getEquipement();
 
@@ -113,7 +115,7 @@ export default class Detail extends BaseView{
 `
     }
     
-    // Affiche le personnage
+    // Modifie l'affichage (Suite aux appuis des boutons)
     static updateDisplay() {
         // CASQUE
         let imgGaucheCasque = document.querySelector("#gauchePreview .casque");

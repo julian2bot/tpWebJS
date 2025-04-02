@@ -3,9 +3,9 @@ import BaseView from './BaseView.js';
 import UserManagement from '../utils/UserManagement.js';
 import MesFavoris from '../utils/MesFavoris.js';
 import Utils from '../utils/Utils.js';
-import Note from '../utils/note.js';
 import Character from './Character.js';
 
+// Page de base permettant de lister plusieurs personnages
 export default class Listing extends BaseView{
     static page = 1;
     static maxPage = 1;
@@ -142,9 +142,7 @@ export default class Listing extends BaseView{
         </ul>`;
 
         return pagination;
-    }
-
-    
+    }    
 
     static async init(){
         let select = document.getElementById("selectListing");
