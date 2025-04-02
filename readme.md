@@ -19,7 +19,7 @@ D'après ce qui est demandé dans le sujet, l'intégralité des fonctionnalités
 - Une page listing avec des cartes de personnages affichant une image et des informations sur le personnage.  
 - Une page favoris identique, mais utilisant les favoris stockés dans le `localStorage`.  
 - Une page création, où l'on peut créer et modifier un personnage.
-- Un outil de recherche permettant de chercher un personnage par son nom.  
+- Un outil de recherche permettant de chercher un personnage par son nom, et par son createur.  
 - Les clients peuvent cliquer sur un personnage : une pop-up apparaîtra avec toutes les informations sur celui-ci, ainsi que la possibilité de voir la note moyenne et de noter eux-mêmes le personnage.  
 
 Pour les contraintes, nous avons une Single Page Application (SPA), tout est sous forme de modules/classes.  
@@ -29,7 +29,8 @@ Pour les contraintes, nous avons une Single Page Application (SPA), tout est sou
 - La possibilité de se connecter (seulement via un nom d'utilisateur, l'inscription et la connexion sont identiques).  
 - Sur la page principale, nous pouvons voir tous les personnages ou seulement les nôtres.  
 - Dans les pop-ups, à la demande de notre professeur, ajout de tous les personnages créés par l'utilisateur du personnage sélectionné.  
-- Dans les pop-ups, un bouton modifier/supprimer est disponible lorsque c'est notre personnage, ainsi que la possibilité de "fork" un personnage pour en créer un similaire ou le modifier à partir de cette base.  
+- Dans les pop-ups, un bouton modifier/supprimer est disponible lorsque c'est notre personnage, ainsi que la possibilité de "fork" un personnage pour en créer un similaire ou le modifier à partir de cette base.
+- Dans les pop-ups, nous pouvons voir les autres personnages crées par le createur du personnage.
 - Création d'un personnage avec un nom personnalisé et possibilité de le modifier.  
 - Le thème graphique est un style "paint", nous avons donc tout fait en gardant cette thématique.  
 
