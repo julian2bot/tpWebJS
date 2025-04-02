@@ -155,10 +155,10 @@ export default class Listing extends BaseView{
                 Listing.mine = select.value=='mine';
                 content.innerHTML = await Listing.renderCharacters();
                     
-                Listing.addListenerCard();
+                Character.addListenerCard();
             })
         }
-        Listing.addListenerCard();
+        Character.addListenerCard();
 
         let limitInput = document.getElementById("limitInput");
         let changeLimit = document.getElementById("changeLimit");
