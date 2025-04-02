@@ -1,6 +1,9 @@
 import Detail from "../view/Detail.js";
 
+// Fonctions utils pour la page de creation d'un personnage
 export default class DetailUtils{
+    
+    // Calcul des stats en fonction de l'equipement du personnage
     static characteristicsCalculus(){
         let head = Detail.equipments.head[Detail.centerIndex.head];
         let torso = Detail.equipments.torso[Detail.centerIndex.torso];  
@@ -17,13 +20,13 @@ export default class DetailUtils{
         console.log(strength, stamina, agility);
     }
 
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewHautDroite(){
         Detail.centerIndex.torso = (Detail.centerIndex.torso + 1) % Detail.equipments.torso.length;
         Detail.updateDisplay();
     }
     
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewHautGauche(){
         Detail.centerIndex.torso = (Detail.centerIndex.torso - 1) % Detail.equipments.torso.length
         if(Detail.centerIndex.torso < 0){
@@ -32,13 +35,13 @@ export default class DetailUtils{
         Detail.updateDisplay();
     }
 
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewCasqueDroite(){
         Detail.centerIndex.head = (Detail.centerIndex.head + 1) % Detail.equipments.head.length;
         Detail.updateDisplay();
     }
     
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewCasqueGauche(){
         Detail.centerIndex.head = (Detail.centerIndex.head - 1) % Detail.equipments.head.length
         if(Detail.centerIndex.head < 0){
@@ -47,13 +50,13 @@ export default class DetailUtils{
         Detail.updateDisplay();
     }
     
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewBasDroite(){
         Detail.centerIndex.pants = (Detail.centerIndex.pants + 1) % Detail.equipments.pants.length;
         Detail.updateDisplay();
     }
     
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewBasGauche(){
         Detail.centerIndex.pants = (Detail.centerIndex.pants - 1) % Detail.equipments.pants.length
         if(Detail.centerIndex.pants < 0){
@@ -62,13 +65,13 @@ export default class DetailUtils{
         Detail.updateDisplay();
     }
 
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewShoesDroite(){
         Detail.centerIndex.shoes = (Detail.centerIndex.shoes + 1) % Detail.equipments.shoes.length;
         Detail.updateDisplay();
     }
     
-    // update au moment du clique sur le bouton
+    // Update au moment du clique sur le bouton
     static updatePreviewShoesGauche(){
         Detail.centerIndex.shoes = (Detail.centerIndex.shoes - 1) % Detail.equipments.shoes.length
         if(Detail.centerIndex.shoes < 0){
@@ -77,19 +80,19 @@ export default class DetailUtils{
         Detail.updateDisplay();
     }
 
-    // change la valeur de la var strength dans le css
+    // Change la valeur de la var strength dans le css
     static updateStrength(strength){
         let r = document.querySelector(':root');
         r.style.setProperty('--progress-strength', `${strength}%`);
     }
     
-    // change la valeur de la var stamina dans le css
+    // Change la valeur de la var stamina dans le css
     static updateStamina(stamina){
         let r = document.querySelector(':root');
         r.style.setProperty('--progress-stamina', `${stamina}%`);
     }
     
-    // change la valeur de la var souplaise dans le css
+    // Change la valeur de la var souplaise dans le css
     static updateAgility(agility){
         let r = document.querySelector(':root');
         r.style.setProperty('--progress-agility', `${agility}%`);

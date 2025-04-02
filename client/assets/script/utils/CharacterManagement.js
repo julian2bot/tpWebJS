@@ -1,6 +1,9 @@
 import { ENDPOINT } from "../config.js";
 
+// Gere les Personnages crea/modification ainsi que suppression 
 export default class CharacterManagement{
+
+    // Update ou creer un personnage
     static async createOrUpdateCharacter(name, idHead, idTorso, idPants, idShoes, creator, characterId=undefined){
         let url = characterId ? `${ENDPOINT}characters/${characterId}` : `${ENDPOINT}characters`;
         let method = characterId ? "PUT" : "POST";
@@ -28,6 +31,7 @@ export default class CharacterManagement{
         .catch(res => { console.log(res); return false;});
     }
 
+    // Supprime un personnage
     static async deleteCharacter(id){
         return fetch(`${ENDPOINT}characters/${id}`, {
             method: "DELETE",

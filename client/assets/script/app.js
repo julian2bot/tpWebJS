@@ -14,6 +14,7 @@ const routes = {
     "/favoris" : Favoris
 };
 
+// Fonction routage via l'url   
 const rooter = async () => {
     const content = document.querySelector("#app");
 

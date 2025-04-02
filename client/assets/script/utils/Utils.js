@@ -1,4 +1,6 @@
+// Object pour l'url utile   
 const Utils = {
+    // Parse l'url   
     parseRequestURL : ()=>{
         let url = window.location.hash.slice(1).toLocaleLowerCase() || '/';
         console.log(url);
@@ -15,6 +17,7 @@ const Utils = {
 
         return request;
     },
+    // Parse la partie ID de l'url   
     parseListingId : ()=>{
         let id = Utils.parseRequestURL().id;
         console.log(id);
@@ -30,6 +33,7 @@ const Utils = {
             return {};
         }
     },
+    // change la partie ID de l'url   
     updateListingId : (name="",page=-1, perpage=-1)=>{
         let param = Utils.parseListingId();
         console.log(name=="_")

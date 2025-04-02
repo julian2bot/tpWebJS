@@ -2,12 +2,14 @@ import { ENDPOINT } from "../config.js";
 import MesFavoris from "./MesFavoris.js";
 import UserManagement from "./UserManagement.js";
 import Utils from "./Utils.js";
+
+// Recupere les persos depuis le json server
 export default class CharacterProvider {
-    // Get all
+    // Get all 
     static getCharacters = async (page=0, perPage=10) => {
         try {
             const response = await fetch(`${ENDPOINT}characters?_page=${page}&_per_page=${perPage}`);
-            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            if (!response.ok) throw new Error("Erreur lors de la récupération des personnages");
             let t =  await response.json();
             console.log(t);
             return t;  
@@ -17,10 +19,11 @@ export default class CharacterProvider {
         }
     };
 
+    // Get les persos par pseudos
     static getCharactersByPseudo = async (pseudo,page=1, perPage=10) => {
         try {
             const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}&_page=${page}&_per_page=${perPage}`);
-            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            if (!response.ok) throw new Error("Erreur lors de la récupération des personnages");
             return await response.json();
         } catch (error) {
             console.error(error);
@@ -28,10 +31,11 @@ export default class CharacterProvider {
         }
     };
 
+    // Get les persos via le nom du createur
     static getCharactersByPseudoOthers = async (pseudo, characterId, page=1, perPage=10) => {
         try {
             const response = await fetch(`${ENDPOINT}characters?creator=${pseudo}&_page=${page}&_per_page=${perPage}`);
-            if (!response.ok) throw new Error("Erreur lors de la récupération des équipements");
+            if (!response.ok) throw new Error("Erreur lors de la récupération des personnages");
             let json = await response.json();
             const CharactersSearch = json.data.filter(char =>
                 !char.id.toLowerCase().includes(characterId.toLowerCase())
@@ -43,6 +47,7 @@ export default class CharacterProvider {
         }
     };
 
+    // Get les persos via son ID
     static getCharactersByID = async (id) => {
         try {
             const response = await fetch(`${ENDPOINT}characters/${id}`);
@@ -54,12 +59,14 @@ export default class CharacterProvider {
         }
     };
 
+    // Change l'url pour chercher des persos
     static getSearchCharacters = async ()=>{
         let name = document.getElementById("searchCharacters").value;
 
         window.location.href = `#/listing/${Utils.updateListingId(name=name)}`
     };
 
+    // Get les persos qui sont dans les favoris
     static getCharactersFav = async () => {
         try {
             const favorites = MesFavoris.getFavoris();
@@ -80,6 +87,7 @@ export default class CharacterProvider {
     
 
     
+    // get les persos via son nom
     static getSearchCharactersbyName = async (name, mine=false) => {
         try {
             if (!name) return []; 

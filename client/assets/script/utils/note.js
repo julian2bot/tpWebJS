@@ -1,5 +1,8 @@
 import { ENDPOINT } from "../config.js";
+
+// Gestion des notes
 export default class Note{
+    // Recuperer la note d'un utilisateur pour un personnage 
     static getNotebyUserbycharacter = async (userID, characterID) => {
         try {
             const response = await fetch(`${ENDPOINT}note?idUser=${userID}&id=${characterID}`);
@@ -12,6 +15,7 @@ export default class Note{
     };
     
 
+    // Recuperer toutes les notes d'un personnage 
     static getnotesCharacter = async (characterID) => {
         try {
             const response = await fetch(`${ENDPOINT}note?id=${characterID}`);
@@ -23,6 +27,7 @@ export default class Note{
         }
     };
     
+    // Calcul de la note moyene d'un personnage 
     static getMoyenneNoteCharacter = async (characterID) => {
         let lesNotes = await Note.getnotesCharacter(characterID)
         let nbNote = 0;
@@ -43,12 +48,14 @@ export default class Note{
         return valeurNote/nbNote ?? 0
     }
 
+    // Affichage d'une note pour un personnage donne 
     static async afficheNote(idCharacter){
         let noteMoyenne = await Note.getMoyenneNoteCharacter(idCharacter);
         const characterNoteMoyenne = document.getElementById(`characterNote-${idCharacter}`);
         characterNoteMoyenne.textContent = `${noteMoyenne} / 5`; 
     }
 
+    // Gestion d'ajout / edit d'une note (les etoiles)  
     static async noteStar(userID, idCharacter){
         
             const character = document.getElementById(`character-${idCharacter}`);
@@ -110,6 +117,7 @@ export default class Note{
         }
 
 
+        // Sauvegarde d'une note dans le json serveur 
         static async saveNote(userID, idCharacter, note){
             
             const response = await fetch(`${ENDPOINT}note/${idCharacter}`);
