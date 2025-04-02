@@ -35,8 +35,6 @@ export default class Login extends BaseView{
         }
     }
 
-    
-
     static connect(){
         let username = document.getElementById("username");
         if(username != undefined && username.value != ""){

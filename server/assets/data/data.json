@@ -676,6 +676,24 @@
       "pants": 1,
       "shoes": 1,
       "creator": "chris"
+    },
+    {
+      "name": "de",
+      "head": 13,
+      "torso": 7,
+      "pants": 4,
+      "shoes": 5,
+      "creator": "chris",
+      "id": "330d"
+    },
+    {
+      "id": "1ecc",
+      "name": "d'",
+      "head": 17,
+      "torso": 1,
+      "pants": 1,
+      "shoes": 1,
+      "creator": "chris"
     }
   ]
 }
