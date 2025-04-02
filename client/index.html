@@ -52,7 +52,7 @@
     let link_create = document.getElementById("creation-link");
     let textUserCo = document.getElementById("nameUser");
     if(UserManagement.isConnected()){
-        link.textContent = "Sign out";
+        link.textContent = "Déconnexion";
         textUserCo.textContent ="User : "+UserManagement.getUsername();
         link_create.style.display = "initial";
     }else{
