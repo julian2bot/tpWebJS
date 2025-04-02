@@ -1,6 +1,7 @@
 import BaseView from './BaseView.js';
-import UserManagment from '../utils/UserManagement.js';
+import UserManagement from '../utils/UserManagement.js';
 
+// Class pour afficher le login
 export default class Login extends BaseView{
     static async render(){
         let view = '<style>main{display: flex; justify-content: center;}</style>';
@@ -18,8 +19,8 @@ export default class Login extends BaseView{
     }
 
     static async init(){
-        if(UserManagment.isConnected()){
-            UserManagment.disconnect();
+        if(UserManagement.isConnected()){
+            UserManagement.disconnect();
             let link = document.getElementById("login-link");
             link.textContent = "Connexion";
             let textUserCo = document.getElementById("nameUser");
@@ -30,29 +31,10 @@ export default class Login extends BaseView{
         let co = document.getElementById("connect");
         if(co != undefined){
             co.addEventListener("click", function(e){
-                Login.connect();
+                let input = document.getElementById("username");
+                if(input!=undefined && input.value!="")
+                    UserManagement.connect(input.value);
             })
         }
     }
-
-    static connect(){
-        let username = document.getElementById("username");
-        if(username != undefined && username.value != ""){
-            UserManagment.setUsername(username.value);
-
-            let link = document.getElementById("login-link");
-            let textUserCo = document.getElementById("nameUser");
-            let link_create = document.getElementById("creation-link");
-            
-            if(UserManagment.isConnected()){
-                link.textContent = "Déconnexion";
-                textUserCo.textContent ="Utilisateur : "+UserManagment.getUsername();
-                link_create.style.display = "initial";
-            }else{
-                textUserCo.textContent =""
-                link_create.style.display = "none";
-            }
-        }
-    }
-
 }

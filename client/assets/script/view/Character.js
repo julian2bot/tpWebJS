@@ -5,6 +5,7 @@ import EquipmentProvider from '../utils/EquipmentProvider.js';
 import Note from '../utils/note.js';
 import { ENDPOINT } from '../config.js';
 
+// Class permetant les différents affichages de personnages
 export default class Character{
     static equipement = {
         heads : null,
@@ -13,6 +14,7 @@ export default class Character{
         shoes : null
     };
 
+    // Met a jout les équipements en fonction des ids
     static async updateEquipments(heads, torso, pants, shoes){
         Character.equipement.heads = await EquipmentProvider.getHeadsById(heads);
         Character.equipement.torso = await EquipmentProvider.getTorsoById(torso);
@@ -20,6 +22,7 @@ export default class Character{
         Character.equipement.shoes = await EquipmentProvider.getShoesById(shoes);
     }
 
+    // Render une Pop Up via la carte d'un personnage
     static async renderPopUp(card, mine=false){
         console.log(card);
         let fondNoir = document.createElement("div");
@@ -117,12 +120,13 @@ export default class Character{
         document.getElementsByClassName("containerStar")[0].appendChild(divContainer);
     }
 
-    static async renderCharacter(character, mine=false){
+    // Render une carte de personnage
+    static async renderCharacter(character, mine=false, estFavoris=false){
         await Character.updateEquipments(character.head, character.torso, character.pants, character.shoes);
 
         return `
         <div class="card" id=${character.id}>
-            <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
+            <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}', ${estFavoris})">♥</button>
             <h3>${character.name}</h3>
             <h4 class="creator" ${mine ? "style='display:none;'" : ""}>Par : ${character.creator}</h4>
             <div class="image">
@@ -151,12 +155,10 @@ export default class Character{
         </div>`;
     }
 
-    static async renderOtherCharacters(username, charid, mine=false){
-            let characters = await CharacterProvider.getCharactersByPseudoOthers(username, charid);
-            let view = "";
-            for(let character of characters){
-                await Character.updateEquipments(character.head, character.torso, character.pants, character.shoes);
-                view+=`
+    // Render une carte de personnage (version petite, sans les détails)
+    static async renderLittleCharacter(character, mine=false){
+        await Character.updateEquipments(character.head, character.torso, character.pants, character.shoes);
+        return `
                 <div class="littleCard">
                     <div class="card" id=${character.id}>
                         <button id="heart-${character.id}" class="hearts ${MesFavoris.estFavoris(character.id)}" onclick="MesFavoris.updateFavorites('${character.id}')">♥</button>
@@ -197,6 +199,14 @@ export default class Character{
                         </div>
                     </div>
                 </div>`;
+    }
+
+    // Render une liste de petites cartes via le pseudo du createur et l'id du personnage a ne pas afficher (Utilisé dans la pop up)
+    static async renderOtherCharacters(username, charid, mine=false){
+            let characters = await CharacterProvider.getCharactersByPseudoOthers(username, charid);
+            let view = "";
+            for(let character of characters){
+                view += await Character.renderLittleCharacter(character, mine);
             }
             return view;
     }
