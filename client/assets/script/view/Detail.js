@@ -6,6 +6,7 @@ import UserManagment from '../utils/UserManagement.js';
 import Utils from '../utils/Utils.js';
 import { ENDPOINT } from '../config.js';
 import { showPopUp } from '../utils/popUp.js';
+import DetailUtils from '../utils/DetailUtils.js';
 
 export default class Detail extends BaseView{
     static updating = false;
@@ -111,43 +112,8 @@ export default class Detail extends BaseView{
             </section>
 `
     }
-
-    static characteristicsCalculus(){
-        let head = Detail.equipments.head[Detail.centerIndex.head];
-        let torso = Detail.equipments.torso[Detail.centerIndex.torso];  
-        let pants = Detail.equipments.pants[Detail.centerIndex.pants];    
-        let shoes = Detail.equipments.shoes[Detail.centerIndex.shoes]; 
-       
-        let strength = 50 + head.strength + torso.strength + pants.strength + shoes.strength;
-        let stamina = 50 + head.stamina + torso.stamina + pants.stamina + shoes.stamina;
-        let agility = 50 + head.agility + torso.agility + pants.agility + shoes.agility;
     
-        Detail.updateStrength(strength);
-        Detail.updateStamina(stamina);
-        Detail.updateAgility(agility);
-        console.log(strength, stamina, agility);
-    }
-    
-    // change la valeur de la var strength dans le css
-    static updateStrength(strength){
-        let r = document.querySelector(':root');
-        r.style.setProperty('--progress-strength', `${strength}%`);
-    }
-    
-    // change la valeur de la var stamina dans le css
-    static updateStamina(stamina){
-        let r = document.querySelector(':root');
-        r.style.setProperty('--progress-stamina', `${stamina}%`);
-    }
-    
-    // change la valeur de la var souplaise dans le css
-    static updateAgility(agility){
-        let r = document.querySelector(':root');
-        r.style.setProperty('--progress-agility', `${agility}%`);
-        console.log(r)
-    }
-    
-    // affiche le personnage
+    // Affiche le personnage
     static updateDisplay() {
         // CASQUE
         let imgGaucheCasque = document.querySelector("#gauchePreview .casque");
@@ -179,7 +145,6 @@ export default class Detail extends BaseView{
         imgGaucheHaut.src = ENDPOINT+Detail.equipments.torso[indexGaucheHaut].img;
         imgCentreHaut.src = ENDPOINT+Detail.equipments.torso[Detail.centerIndex.torso].img;
         imgDroiteHaut.src = ENDPOINT+Detail.equipments.torso[indexDroiteHaut].img;
-        
         
         
         // BAS
@@ -214,69 +179,8 @@ export default class Detail extends BaseView{
         imgDroiteShoes.src = ENDPOINT+Detail.equipments.shoes[indexDroiteShoes].img;
     
             
-        Detail.characteristicsCalculus();
+        DetailUtils.characteristicsCalculus();
     }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewHautDroite(){
-        Detail.centerIndex.torso = (Detail.centerIndex.torso + 1) % Detail.equipments.torso.length;
-        Detail.updateDisplay();
-    }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewHautGauche(){
-        Detail.centerIndex.torso = (Detail.centerIndex.torso - 1) % Detail.equipments.torso.length
-        if(Detail.centerIndex.torso < 0){
-            Detail.centerIndex.torso = Detail.equipments.torso.length - 1
-        }
-        Detail.updateDisplay();
-    }
-
-    // update au moment du clique sur le bouton
-    static updatePreviewCasqueDroite(){
-        Detail.centerIndex.head = (Detail.centerIndex.head + 1) % Detail.equipments.head.length;
-        Detail.updateDisplay();
-    }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewCasqueGauche(){
-        Detail.centerIndex.head = (Detail.centerIndex.head - 1) % Detail.equipments.head.length
-        if(Detail.centerIndex.head < 0){
-            Detail.centerIndex.head = Detail.equipments.head.length - 1
-        }
-        Detail.updateDisplay();
-    }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewBasDroite(){
-        Detail.centerIndex.pants = (Detail.centerIndex.pants + 1) % Detail.equipments.pants.length;
-        Detail.updateDisplay();
-    }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewBasGauche(){
-        Detail.centerIndex.pants = (Detail.centerIndex.pants - 1) % Detail.equipments.pants.length
-        if(Detail.centerIndex.pants < 0){
-            Detail.centerIndex.pants = Detail.equipments.pants.length - 1
-        }
-        Detail.updateDisplay();
-    }
-
-    // update au moment du clique sur le bouton
-    static updatePreviewShoesDroite(){
-        Detail.centerIndex.shoes = (Detail.centerIndex.shoes + 1) % Detail.equipments.shoes.length;
-        Detail.updateDisplay();
-    }
-    
-    // update au moment du clique sur le bouton
-    static updatePreviewShoesGauche(){
-        Detail.centerIndex.shoes = (Detail.centerIndex.shoes - 1) % Detail.equipments.shoes.length
-        if(Detail.centerIndex.shoes < 0){
-            Detail.centerIndex.shoes = Detail.equipments.shoes.length - 1
-        }
-        Detail.updateDisplay();
-    }
-
 
     static async init(){
         if(! UserManagment.isConnected()){
@@ -348,13 +252,13 @@ export default class Detail extends BaseView{
             event.target.classList.add("arrowAnime");
             
             if (event.target.closest(".casque")) {
-                Detail.updatePreviewCasqueDroite();
+                DetailUtils.updatePreviewCasqueDroite();
             }else if (event.target.closest(".haut")) {
-                Detail.updatePreviewHautDroite();
+                DetailUtils.updatePreviewHautDroite();
             }else if(event.target.closest(".bas")){
-                Detail.updatePreviewBasDroite();
+                DetailUtils.updatePreviewBasDroite();
             }else if(event.target.closest(".basbas")){
-                Detail.updatePreviewShoesDroite();
+                DetailUtils.updatePreviewShoesDroite();
             }
             setTimeout(() => {
                 event.target.classList.remove("arrowAnime");
@@ -366,14 +270,14 @@ export default class Detail extends BaseView{
             event.target.classList.add("arrowAnime");
 
             if(event.target.closest(".casque")){
-                Detail.updatePreviewCasqueGauche();    
+                DetailUtils.updatePreviewCasqueGauche();    
             }
             else if (event.target.closest(".haut")) {
-                Detail.updatePreviewHautGauche();
+                DetailUtils.updatePreviewHautGauche();
             }else if(event.target.closest(".bas")){
-                Detail.updatePreviewBasGauche();
+                DetailUtils.updatePreviewBasGauche();
             }else if(event.target.closest(".basbas")){
-                Detail.updatePreviewShoesGauche();
+                DetailUtils.updatePreviewShoesGauche();
             }
             setTimeout(() => {
                 event.target.classList.remove("arrowAnime");
