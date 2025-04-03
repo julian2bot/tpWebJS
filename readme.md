@@ -61,6 +61,57 @@ Gràce à JSON Server, et aux arguments de Fetch ```_page=``` (numéro de page) 
 
 L'utilisateur peut changer ces paramètres via les inputs et boutons en bas de page, ou en changeant l'url (valeurs de : page et perpage).
 
+## Description des modules
+
+## Utils
+
+CharacterProvider   
+  - Recupere les persos depuis le json server
+
+CharacterManagement
+  - Gere les Personnages crea/modification ainsi que suppression
+
+EquipementProvider  
+  - Recupere les equipements depuis le json server
+
+DetailUtils
+  - Fonctions utils pour la page de creation d'un personnage
+
+popUp  
+  - Unique fonction pour afficher une pop up avec un message et un booléen de succès
+
+note  
+  - Gestion des notes pour les personnages
+
+MesFavoris
+  - Gestion des favoris (Local Storage)
+
+UserManagement
+  - Class gérant la connexion et la déconnexion d'un utilisateur (Local Storage)
+
+Utils
+  - Parseur de l'url
+
+## View
+
+BaseView
+  - Vue de base pour réaliser l'héritage des vues, pour les fonctions utilisé dans le router (Render et init)
+
+Detail
+  - Class permatant l'affichage de la création et la modification de personnage
+
+Favoris
+  - Class pour render les favoris de l'utilisateur (Local storage)
+
+Listing
+  - Page de base permettant de lister plusieurs personnages (Avec pagination, filtre et recherche)
+
+Login
+  - Class pour afficher le login
+
+Character
+  - Class permetant les différents affichages de personnages
+
 ## Commandes  
 
 ### Server JSON  
